@@ -1004,6 +1004,17 @@ textarea:focus {
 
 .direct-email {
   margin: 1rem 0 0.5rem;
+  text-align: center;
+}
+
+/* Contact: direct email link styled with theme color */
+.email-link {
+  color: var(--primary-orange);
+  text-decoration: none;
+  font-weight: 600;
+}
+.email-link:hover {
+  text-decoration: underline;
 }
 
 .divider {
