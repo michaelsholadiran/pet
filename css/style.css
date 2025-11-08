@@ -323,6 +323,16 @@ h1 {
 .category-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: var(--primary-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.category-icon svg {
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  margin: 0 auto;
 }
 
 .category-card h3 {
@@ -1545,6 +1555,10 @@ textarea:focus {
 
   .category-icon {
     font-size: 2rem;
+  }
+  .category-icon svg {
+    width: 2rem;
+    height: 2rem;
   }
 
   .accordion-header {
