@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Exclude non-indexable transactional pages
+Disallow: /cart.html
+Disallow: /checkout.html
+Disallow: /success.html
+
+Sitemap: https://example.com/sitemap.xml
+
+

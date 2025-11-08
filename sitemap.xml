@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.com/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://example.com/products.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url><loc>https://example.com/product.html?slug=wireless-headphones</loc></url>
+  <url><loc>https://example.com/product.html?slug=leather-crossbody-bag</loc></url>
+  <url><loc>https://example.com/product.html?slug=organic-cotton-t-shirt</loc></url>
+  <url><loc>https://example.com/product.html?slug=ceramic-mug-set</loc></url>
+  <url><loc>https://example.com/product.html?slug=stainless-steel-water-bottle</loc></url>
+  <url><loc>https://example.com/product.html?slug=desk-lamp-with-usb-charger</loc></url>
+  <url><loc>https://example.com/product.html?slug=premium-sunglasses</loc></url>
+  <url><loc>https://example.com/product.html?slug=bamboo-cutting-board</loc></url>
+  <url><loc>https://example.com/product.html?slug=cashmere-scarf</loc></url>
+  <url><loc>https://example.com/product.html?slug=wireless-charger</loc></url>
+  <url>
+    <loc>https://example.com/about.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://example.com/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://example.com/faq.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://example.com/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://example.com/terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://example.com/refund.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
+
+

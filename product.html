@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View product photos, specs, pricing and availability. Add to cart with one click.">
+    <title>Product Details - Brandly</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="site.webmanifest">
+    <script src="js/seo.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Brandly</a>
+            <nav class="navbar-menu" aria-label="Primary">
+                <a href="products.html" class="nav-link">Shop</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-menu-button" aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+                </svg>
+            </button>
+            <a href="cart.html" class="cart-icon">
+                <span class="cart-icon-text">🛒</span>
+                <span class="cart-counter" aria-label="Items in cart">0</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="drawer-overlay" data-overlay hidden></div>
+    <aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-label="Mobile navigation">
+        <div class="mobile-drawer-header">
+            <span class="drawer-title">Menu</span>
+            <button class="drawer-close" aria-label="Close menu">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M18.3 5.71 12 12l6.3 6.29-1.41 1.41L10.59 13.4 4.29 19.7 2.88 18.3 9.17 12 2.88 5.71 4.29 4.3l6.3 6.3 6.29-6.3z"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="mobile-drawer-nav" aria-label="Mobile Primary">
+            <a href="products.html" class="drawer-link">Shop</a>
+            <a href="about.html" class="drawer-link">About</a>
+            <a href="contact.html" class="drawer-link">Contact</a>
+        </nav>
+    </aside>
+    <main>
+        <section class="product-detail" id="product-detail">
+            <!-- Dynamically populated -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <p>&copy; 2025 Brandly. All rights reserved.</p>
+            </div>
+            <nav class="footer-section" aria-label="Footer">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="refund.html">Return & Refund Policy</a>
+            </nav>
+            <div class="footer-section">
+                <p>Follow us:</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="TikTok" title="TikTok">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M13 2h3.2c.3 1.2 1 2.4 2 3.2A6.9 6.9 0 0021 6.5V9c-1.8 0-3.5-.5-5-1.4v6.2A6.8 6.8 0 019.2 21 6.7 6.7 0 013 14.3 6.7 6.7 0 019.7 7.6c.4 0 .9 0 1.3.1V11a3.8 3.8 0 00-1.3-.2A3.3 3.3 0 006.4 14.2a3.3 3.3 0 003.3 3.3c1.8 0 3.3-1.5 3.3-3.3V2z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" fill="currentColor"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H7.898v-2.89h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.261c-1.243 0-1.631.771-1.631 1.562v1.875h2.773l-.443 2.89h-2.33V21.88C18.343 21.128 22 16.991 22 12z" fill="currentColor"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slugParam = urlParams.get('slug');
+            const idParam = urlParams.get('id');
+            const productId = idParam ? parseInt(idParam) : null;
+
+            let product = null;
+            if (slugParam) {
+                product = products.find(p => p.slug === slugParam);
+            } else if (productId) {
+                product = products.find(p => p.id === productId);
+            }
+
+            if (!product) {
+                document.getElementById('product-detail').innerHTML = '<p>Product not found.</p>';
+                return;
+            }
+
+            const detailHTML = `
+                <div class="product-detail-container">
+                    <div class="product-image-section">
+                        <img src="${product.images[0]}" alt="${product.name}" class="product-detail-image" loading="eager" decoding="async" width="800" height="600">
+                    </div>
+                    <div class="product-info-section">
+                        <h1>${product.name}</h1>
+                        <p class="product-category">Category: ${product.category}</p>
+                        <p class="product-price">₦${product.price.toFixed(2)}</p>
+                        <p class="product-stock ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}">
+                            ${product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+                        </p>
+                        <p class="product-description">${product.description}</p>
+                        
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="qty-btn" id="qty-decrease">−</button>
+                                <input type="number" id="quantity" value="1" min="1" max="${product.stock}" aria-label="Quantity">
+                                <button class="qty-btn" id="qty-increase">+</button>
+                            </div>
+                            <button class="btn btn-primary" id="add-to-cart" ${product.stock === 0 ? 'disabled' : ''}>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('product-detail').innerHTML = detailHTML;
+
+            // SEO: dynamic title, meta and structured data for product
+            (function applyProductSEO() {
+                const title = `${product.name} - Brandly`;
+                const description = product.description;
+                const pathWithQuery = `/product.html?slug=${product.slug}`;
+                const image = product.images && product.images[0] ? product.images[0] : undefined;
+                if (window.SEO && typeof window.SEO.applyCommonSEO === 'function') {
+                    window.SEO.applyCommonSEO({
+                        title,
+                        description,
+                        path: pathWithQuery,
+                        ogImage: image,
+                        ogImageWidth: 800,
+                        ogImageHeight: 600,
+                        type: 'product'
+                    });
+                    // Product schema
+                    window.SEO.addJsonLd({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": product.name,
+                        "description": product.description,
+                        "image": image,
+                        "sku": String(product.id),
+                        "category": product.category,
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "Brandly"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "NGN",
+                            "price": product.price,
+                            "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+                            "url": window.SEO.absoluteUrl(pathWithQuery)
+                        }
+                    });
+                } else {
+                    document.title = title;
+                }
+            })();
+
+            const quantityInput = document.getElementById('quantity');
+            document.getElementById('qty-decrease').addEventListener('click', () => {
+                if (quantityInput.value > 1) quantityInput.value--;
+            });
+            document.getElementById('qty-increase').addEventListener('click', () => {
+                if (quantityInput.value < product.stock) quantityInput.value++;
+            });
+
+            document.getElementById('add-to-cart').addEventListener('click', function() {
+                const quantity = parseInt(quantityInput.value);
+                addToCart(product, quantity);
+                this.textContent = 'Added to Cart!';
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
