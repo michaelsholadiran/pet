@@ -4,7 +4,7 @@
 	const SITE_NAME = 'Puppiary'
 	const DEFAULT_OG_IMAGE = 'https://picsum.photos/seed/puppiary/1200/630'
 	const THEME_COLOR = '#ffffff'
-	const TWITTER_HANDLE = '@puppiary' // update if you have one
+	const TWITTER_HANDLE = '@puppiaryhq' // update if you have one
 
 	function absoluteUrl(pathWithQuery) {
 		try {
