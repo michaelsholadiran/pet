@@ -2,19 +2,19 @@
 
 // Get cart from localStorage
 function getCart() {
-  const cart = localStorage.getItem("brandly-cart")
+  const cart = localStorage.getItem("puppiary-cart")
   return cart ? JSON.parse(cart) : []
 }
 
 // Save cart to localStorage
 function saveCart(cart) {
-  localStorage.setItem("brandly-cart", JSON.stringify(cart))
+  localStorage.setItem("puppiary-cart", JSON.stringify(cart))
   updateCartCounter()
 }
 
 // Clear cart
 function clearCart() {
-  localStorage.removeItem("brandly-cart")
+  localStorage.removeItem("puppiary-cart")
   updateCartCounter()
 }
 

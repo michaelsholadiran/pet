@@ -1,10 +1,10 @@
 ;(function () {
 	// Basic site configuration. Update SITE_URL to your production domain.
-	const SITE_URL = 'https://example.com'
-	const SITE_NAME = 'Brandly'
-	const DEFAULT_OG_IMAGE = 'https://picsum.photos/seed/brandly/1200/630'
+	const SITE_URL = 'https://www.puppiary.com'
+	const SITE_NAME = 'Puppiary'
+	const DEFAULT_OG_IMAGE = 'https://picsum.photos/seed/puppiary/1200/630'
 	const THEME_COLOR = '#ffffff'
-	const TWITTER_HANDLE = '@brandly' // update if you have one
+	const TWITTER_HANDLE = '@puppiary' // update if you have one
 
 	function absoluteUrl(pathWithQuery) {
 		try {
@@ -206,9 +206,9 @@
 		// Home
 		if (path.endsWith('/') || path.endsWith('/index.html')) {
 			applyCommonSEO({
-				title: 'Brandly - Warm & Friendly Ecommerce',
+				title: 'Puppy Toys, Teething & Starter Kits | Non-Toxic Supplies | Puppiary',
 				description:
-					'Discover thoughtfully curated products across accessories, electronics, home and apparel. Warm service. Fair pricing.',
+					'The ultimate resource for new puppy parents. Shop durable chew toys, training gear, and comfort essentials designed to solve teething pain and separation anxiety.',
 				path: '/index.html',
 			})
 			jsonLdOrganization()
@@ -218,14 +218,14 @@
 		// Products listing
 		if (path.endsWith('/products.html')) {
 			applyCommonSEO({
-				title: 'Shop All Products - Brandly',
+				title: 'Shop All Products - Puppiary',
 				description:
 					'Browse our full catalog across categories. Filter by category and search to find your next favorite.',
 				path: '/products.html' + window.location.search,
 			})
 			jsonLdWebPage({
 				type: 'CollectionPage',
-				name: 'Shop - Brandly',
+				name: 'Shop - Puppiary',
 				description:
 					'Browse our catalog across categories. Filter by category and search to find your next favorite.',
 				url: absoluteUrl('/products.html'),
@@ -235,7 +235,7 @@
 		// Product detail: defaults (will be overridden by page once product loads)
 		if (path.endsWith('/product.html')) {
 			applyCommonSEO({
-				title: 'Product Details - Brandly',
+				title: 'Product Details - Puppiary',
 				description:
 					'View product photos, specs, pricing and availability. Add to cart with one click.',
 				path: '/product.html' + window.location.search,
@@ -246,31 +246,31 @@
 		// Informational pages
 		if (path.endsWith('/about.html')) {
 			applyCommonSEO({
-				title: 'About Brandly',
+				title: 'About Puppiary',
 				description:
-					'Learn our story, mission and values. We believe in quality, care and fair pricing.',
+					'Learn about Puppiary - your trusted partner for puppy and dog care essentials. Quality, safety, and genuine pet-parent support.',
 				path: '/about.html',
 			})
 			jsonLdWebPage({
 				type: 'AboutPage',
-				name: 'About Brandly',
+				name: 'About Puppiary',
 				description:
-					'Learn our story, mission and values. We believe in quality, care and fair pricing.',
+					'Learn about Puppiary - your trusted partner for puppy and dog care essentials. Quality, safety, and genuine pet-parent support.',
 				url: absoluteUrl('/about.html'),
 			})
 		}
 		if (path.endsWith('/contact.html')) {
 			applyCommonSEO({
-				title: 'Contact Brandly',
+				title: 'Contact Puppiary',
 				description:
-					'Questions or feedback? Get in touch with the Brandly team — we’re here to help.',
+					'Questions or feedback? Get in touch with the Puppiary team - we\'re here to help.',
 				path: '/contact.html',
 			})
 			jsonLdWebPage({
 				type: 'ContactPage',
-				name: 'Contact Brandly',
+				name: 'Contact Puppiary',
 				description:
-					'Questions or feedback? Get in touch with the Brandly team — we’re here to help.',
+					'Questions or feedback? Get in touch with the Puppiary team - we\'re here to help.',
 				url: absoluteUrl('/contact.html'),
 			})
 			addJsonLd({
@@ -282,7 +282,7 @@
 					{
 						'@type': 'ContactPoint',
 						contactType: 'customer support',
-						email: 'support@brandly.com',
+						email: 'hello@puppiary.com',
 						areaServed: 'US',
 						availableLanguage: ['English'],
 					},
@@ -291,83 +291,83 @@
 		}
 		if (path.endsWith('/faq.html')) {
 			applyCommonSEO({
-				title: 'FAQ - Brandly',
+				title: 'FAQ - Puppiary',
 				description:
-					'Answers to common questions about shipping, returns, order tracking and more.',
+					'Find answers to common questions about Puppiary shipping, ordering, returns, guarantees, and product safety for your puppy.',
 				path: '/faq.html',
 			})
 			jsonLdWebPage({
 				type: 'FAQPage',
-				name: 'FAQ - Brandly',
+				name: 'FAQ - Puppiary',
 				description:
-					'Answers to common questions about shipping, returns, order tracking and more.',
+					'Find answers to common questions about Puppiary shipping, ordering, returns, guarantees, and product safety for your puppy.',
 				url: absoluteUrl('/faq.html'),
 			})
 		}
 		if (path.endsWith('/privacy.html')) {
 			applyCommonSEO({
-				title: 'Privacy Policy - Brandly',
+				title: 'Privacy Policy - Puppiary',
 				description:
-					'Read how we collect, use and protect your data at Brandly.',
+					'Read how Puppiary collects, uses and protects your personal information. Your trust is essential to our mission.',
 				path: '/privacy.html',
 			})
 			jsonLdWebPage({
 				type: 'WebPage',
-				name: 'Privacy Policy - Brandly',
+				name: 'Privacy Policy - Puppiary',
 				description:
-					'Read how we collect, use and protect your data at Brandly.',
+					'Read how Puppiary collects, uses and protects your personal information. Your trust is essential to our mission.',
 				url: absoluteUrl('/privacy.html'),
 			})
 		}
 		if (path.endsWith('/terms.html')) {
 			applyCommonSEO({
-				title: 'Terms & Conditions - Brandly',
+				title: 'Terms & Conditions - Puppiary',
 				description:
-					'Understand the terms that govern your use of Brandly and our services.',
+					'Understand the terms that govern your use of Puppiary and our services.',
 				path: '/terms.html',
 			})
 			jsonLdWebPage({
 				type: 'WebPage',
-				name: 'Terms & Conditions - Brandly',
+				name: 'Terms & Conditions - Puppiary',
 				description:
-					'Understand the terms that govern your use of Brandly and our services.',
+					'Understand the terms that govern your use of Puppiary and our services.',
 				url: absoluteUrl('/terms.html'),
 			})
 		}
 		if (path.endsWith('/refund.html')) {
 			applyCommonSEO({
-				title: 'Return & Refund Policy - Brandly',
+				title: 'Return & Refund Policy - Puppiary',
 				description:
-					'Learn how returns and refunds work at Brandly, eligibility and process.',
+					'Learn about Puppiary\'s 24-Month Durability Promise and 30-Day Happiness Guarantee. Shop worry-free with our comprehensive return and refund policy.',
 				path: '/refund.html',
 			})
 			jsonLdWebPage({
 				type: 'WebPage',
-				name: 'Return & Refund Policy - Brandly',
+				name: 'Return & Refund Policy - Puppiary',
 				description:
-					'Learn how returns and refunds work at Brandly, eligibility and process.',
+					'Learn about Puppiary\'s 24-Month Durability Promise and 30-Day Happiness Guarantee. Shop worry-free with our comprehensive return and refund policy.',
 				url: absoluteUrl('/refund.html'),
 			})
 		}
 		if (path.endsWith('/cart.html')) {
 			applyCommonSEO({
-				title: 'Cart - Brandly',
-				description: 'Your shopping cart at Brandly.',
+				title: 'Cart - Puppiary',
+				description: 'Your shopping cart at Puppiary.',
 				path: '/cart.html',
 				robots: 'noindex,nofollow',
 			})
 		}
 		if (path.endsWith('/checkout.html')) {
 			applyCommonSEO({
-				title: 'Checkout - Brandly',
-				description: 'Secure checkout at Brandly.',
+				title: 'Checkout - Puppiary',
+				description: 'Secure checkout at Puppiary.',
 				path: '/checkout.html',
 				robots: 'noindex,nofollow',
 			})
 		}
 		if (path.endsWith('/success.html')) {
 			applyCommonSEO({
-				title: 'Order Confirmed - Brandly',
+				title: 'Order Confirmed - Puppiary',
 				description: 'Your order has been confirmed.',
 				path: '/success.html' + window.location.search,
 				robots: 'noindex,nofollow',

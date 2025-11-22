@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex,nofollow">
-    <meta name="description" content="Secure checkout at Brandly.">
-    <title>Checkout - Brandly</title>
+    <meta name="description" content="Secure checkout at Puppiary.">
+    <title>Checkout - Puppiary</title>
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Puppiary" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="manifest" href="site.webmanifest">
     <script src="js/seo.js"></script>
 </head>
 <body>
     <header class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">Brandly</a>
+            <a href="index.html" class="navbar-logo">
+                <img src="logo.webp" alt="Puppiary" class="logo-image" width="50" height="50">
+                Puppiary
+            </a>
             <nav class="navbar-menu" aria-label="Primary">
                 <a href="products.html" class="nav-link">Shop</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
             <button class="mobile-menu-button" aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
@@ -45,6 +53,7 @@
         <nav class="mobile-drawer-nav" aria-label="Mobile Primary">
             <a href="products.html" class="drawer-link">Shop</a>
             <a href="about.html" class="drawer-link">About</a>
+            <a href="faq.html" class="drawer-link">FAQ</a>
             <a href="contact.html" class="drawer-link">Contact</a>
         </nav>
     </aside>
@@ -73,42 +82,135 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="address1">Address Line 1 *</label>
+                            <label for="address1">Address *</label>
                             <input type="text" id="address1" name="address1" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="city">City *</label>
-                            <input type="text" id="city" name="city" required>
+                            <label for="state">State *</label>
+                            <select id="state" name="state" required>
+                                <option value="">Select State</option>
+                                <option value="Abia">Abia</option>
+                                <option value="Adamawa">Adamawa</option>
+                                <option value="Akwa Ibom">Akwa Ibom</option>
+                                <option value="Anambra">Anambra</option>
+                                <option value="Bauchi">Bauchi</option>
+                                <option value="Bayelsa">Bayelsa</option>
+                                <option value="Benue">Benue</option>
+                                <option value="Borno">Borno</option>
+                                <option value="Cross River">Cross River</option>
+                                <option value="Delta">Delta</option>
+                                <option value="Ebonyi">Ebonyi</option>
+                                <option value="Edo">Edo</option>
+                                <option value="Ekiti">Ekiti</option>
+                                <option value="Enugu">Enugu</option>
+                                <option value="FCT">Federal Capital Territory</option>
+                                <option value="Gombe">Gombe</option>
+                                <option value="Imo">Imo</option>
+                                <option value="Jigawa">Jigawa</option>
+                                <option value="Kaduna">Kaduna</option>
+                                <option value="Kano">Kano</option>
+                                <option value="Katsina">Katsina</option>
+                                <option value="Kebbi">Kebbi</option>
+                                <option value="Kogi">Kogi</option>
+                                <option value="Kwara">Kwara</option>
+                                <option value="Lagos">Lagos</option>
+                                <option value="Nasarawa">Nasarawa</option>
+                                <option value="Niger">Niger</option>
+                                <option value="Ogun">Ogun</option>
+                                <option value="Ondo">Ondo</option>
+                                <option value="Osun">Osun</option>
+                                <option value="Oyo">Oyo</option>
+                                <option value="Plateau">Plateau</option>
+                                <option value="Rivers">Rivers</option>
+                                <option value="Sokoto">Sokoto</option>
+                                <option value="Taraba">Taraba</option>
+                                <option value="Yobe">Yobe</option>
+                                <option value="Zamfara">Zamfara</option>
+                            </select>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="state">State/Province *</label>
-                                <input type="text" id="state" name="state" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="postal">Postal Code *</label>
-                                <input type="text" id="postal" name="postal" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="country">Country *</label>
-                            <input type="text" id="country" name="country" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="notes">Shipping Notes</label>
-                            <textarea id="notes" name="notes" rows="3" placeholder="Any special delivery instructions..."></textarea>
-                        </div>
+                        <input type="hidden" id="country" name="country" value="Nigeria">
                     </fieldset>
 
 					<!-- Paystack is the only supported payment method. -->
 
+                    <div class="accepted-payment-methods">
+                        <p class="payment-methods-label">We Accept:</p>
+                        <div class="payment-methods-grid">
+                            <div class="payment-method-item" title="Bank Transfer">
+                                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                                    <path fill="#0066CC" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                                <span>Bank Transfer</span>
+                            </div>
+                            <div class="payment-method-item" title="Verve">
+                                <div class="payment-icon verve">VERVE</div>
+                                <span>Verve</span>
+                            </div>
+                            <div class="payment-method-item" title="USSD">
+                                <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                                    <path fill="#00A859" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span>USSD</span>
+                            </div>
+                            <div class="payment-method-item" title="OPay">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Opay_Digital_Services_Limited.png/1200px-Opay_Digital_Services_Limited.png" alt="OPay" class="payment-logo opay-logo">
+                                <span>OPay</span>
+                            </div>
+                            <div class="payment-method-item" title="Visa">
+                                <div class="payment-icon visa">VISA</div>
+                                <span>Visa</span>
+                            </div>
+                            <div class="payment-method-item" title="Mastercard">
+                                <div class="payment-icon mastercard">
+                                    <div class="mc-circle mc-red"></div>
+                                    <div class="mc-circle mc-orange"></div>
+                                </div>
+                                <span>Mastercard</span>
+                            </div>
+                            </div>
+                        </div>
+
+                    <div class="checkout-trust-badges">
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                                <path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+                            </svg>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                                <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>SSL Encrypted</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                                <path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span>Money-Back Guarantee</span>
+                        </div>
+                    </div>
+
                     <div class="checkout-actions">
                         <button type="submit" class="btn btn-primary btn-large">Complete Order</button>
                         <a href="products.html" class="btn btn-secondary btn-large">Continue Shopping</a>
+                    </div>
+
+                    <div class="checkout-guarantees">
+                        <p class="guarantee-text">
+                            <strong>✓ 30-Day Money-Back Guarantee</strong><br>
+                            Not satisfied? Get a full refund, no questions asked.
+                        </p>
+                        <p class="guarantee-text">
+                            <strong>✓ Free Returns</strong><br>
+                            Easy returns within 30 days of delivery.
+                        </p>
+                        <p class="guarantee-text">
+                            <strong>✓ Secure Checkout</strong><br>
+                            Your payment information is encrypted and secure.
+                        </p>
                     </div>
                 </form>
 				<aside class="checkout-summary" aria-label="Order Summary">
@@ -119,6 +221,43 @@
 					<div class="summary-total">
 						<strong>Total: ₦<span id="total-price">0.00</span></strong>
 					</div>
+					
+					<div class="checkout-social-proof">
+						<div class="social-proof-item">
+							<div class="proof-stars">★★★★★</div>
+							<p class="proof-text"><strong>4.8/5</strong> from 2,500+ happy customers</p>
+						</div>
+						<div class="social-proof-item">
+							<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+								<path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+							</svg>
+							<span>Trusted by 10,000+ customers</span>
+						</div>
+						<div class="social-proof-item">
+							<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+								<path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+							</svg>
+							<span>Fast &amp; Reliable Delivery</span>
+						</div>
+					</div>
+
+					<div class="payment-security">
+						<p class="security-label">Secured by:</p>
+						<div class="security-badges">
+							<div class="security-badge">
+								<svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+									<path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+								</svg>
+								<span>Paystack</span>
+							</div>
+							<div class="security-badge">
+								<svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+									<path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+								</svg>
+								<span>SSL Secure</span>
+							</div>
+						</div>
+					</div>
 				</aside>
             </div>
         </section>
@@ -128,7 +267,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <p>&copy; 2025 Brandly. All rights reserved.</p>
+                <p>&copy; 2025 Puppiary. All rights reserved.</p>
             </div>
             <nav class="footer-section" aria-label="Footer">
                 <a href="privacy.html">Privacy Policy</a>
@@ -138,17 +277,75 @@
             <div class="footer-section">
                 <p>Follow us:</p>
                 <div class="social-links">
-                    <a href="#" class="social-link" aria-label="TikTok" title="TikTok">
+                    <a href="https://www.instagram.com/puppiary.ng" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram" title="Instagram: @puppiary.ng">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" fill="currentColor"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@puppiary" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok" title="TikTok: @puppiary">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path fill="currentColor" d="M13 2h3.2c.3 1.2 1 2.4 2 3.2A6.9 6.9 0 0021 6.5V9c-1.8 0-3.5-.5-5-1.4v6.2A6.8 6.8 0 019.2 21 6.7 6.7 0 013 14.3 6.7 6.7 0 019.7 7.6c.4 0 .9 0 1.3.1V11a3.8 3.8 0 00-1.3-.2A3.3 3.3 0 006.4 14.2a3.3 3.3 0 003.3 3.3c1.8 0 3.3-1.5 3.3-3.3V2z"/>
                         </svg>
                     </a>
-                    <a href="#" class="social-link" aria-label="Instagram" title="Instagram">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" fill="currentColor"/></svg>
+                    <a href="https://twitter.com/puppiary" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter" title="Twitter: @puppiary">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
                     </a>
-                    <a href="#" class="social-link" aria-label="Facebook" title="Facebook">
+                    <a href="https://www.facebook.com/puppiary" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" title="Facebook: @puppiary">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H7.898v-2.89h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.261c-1.243 0-1.631.771-1.631 1.562v1.875h2.773l-.443 2.89h-2.33V21.88C18.343 21.128 22 16.991 22 12z" fill="currentColor"/></svg>
                     </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-payment-section">
+            <div class="footer-payment-container">
+                <p class="footer-payment-label">Accepted Payment Methods:</p>
+                <div class="footer-payment-grid">
+                    <div class="footer-payment-item footer-payment-left" title="Bank Transfer">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <span>Bank Transfer</span>
+                    </div>
+                    <div class="footer-payment-item" title="Verve">
+                        <div class="footer-payment-icon verve">VERVE</div>
+                    </div>
+                    <div class="footer-payment-item footer-payment-left" title="USSD">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>USSD</span>
+                    </div>
+                    <div class="footer-payment-item" title="OPay">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Opay_Digital_Services_Limited.png/1200px-Opay_Digital_Services_Limited.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
+                    </div>
+                    <div class="footer-payment-item" title="Visa">
+                        <div class="footer-payment-icon visa">VISA</div>
+                    </div>
+                    <div class="footer-payment-item" title="Mastercard">
+                        <div class="footer-payment-icon mastercard">
+                            <div class="footer-mc-circle footer-mc-red"></div>
+                            <div class="footer-mc-circle footer-mc-orange"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-secured-section">
+            <div class="footer-secured-container">
+                <p class="footer-secured-label">Secured by:</p>
+                <div class="footer-secured-badges">
+                    <div class="footer-secured-item">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+                        </svg>
+                        <span>Paystack</span>
+                    </div>
+                    <div class="footer-secured-item">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>SSL Secure</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -183,9 +380,16 @@
 
             document.getElementById('total-price').textContent = total.toFixed(2);
 
-            document.getElementById('checkout-form').addEventListener('submit', function(e) {
+            const checkoutForm = document.getElementById('checkout-form');
+            if (!checkoutForm) {
+                console.error('Checkout form not found');
+                return;
+            }
+
+            checkoutForm.addEventListener('submit', function(e) {
                 e.preventDefault();
 				const form = this;
+				console.log('Form submitted');
 
 				// Ensure cart has items
 				if (!cart || cart.length === 0) {
@@ -193,18 +397,36 @@
 					return;
 				}
 
+				// Check if total is valid
+				if (total <= 0) {
+					alert('Invalid order total. Please check your cart.');
+					return;
+				}
+
+				// Check if Paystack is loaded
+				if (typeof PaystackPop === 'undefined') {
+					alert('Payment system is loading. Please wait a moment and try again.');
+					return;
+				}
+
 				// Collect required customer data
-				const email = document.getElementById('email').value;
-				const fullname = document.getElementById('fullname').value;
-				const phone = document.getElementById('phone').value;
-				const address1 = document.getElementById('address1').value;
-				const city = document.getElementById('city').value;
+				const email = document.getElementById('email').value.trim();
+				const fullname = document.getElementById('fullname').value.trim();
+				const phone = document.getElementById('phone').value.trim();
+				const address1 = document.getElementById('address1').value.trim();
 				const state = document.getElementById('state').value;
-				const postal = document.getElementById('postal').value;
 				const country = document.getElementById('country').value;
-				const notes = document.getElementById('notes').value;
-				if (!email || !fullname) {
-					alert('Please fill your name and email.');
+
+				// Validate all required fields
+				if (!email || !fullname || !phone || !address1 || !state) {
+					alert('Please fill in all required fields: Name, Email, Phone, Address, and State.');
+					return;
+				}
+
+				// Validate email format
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				if (!emailRegex.test(email)) {
+					alert('Please enter a valid email address.');
 					return;
 				}
 
@@ -216,27 +438,25 @@
 					const itemTotal = (product.price * item.quantity).toFixed(2);
 					return `${product.name} x ${item.quantity} = ₦${itemTotal}`;
 				}).join('; ');
-				const addressLine = [address1, city, state, postal, country].filter(Boolean).join(', ');
+				const addressLine = [address1, state, country].filter(Boolean).join(', ');
 
 				// Initialize Paystack popup
+				try {
 				const handler = PaystackPop.setup({
 					key: PAYSTACK_PUBLIC_KEY,
 					email: email,
 					amount: Math.round(total * 100), // amount in kobo
 					currency: 'NGN',
-					ref: 'BRANDLY_' + Date.now(),
+					ref: 'PUPPIARY_' + Date.now(),
 					metadata: {
 						fullname: fullname,
 						firstname: firstName,
 						lastname: lastName,
 						phone: phone,
 						email: email,
-						notes: notes,
 						address: {
 							address1: address1,
-							city: city,
 							state: state,
-							postal: postal,
 							country: country
 						},
 						cart: cart.map(i => {
@@ -291,6 +511,10 @@
 					}
 				});
 				handler.openIframe();
+				} catch (error) {
+					console.error('Paystack setup error:', error);
+					alert('An error occurred while setting up payment. Please try again.');
+				}
             });
         });
     </script>

@@ -6,6 +6,6 @@ Disallow: /cart.html
 Disallow: /checkout.html
 Disallow: /success.html
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://www.puppiary.com/sitemap.xml
 
 
