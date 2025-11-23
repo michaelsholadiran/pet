@@ -156,7 +156,7 @@ function createProductCard(product) {
   card.setAttribute("role", "link")
   card.tabIndex = 0
   const navigateToDetail = () => {
-    window.location.href = `product.html?slug=${product.slug}`
+    window.location.href = `/product/${product.slug}`
   }
   card.addEventListener("click", navigateToDetail)
   card.addEventListener("keydown", (e) => {

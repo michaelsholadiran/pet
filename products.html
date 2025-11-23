@@ -21,17 +21,17 @@
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt"></noscript>
     <!-- Preload critical resources -->
-    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="/css/style.css" as="style">
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Puppiary" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self' https://js.paystack.co https://cdn.jsdelivr.net https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com https://paystack.com; font-src 'self' https://fonts.cdnfonts.com data:; connect-src 'self' https://www.google-analytics.com https://google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://region3.google-analytics.com https://region4.google-analytics.com https://region5.google-analytics.com; frame-src https://js.paystack.co https://checkout.paystack.com https://www.googletagmanager.com; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <script src="js/seo.js" defer></script>
+    <script src="/js/seo.js" defer></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -40,22 +40,22 @@
     <!-- End Google Tag Manager (noscript) -->
     <header class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <img src="logo.webp" alt="" class="logo-image" width="50" height="50">
+            <a href="/index" class="navbar-logo">
+                <img src="/logo.webp" alt="" class="logo-image" width="50" height="50">
                 Puppiary
             </a>
             <nav class="navbar-menu" aria-label="Primary">
-                <a href="products.html" class="nav-link active" aria-current="page">Shop</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="/products" class="nav-link active" aria-current="page">Shop</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/faq" class="nav-link">FAQ</a>
+                <a href="/contact" class="nav-link">Contact</a>
             </nav>
             <button class="mobile-menu-button" aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                     <path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
                 </svg>
             </button>
-            <a href="cart.html" class="cart-icon">
+            <a href="/cart" class="cart-icon">
                 <span class="cart-icon-text">🛒</span>
                 <span class="cart-counter" aria-label="Items in cart">0</span>
             </a>
@@ -73,10 +73,10 @@
             </button>
         </div>
         <nav class="mobile-drawer-nav" aria-label="Mobile Primary">
-            <a href="products.html" class="drawer-link">Shop</a>
-            <a href="about.html" class="drawer-link">About</a>
-            <a href="faq.html" class="drawer-link">FAQ</a>
-            <a href="contact.html" class="drawer-link">Contact</a>
+            <a href="/products" class="drawer-link">Shop</a>
+            <a href="/about" class="drawer-link">About</a>
+            <a href="/faq" class="drawer-link">FAQ</a>
+            <a href="/contact" class="drawer-link">Contact</a>
         </nav>
     </aside>
     <main>
@@ -115,9 +115,9 @@
                 <p>&copy; 2025 Puppiary. All rights reserved.</p>
             </div>
             <nav class="footer-section" aria-label="Footer">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms & Conditions</a>
-                <a href="refund.html">Return & Refund Policy</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms & Conditions</a>
+                <a href="/refund">Return & Refund Policy</a>
             </nav>
             <div class="footer-section">
                 <p>Follow us:</p>
@@ -161,7 +161,7 @@
                         <span>USSD</span>
                     </div>
                     <div class="footer-payment-item" title="OPay">
-                        <img src="opay.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
+                        <img src="/opay.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
                     </div>
                     <div class="footer-payment-item" title="Visa">
                         <div class="footer-payment-icon visa">VISA</div>
@@ -196,8 +196,8 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/products.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/products.js"></script>
     <script>
         let filteredProducts = [...products];
 
@@ -251,7 +251,7 @@
                         "itemListElement": filteredProducts.map((p, i) => ({
                             "@type": "ListItem",
                             "position": i + 1,
-                            "url": window.SEO.absoluteUrl(`/product.html?slug=${p.slug}`)
+                            "url": window.SEO.absoluteUrl(`/product/${p.slug}`)
                         }))
                     });
                     window.__itemListAdded = true;

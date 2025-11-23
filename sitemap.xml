@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.puppiary.com/index.html</loc>
+    <loc>https://www.puppiary.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.puppiary.com/products.html</loc>
+    <loc>https://www.puppiary.com/products</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  <url><loc>https://www.puppiary.com/product.html?slug=durable-rubber-chew-bone</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=puppy-teething-ring-set</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=comfort-cuddle-bed</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=anxiety-calming-blanket</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=adjustable-puppy-harness</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=retractable-training-leash</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=paw-washer-dryer</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=puppy-grooming-brush-set</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=slow-feed-puppy-bowl</loc></url>
-  <url><loc>https://www.puppiary.com/product.html?slug=puppy-starter-kit</loc></url>
+  <url><loc>https://www.puppiary.com/product/durable-rubber-chew-bone</loc></url>
+  <url><loc>https://www.puppiary.com/product/puppy-teething-ring-set</loc></url>
+  <url><loc>https://www.puppiary.com/product/comfort-cuddle-bed</loc></url>
+  <url><loc>https://www.puppiary.com/product/anxiety-calming-blanket</loc></url>
+  <url><loc>https://www.puppiary.com/product/adjustable-puppy-harness</loc></url>
+  <url><loc>https://www.puppiary.com/product/retractable-training-leash</loc></url>
+  <url><loc>https://www.puppiary.com/product/paw-washer-dryer</loc></url>
+  <url><loc>https://www.puppiary.com/product/puppy-grooming-brush-set</loc></url>
+  <url><loc>https://www.puppiary.com/product/slow-feed-puppy-bowl</loc></url>
+  <url><loc>https://www.puppiary.com/product/puppy-starter-kit</loc></url>
   <url>
-    <loc>https://www.puppiary.com/about.html</loc>
+    <loc>https://www.puppiary.com/about</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.puppiary.com/contact.html</loc>
+    <loc>https://www.puppiary.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.puppiary.com/faq.html</loc>
+    <loc>https://www.puppiary.com/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.puppiary.com/privacy.html</loc>
+    <loc>https://www.puppiary.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.puppiary.com/terms.html</loc>
+    <loc>https://www.puppiary.com/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.puppiary.com/refund.html</loc>
+    <loc>https://www.puppiary.com/refund</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

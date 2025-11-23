@@ -158,7 +158,7 @@
 			url: SITE_URL,
 			potentialAction: {
 				'@type': 'SearchAction',
-				target: absoluteUrl('/products.html?search={search_term_string}'),
+				target: absoluteUrl('/products?search={search_term_string}'),
 				'query-input': 'required name=search_term_string',
 			},
 		})
@@ -202,74 +202,86 @@
 		const path = window.location.pathname
 
 		// Home
-		if (path.endsWith('/') || path.endsWith('/index.html')) {
+		if (path.endsWith('/') || path.endsWith('/index') || path.endsWith('/index.html')) {
 			applyCommonSEO({
 				title: 'Puppy Toys, Teething & Starter Kits | Non-Toxic Supplies | Puppiary',
 				description:
 					'The ultimate resource for new puppy parents. Shop durable chew toys, training gear, and comfort essentials designed to solve teething pain and separation anxiety.',
-				path: '/index.html',
+				path: '/',
 			})
 			jsonLdOrganization()
 			jsonLdWebsite()
 		}
 
 		// Products listing
-		if (path.endsWith('/products.html')) {
+		if (path.endsWith('/products') || path.endsWith('/products.html')) {
 			applyCommonSEO({
 				title: 'Shop All Products - Puppiary',
 				description:
 					'Browse our full catalog across categories. Filter by category and search to find your next favorite.',
-				path: '/products.html' + window.location.search,
+				path: '/products' + window.location.search,
 			})
 			jsonLdWebPage({
 				type: 'CollectionPage',
 				name: 'Shop - Puppiary',
 				description:
 					'Browse our catalog across categories. Filter by category and search to find your next favorite.',
-				url: absoluteUrl('/products.html'),
+				url: absoluteUrl('/products'),
 			})
 		}
 
 		// Product detail: defaults (will be overridden by page once product loads)
-		if (path.endsWith('/product.html')) {
+		// Check for /product/slug format or /product?slug= format (backward compatibility)
+		const isProductPage = path.startsWith('/product/') || path.endsWith('/product') || path.endsWith('/product.html');
+		if (isProductPage) {
+			// Extract slug from path if using new format
+			let productPath = '/product';
+			if (path.startsWith('/product/')) {
+				const pathParts = path.split('/').filter(part => part);
+				if (pathParts.length > 1) {
+					productPath = `/product/${pathParts[1]}`;
+				}
+			} else {
+				productPath = '/product' + window.location.search;
+			}
 			applyCommonSEO({
 				title: 'Product Details - Puppiary',
 				description:
 					'View product photos, specs, pricing and availability. Add to cart with one click.',
-				path: '/product.html' + window.location.search,
+				path: productPath,
 				type: 'product',
 			})
 		}
 
 		// Informational pages
-		if (path.endsWith('/about.html')) {
+		if (path.endsWith('/about') || path.endsWith('/about.html')) {
 			applyCommonSEO({
 				title: 'About Puppiary',
 				description:
 					'Learn about Puppiary - your trusted partner for puppy and dog care essentials. Quality, safety, and genuine pet-parent support.',
-				path: '/about.html',
+				path: '/about',
 			})
 			jsonLdWebPage({
 				type: 'AboutPage',
 				name: 'About Puppiary',
 				description:
 					'Learn about Puppiary - your trusted partner for puppy and dog care essentials. Quality, safety, and genuine pet-parent support.',
-				url: absoluteUrl('/about.html'),
+				url: absoluteUrl('/about'),
 			})
 		}
-		if (path.endsWith('/contact.html')) {
+		if (path.endsWith('/contact') || path.endsWith('/contact.html')) {
 			applyCommonSEO({
 				title: 'Contact Puppiary',
 				description:
 					'Questions or feedback? Get in touch with the Puppiary team - we\'re here to help.',
-				path: '/contact.html',
+				path: '/contact',
 			})
 			jsonLdWebPage({
 				type: 'ContactPage',
 				name: 'Contact Puppiary',
 				description:
 					'Questions or feedback? Get in touch with the Puppiary team - we\'re here to help.',
-				url: absoluteUrl('/contact.html'),
+				url: absoluteUrl('/contact'),
 			})
 			addJsonLd({
 				'@context': 'https://schema.org',
@@ -287,87 +299,87 @@
 				],
 			})
 		}
-		if (path.endsWith('/faq.html')) {
+		if (path.endsWith('/faq') || path.endsWith('/faq.html')) {
 			applyCommonSEO({
 				title: 'FAQ - Puppiary',
 				description:
 					'Find answers to common questions about Puppiary shipping, ordering, returns, guarantees, and product safety for your puppy.',
-				path: '/faq.html',
+				path: '/faq',
 			})
 			jsonLdWebPage({
 				type: 'FAQPage',
 				name: 'FAQ - Puppiary',
 				description:
 					'Find answers to common questions about Puppiary shipping, ordering, returns, guarantees, and product safety for your puppy.',
-				url: absoluteUrl('/faq.html'),
+				url: absoluteUrl('/faq'),
 			})
 		}
-		if (path.endsWith('/privacy.html')) {
+		if (path.endsWith('/privacy') || path.endsWith('/privacy.html')) {
 			applyCommonSEO({
 				title: 'Privacy Policy - Puppiary',
 				description:
 					'Read how Puppiary collects, uses and protects your personal information. Your trust is essential to our mission.',
-				path: '/privacy.html',
+				path: '/privacy',
 			})
 			jsonLdWebPage({
 				type: 'WebPage',
 				name: 'Privacy Policy - Puppiary',
 				description:
 					'Read how Puppiary collects, uses and protects your personal information. Your trust is essential to our mission.',
-				url: absoluteUrl('/privacy.html'),
+				url: absoluteUrl('/privacy'),
 			})
 		}
-		if (path.endsWith('/terms.html')) {
+		if (path.endsWith('/terms') || path.endsWith('/terms.html')) {
 			applyCommonSEO({
 				title: 'Terms & Conditions - Puppiary',
 				description:
 					'Understand the terms that govern your use of Puppiary and our services.',
-				path: '/terms.html',
+				path: '/terms',
 			})
 			jsonLdWebPage({
 				type: 'WebPage',
 				name: 'Terms & Conditions - Puppiary',
 				description:
 					'Understand the terms that govern your use of Puppiary and our services.',
-				url: absoluteUrl('/terms.html'),
+				url: absoluteUrl('/terms'),
 			})
 		}
-		if (path.endsWith('/refund.html')) {
+		if (path.endsWith('/refund') || path.endsWith('/refund.html')) {
 			applyCommonSEO({
 				title: 'Return & Refund Policy - Puppiary',
 				description:
 					'Learn about Puppiary\'s 24-Month Durability Promise and 30-Day Happiness Guarantee. Shop worry-free with our comprehensive return and refund policy.',
-				path: '/refund.html',
+				path: '/refund',
 			})
 			jsonLdWebPage({
 				type: 'WebPage',
 				name: 'Return & Refund Policy - Puppiary',
 				description:
 					'Learn about Puppiary\'s 24-Month Durability Promise and 30-Day Happiness Guarantee. Shop worry-free with our comprehensive return and refund policy.',
-				url: absoluteUrl('/refund.html'),
+				url: absoluteUrl('/refund'),
 			})
 		}
-		if (path.endsWith('/cart.html')) {
+		if (path.endsWith('/cart') || path.endsWith('/cart.html')) {
 			applyCommonSEO({
 				title: 'Cart - Puppiary',
 				description: 'Your shopping cart at Puppiary.',
-				path: '/cart.html',
+				path: '/cart',
 				robots: 'noindex,nofollow',
 			})
 		}
-		if (path.endsWith('/checkout.html')) {
+		if (path.endsWith('/checkout') || path.endsWith('/checkout.html')) {
 			applyCommonSEO({
 				title: 'Checkout - Puppiary',
 				description: 'Secure checkout at Puppiary.',
-				path: '/checkout.html',
+				path: '/checkout',
 				robots: 'noindex,nofollow',
 			})
 		}
-		if (path.endsWith('/success.html')) {
+		if (path.endsWith('/success') || path.endsWith('/success.html')) {
 			applyCommonSEO({
 				title: 'Order Confirmed - Puppiary',
 				description: 'Your order has been confirmed.',
-				path: '/success.html' + window.location.search,
+				path: '/success' + window.location.search,
 				robots: 'noindex,nofollow',
 			})
 		}
