@@ -8,6 +8,11 @@ function renderCart() {
   const cart = getCart()
   const cartContent = document.getElementById("cart-content")
 
+  if (!cartContent) {
+    console.warn("Cart content element not found")
+    return
+  }
+
   if (cart.length === 0) {
     cartContent.innerHTML = `
             <div class="empty-cart">
