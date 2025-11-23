@@ -5,6 +5,7 @@ Allow: /
 Disallow: /cart.html
 Disallow: /checkout.html
 Disallow: /success.html
+Disallow: /404.html
 
 Sitemap: https://www.puppiary.com/sitemap.xml
 

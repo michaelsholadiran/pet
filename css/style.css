@@ -1628,6 +1628,19 @@ textarea:focus {
   box-shadow: var(--shadow-soft);
 }
 
+/* Center content in email tab contact card */
+#tab-email .contact-card {
+  text-align: center;
+}
+
+#tab-email .contact-card h2 {
+  text-align: center;
+}
+
+#tab-email .contact-card p {
+  text-align: center;
+}
+
 .direct-email {
   margin: 1rem 0 0.5rem;
   text-align: center;
@@ -1747,6 +1760,15 @@ textarea:focus {
   padding: 2rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
+}
+
+/* Hide contact form - email only contact method */
+#contact-form {
+  display: none !important;
+}
+
+.divider {
+  display: none !important;
 }
 
 /* Policy Section */
