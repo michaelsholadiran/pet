@@ -18,7 +18,7 @@ function renderCart() {
             <div class="empty-cart">
                 <div class="empty-cart-icon">🛒</div>
                 <p>Your cart is empty</p>
-                <a href="products" class="btn btn-primary">Continue Shopping</a>
+                <a href="/products" class="btn btn-primary">Continue Shopping</a>
             </div>
         `
     return
@@ -77,8 +77,8 @@ function renderCart() {
                 <strong>Total:</strong>
                 <strong>₦${total.toFixed(2)}</strong>
             </div>
-            <a href="checkout" class="btn btn-primary btn-large" style="width: 100%; margin-top: 1rem; text-align: center;">Proceed to Checkout</a>
-            <a href="products" class="btn btn-secondary btn-large" style="width: 100%; margin-top: 0.75rem; text-align: center;">Continue Shopping</a>
+            <a href="/checkout" class="btn btn-primary btn-large" style="width: 100%; margin-top: 1rem; text-align: center;">Proceed to Checkout</a>
+            <a href="/products" class="btn btn-secondary btn-large" style="width: 100%; margin-top: 0.75rem; text-align: center;">Continue Shopping</a>
         </div>
     `
 

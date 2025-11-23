@@ -9,14 +9,14 @@ const products = [
     description:
       "Made from 100% food-grade rubber, this indestructible chew toy is perfect for teething puppies. Designed to soothe sore gums while redirecting destructive chewing away from furniture. Non-toxic and dishwasher safe for easy cleaning.",
     images: [
-      "products/indestructible-chew-toy/indestructible-chew-toy-1.jpg",
-      "products/indestructible-chew-toy/indestructible-chew-toy-2.jpg",
-      "products/indestructible-chew-toy/indestructible-chew-toy-3.jpg",
-      "products/indestructible-chew-toy/indestructible-chew-toy-4.jpg",
-      "products/indestructible-chew-toy/indestructible-chew-toy-5.jpg",
-      "products/indestructible-chew-toy/indestructible-chew-toy-6.jpg",
-      "products/indestructible-chew-toy/indestructible-chew-toy-7.jpg",
-      "products/indestructible-chew-toy/indestructible-chew-toy-8.jpg"
+      "/products/indestructible-chew-toy/indestructible-chew-toy-1.jpg",
+      "/products/indestructible-chew-toy/indestructible-chew-toy-2.jpg",
+      "/products/indestructible-chew-toy/indestructible-chew-toy-3.jpg",
+      "/products/indestructible-chew-toy/indestructible-chew-toy-4.jpg",
+      "/products/indestructible-chew-toy/indestructible-chew-toy-5.jpg",
+      "/products/indestructible-chew-toy/indestructible-chew-toy-6.jpg",
+      "/products/indestructible-chew-toy/indestructible-chew-toy-7.jpg",
+      "/products/indestructible-chew-toy/indestructible-chew-toy-8.jpg"
     ],
     stock: 15,
   },
@@ -29,14 +29,14 @@ const products = [
     description:
       "Ultra-soft calming bed designed to provide comfort and security for anxious puppies. Features raised edges that create a safe, den-like environment perfect for separation anxiety. Machine washable cover and orthopedic support for growing pups.",
     images: [
-      "products/calming-dog-bed/calming-dog-bed-1.jpg",
-      "products/calming-dog-bed/calming-dog-bed-2.jpg",
-      "products/calming-dog-bed/calming-dog-bed-3.png",
-      "products/calming-dog-bed/calming-dog-bed-4.jpg",
-      "products/calming-dog-bed/calming-dog-bed-5.jpg",
-      "products/calming-dog-bed/calming-dog-bed-6.png",
-      "products/calming-dog-bed/calming-dog-bed-7.png",
-      "products/calming-dog-bed/calming-dog-bed-8.png"
+      "/products/calming-dog-bed/calming-dog-bed-1.jpg",
+      "/products/calming-dog-bed/calming-dog-bed-2.jpg",
+      "/products/calming-dog-bed/calming-dog-bed-3.png",
+      "/products/calming-dog-bed/calming-dog-bed-4.jpg",
+      "/products/calming-dog-bed/calming-dog-bed-5.jpg",
+      "/products/calming-dog-bed/calming-dog-bed-6.png",
+      "/products/calming-dog-bed/calming-dog-bed-7.png",
+      "/products/calming-dog-bed/calming-dog-bed-8.png"
     ],
     stock: 12,
   },
@@ -49,14 +49,14 @@ const products = [
     description:
       "Perfect for first walks and training! This adjustable no-pull harness grows with your puppy, featuring multiple sizing points for a secure, comfortable fit. No-pull design protects your puppy's neck and provides better control during training walks.",
     images: [
-      "products/no-pull-harness/no-pull-harness-1.jpg",
-      "products/no-pull-harness/no-pull-harness-2.jpg",
-      "products/no-pull-harness/no-pull-harness-3.jpg",
-      "products/no-pull-harness/no-pull-harness-4.png",
-      "products/no-pull-harness/no-pull-harness-5.png",
-      "products/no-pull-harness/no-pull-harness-6.png",
-      "products/no-pull-harness/no-pull-harness-7.png",
-      "products/no-pull-harness/no-pull-harness-8.png"
+      "/products/no-pull-harness/no-pull-harness-1.jpg",
+      "/products/no-pull-harness/no-pull-harness-2.jpg",
+      "/products/no-pull-harness/no-pull-harness-3.jpg",
+      "/products/no-pull-harness/no-pull-harness-4.png",
+      "/products/no-pull-harness/no-pull-harness-5.png",
+      "/products/no-pull-harness/no-pull-harness-6.png",
+      "/products/no-pull-harness/no-pull-harness-7.png",
+      "/products/no-pull-harness/no-pull-harness-8.png"
     ],
     stock: 25,
   },
@@ -69,11 +69,11 @@ const products = [
     description:
       "Keep your home clean with this convenient paw washer cup! Simply fill with water, insert your puppy's paw, and the soft silicone bristles gently remove dirt and mud. Quick-dry design means no more muddy paw prints throughout your house.",
     images: [
-      "products/dog-paw-washer-cup/dog-paw-washer-cup-1.jpg",
-      "products/dog-paw-washer-cup/dog-paw-washer-cup-2.png",
-      "products/dog-paw-washer-cup/dog-paw-washer-cup-3.png",
-      "products/dog-paw-washer-cup/dog-paw-washer-cup-4.png",
-      "products/dog-paw-washer-cup/dog-paw-washer-cup-5.png"
+      "/products/dog-paw-washer-cup/dog-paw-washer-cup-1.jpg",
+      "/products/dog-paw-washer-cup/dog-paw-washer-cup-2.png",
+      "/products/dog-paw-washer-cup/dog-paw-washer-cup-3.png",
+      "/products/dog-paw-washer-cup/dog-paw-washer-cup-4.png",
+      "/products/dog-paw-washer-cup/dog-paw-washer-cup-5.png"
     ],
     stock: 16,
   },
@@ -86,14 +86,14 @@ const products = [
     description:
       "Complete grooming glove designed for sensitive puppy skin. The soft, flexible design allows for comfortable grooming while removing loose hair and dirt. Perfect for maintaining a clean, healthy coat while bonding with your pup.",
     images: [
-      "products/grooming-glove/grooming-glove-1.avif",
-      "products/grooming-glove/grooming-glove-2.avif",
-      "products/grooming-glove/grooming-glove-3.jpg",
-      "products/grooming-glove/grooming-glove-4.jpg",
-      "products/grooming-glove/grooming-glove-5.png",
-      "products/grooming-glove/grooming-glove-6.png",
-      "products/grooming-glove/grooming-glove-7.png",
-      "products/grooming-glove/grooming-glove-8.png"
+      "/products/grooming-glove/grooming-glove-1.avif",
+      "/products/grooming-glove/grooming-glove-2.avif",
+      "/products/grooming-glove/grooming-glove-3.jpg",
+      "/products/grooming-glove/grooming-glove-4.jpg",
+      "/products/grooming-glove/grooming-glove-5.png",
+      "/products/grooming-glove/grooming-glove-6.png",
+      "/products/grooming-glove/grooming-glove-7.png",
+      "/products/grooming-glove/grooming-glove-8.png"
     ],
     stock: 14,
   },
@@ -106,10 +106,10 @@ const products = [
     description:
       "Designed for healthy feeding habits. The unique design encourages your puppy to eat at a comfortable pace. Made from food-safe, BPA-free materials that are easy to clean and dishwasher safe.",
     images: [
-      "products/feeding-bowl/feeding-bowl-1.jpg",
-      "products/feeding-bowl/feeding-bowl-2.png",
-      "products/feeding-bowl/feeding-bowl-3.png",
-      "products/feeding-bowl/feeding-bowl-4.png"
+      "/products/feeding-bowl/feeding-bowl-1.jpg",
+      "/products/feeding-bowl/feeding-bowl-2.png",
+      "/products/feeding-bowl/feeding-bowl-3.png",
+      "/products/feeding-bowl/feeding-bowl-4.png"
     ],
     stock: 20,
   },
