@@ -13,6 +13,17 @@
     <meta name="description" content="The ultimate resource for new puppy parents. Shop durable chew toys, training gear, and comfort essentials designed to solve teething pain and separation anxiety.">
     <meta name="keywords" content="puppy toys, puppy chew toys, puppy teething toys, puppy starter kits, non-toxic puppy toys, puppy supplies, puppy training gear">
     <title>Puppy Toys, Teething & Starter Kits | Non-Toxic Supplies | Puppiary</title>
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.cdnfonts.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <!-- Load fonts with link tag for better performance (replaces @import) - non-blocking -->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt"></noscript>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="products/indestructible-chew-toy/indestructible-chew-toy-1.jpg" as="image" fetchpriority="high">
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -20,9 +31,9 @@
     <meta name="apple-mobile-web-app-title" content="Puppiary" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="css/style.css">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://picsum.photos https://i.picsum.photos https://fastly.picsum.photos https://images.unsplash.com https://cdn.shopify.com https://upload.wikimedia.org data:; script-src 'self' https://js.paystack.co https://cdn.jsdelivr.net https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com; font-src 'self' https://fonts.cdnfonts.com data:; connect-src 'self' https://www.google-analytics.com; frame-src https://js.paystack.co https://www.googletagmanager.com; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self' https://js.paystack.co https://cdn.jsdelivr.net https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com; font-src 'self' https://fonts.cdnfonts.com data:; connect-src 'self' https://www.google-analytics.com; frame-src https://js.paystack.co https://www.googletagmanager.com; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <script src="js/seo.js"></script>
+    <script src="js/seo.js" defer></script>
 </head>
 <body class="home">
     <!-- Google Tag Manager (noscript) -->
@@ -32,7 +43,7 @@
     <header class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
-                <img src="logo.webp" alt="Puppiary" class="logo-image" width="50" height="50">
+                <img src="logo.webp" alt="" class="logo-image" width="50" height="50">
                 Puppiary
             </a>
             <nav class="navbar-menu" aria-label="Primary">
@@ -78,7 +89,7 @@
             <div class="hero-surface">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <h1 class="hero-title">Healthy, Happy Puppy Toys & Teething Essentials</h1>
+                    <h1 class="hero-title">Healthy, Happy Puppy Accessories & Essentials</h1>
                     <p class="hero-subtitle">The ultimate resource for new puppy parents. Solve common problems like teething pain, chewing destruction, and training challenges—with gear you can trust.</p>
                     <div class="hero-actions">
                         <a href="products.html" class="btn btn-primary">🛒 Shop Puppy Starter Kits</a>
@@ -86,83 +97,136 @@
                     </div>
                 </div>
                 <div class="hero-art" aria-hidden="true">
-                    <img src="https://cdn.shopify.com/s/files/1/0231/2060/9358/files/Model-000-Sunflower-Floating_5bd3b381-4b32-440d-8305-3f729fe263d9.png?v=1761944701&width=2800&height=2800&crop=center" alt="Model 000 Sunflower floating sneaker" width="1400" height="1400" loading="eager" decoding="async">
+                    <img src="products/indestructible-chew-toy/indestructible-chew-toy-1.jpg" alt="Indestructible Chew Toy - Puppiary" width="1400" height="1400" loading="eager" decoding="async" fetchpriority="high">
                 </div>
             </div>
             </div>
         </section>
 
-        <!-- Categories Section -->
-        <section class="categories">
-            <h2>Shop by Category</h2>
-            <div class="category-grid">
-                <div class="category-card" data-category="Teething & Chew Destruction">
-                    <div class="category-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M8.5 8.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S7 6.17 7 7s.67 1.5 1.5 1.5zm7 0c.83 0 1.5-.67 1.5-1.5S16.33 5.5 15.5 5.5 14 6.17 14 7s.67 1.5 1.5 1.5zm-3.5 2c-2.33 0-4.31 1.46-5.11 3.5h10.22c-.8-2.04-2.78-3.5-5.11-3.5zM2 22h20v-2H2v2zm15.5-9c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S11.33 9.5 10.5 9.5 9 10.17 9 11s.67 1.5 1.5 1.5zm3.5 2c2.33 0 4.31 1.46 5.11 3.5H6.39c.8-2.04 2.78-3.5 5.11-3.5z"/>
-                        </svg>
-                    </div>
-                    <h3>Teething & Chew Destruction</h3>
+        <!-- Problem/Solution Sections -->
+        
+        <!-- Problem 1: Pulling -->
+        <section class="problem-solution">
+            <div class="problem-solution-content">
+                <div class="problem-solution-text">
+                    <h2>Stop your dog from dragging you around — walk calmly in 2 seconds with the Puppiary no-pull harness.</h2>
+                    <p>Take control of your walks with our adjustable no-pull harness. Designed to protect your puppy's neck while giving you better control during training walks. Perfect for first walks and growing puppies.</p>
+                    <a href="product.html?slug=no-pull-harness" class="btn btn-primary">Shop No-Pull Harness</a>
                 </div>
-                <div class="category-card" data-category="Anxiety & Comfort">
-                    <div class="category-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                    </div>
-                    <h3>Anxiety & Comfort</h3>
-                </div>
-                <div class="category-card" data-category="Walks & Training Control">
-                    <div class="category-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
-                        </svg>
-                    </div>
-                    <h3>Walks & Training Control</h3>
-                </div>
-                <div class="category-card" data-category="Hygiene & Home Cleanliness">
-                    <div class="category-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l1.42 1.42A8.5 8.5 0 0 0 18 9.5 8.5 8.5 0 0 0 9.5 1 8.5 8.5 0 0 0 1 9.5a8.5 8.5 0 0 0 1.14 4.15l1.42-1.42A6.5 6.5 0 0 1 9.5 3M5 9.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5-2 4.5-4.5 4.5S5 12 5 9.5m2.5 0a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2M15 17l-5-1.18.14-1.13L15 15.82V17m-1-3c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3>Hygiene & Home Cleanliness</h3>
-                </div>
-                <div class="category-card" data-category="Health & Feeding">
-                    <div class="category-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                    </div>
-                    <h3>Health & Feeding</h3>
+                <div class="problem-solution-image">
+                    <img src="products/no-pull-harness/no-pull-harness-1.jpg" alt="No-Pull Harness - Puppiary" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
 
-        <!-- Featured Products -->
-        <section class="featured">
-            <h2>Featured Products</h2>
-            <div class="product-grid" id="featured-products">
-                <!-- Dynamically populated -->
+        <!-- Problem 2: Chewing -->
+        <section class="problem-solution problem-solution-reverse">
+            <div class="problem-solution-content">
+                <div class="problem-solution-text">
+                    <h2>Protect your shoes and furniture. Give your dog a chew toy built to last.</h2>
+                    <p>Made from 100% food-grade rubber, our indestructible chew toy redirects destructive chewing away from your belongings. Non-toxic and dishwasher safe, perfect for teething puppies.</p>
+                    <a href="product.html?slug=indestructible-chew-toy" class="btn btn-primary">Shop Chew Toy</a>
+                </div>
+                <div class="problem-solution-image">
+                    <img src="products/indestructible-chew-toy/indestructible-chew-toy-1.jpg" alt="Indestructible Chew Toy - Puppiary" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem 3: Shedding -->
+        <section class="problem-solution">
+            <div class="problem-solution-content">
+                <div class="problem-solution-text">
+                    <h2>Tired of fur all over your bed, clothes, and sofa? Puppiary solves the shedding problem in 5 minutes!</h2>
+                    <p>Our gentle grooming glove removes loose hair and dirt while you bond with your pup. Designed for sensitive puppy skin, it's the easiest way to maintain a clean, healthy coat.</p>
+                    <a href="product.html?slug=grooming-glove" class="btn btn-primary">Shop Grooming Glove</a>
+                </div>
+                <div class="problem-solution-image">
+                    <img src="products/grooming-glove/grooming-glove-1.avif" alt="Grooming Glove - Puppiary" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem 4: Stress/Anxiety -->
+        <section class="problem-solution problem-solution-reverse">
+            <div class="problem-solution-content">
+                <div class="problem-solution-text">
+                    <h2>Reduce your dog's stress instantly with the Puppiary calming bed — comfort that feels like a warm hug.</h2>
+                    <p>Ultra-soft calming bed with raised edges that create a safe, den-like environment. Perfect for separation anxiety, crate training, and helping puppies sleep through the night.</p>
+                    <a href="product.html?slug=calming-dog-bed" class="btn btn-primary">Shop Calming Bed</a>
+                </div>
+                <div class="problem-solution-image">
+                    <img src="products/calming-dog-bed/calming-dog-bed-1.jpg" alt="Calming Dog Bed - Puppiary" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem 5: Muddy Paws -->
+        <section class="problem-solution">
+            <div class="problem-solution-content">
+                <div class="problem-solution-text">
+                    <h2>Keep your home clean. Wash your dog's paws in 10 seconds — no mess.</h2>
+                    <p>Simply fill with water, insert your puppy's paw, and the soft silicone bristles gently remove dirt and mud. Quick-dry design means no more muddy paw prints throughout your house.</p>
+                    <a href="product.html?slug=dog-paw-washer-cup" class="btn btn-primary">Shop Paw Washer</a>
+                </div>
+                <div class="problem-solution-image">
+                    <img src="products/dog-paw-washer-cup/dog-paw-washer-cup-1.jpg" alt="Dog Paw Washer Cup - Puppiary" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem 6: Fast Eating -->
+        <section class="problem-solution problem-solution-reverse">
+            <div class="problem-solution-content">
+                <div class="problem-solution-text">
+                    <h2>Prevent vomiting and bloating — slow your dog's eating naturally.</h2>
+                    <p>Our feeding bowl is designed to encourage your puppy to eat at a healthier pace, reducing the risk of bloating and improving nutrient absorption. Made from food-safe, BPA-free materials.</p>
+                    <a href="product.html?slug=feeding-bowl" class="btn btn-primary">Shop Feeding Bowl</a>
+                </div>
+                <div class="problem-solution-image">
+                    <img src="products/feeding-bowl/feeding-bowl-1.jpg" alt="Feeding Bowl - Puppiary" loading="lazy" decoding="async">
+                </div>
             </div>
         </section>
 
         <!-- Testimonials -->
         <section class="testimonials">
             <h2>What Our Customers Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text" style="margin-bottom: 0.5rem;">⭐️⭐️⭐️⭐️⭐️</p>
-                    <p class="testimonial-text">"The Teething Kit saved our furniture! Our Labrador puppy instantly loved the toys. Puppiary truly understands the needs of new parents."</p>
-                    <p class="testimonial-author">— Sarah M., Verified Buyer</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Such a warm and inviting shopping experience. Will definitely be back!"</p>
-                    <p class="testimonial-author">— James T.</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Best customer service I've experienced. Highly recommended!"</p>
-                    <p class="testimonial-author">— Emma L.</p>
+            <div class="testimonial-scroll-container">
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" style="margin-bottom: 0.5rem;">⭐️⭐️⭐️⭐️⭐️</p>
+                        <p class="testimonial-text">"The Teething Kit saved our furniture! Our Labrador puppy instantly loved the toys. Puppiary truly understands the needs of new parents."</p>
+                        <p class="testimonial-author">— Sarah M., Verified Buyer</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Such a warm and inviting shopping experience. Will definitely be back!"</p>
+                        <p class="testimonial-author">— James T.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Best customer service I've experienced. Highly recommended!"</p>
+                        <p class="testimonial-author">— Emma L.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" style="margin-bottom: 0.5rem;">⭐️⭐️⭐️⭐️⭐️</p>
+                        <p class="testimonial-text">"The no-pull harness changed our walks completely! My puppy used to drag me everywhere, but now we walk calmly together. Game changer!"</p>
+                        <p class="testimonial-author">— Michael K., Verified Buyer</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" style="margin-bottom: 0.5rem;">⭐️⭐️⭐️⭐️⭐️</p>
+                        <p class="testimonial-text">"The calming bed is amazing! My anxious puppy finally sleeps through the night. The quality is outstanding and it's so easy to clean."</p>
+                        <p class="testimonial-author">— Lisa P., Verified Buyer</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" style="margin-bottom: 0.5rem;">⭐️⭐️⭐️⭐️⭐️</p>
+                        <p class="testimonial-text">"The paw washer cup is genius! No more muddy paw prints all over the house. It's quick, easy, and my dog doesn't mind it at all."</p>
+                        <p class="testimonial-author">— David R., Verified Buyer</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text" style="margin-bottom: 0.5rem;">⭐️⭐️⭐️⭐️⭐️</p>
+                        <p class="testimonial-text">"The grooming glove works wonders! It removes so much loose hair and my puppy actually enjoys being groomed now. Highly recommend!"</p>
+                        <p class="testimonial-author">— Jennifer W., Verified Buyer</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -170,7 +234,7 @@
         <!-- CTA Section -->
         <section class="cta">
             <h2>Ready to Find Your Next Favorite?</h2>
-            <p style="max-width: 800px; margin: 0 auto 2rem; color: #666; line-height: 1.6;">Looking to buy non-toxic puppy toys online? Puppiary specializes in durable puppy chew toys, essential new puppy starter kits, and expert-tested puppy training gear. Whether you need the best puppy teething toys or reliable puppy supplies for housebreaking, we offer fast shipping and a quality guarantee on all products designed for the happy, healthy growth of your pup.</p>
+            <p style="max-width: 800px; margin: 0 auto 2rem; color: #555; line-height: 1.6;">Looking to buy non-toxic puppy toys online? Puppiary specializes in durable puppy chew toys, essential new puppy starter kits, and expert-tested puppy training gear. Whether you need the best puppy teething toys or reliable puppy supplies for housebreaking, we offer fast shipping and a quality guarantee on all products designed for the happy, healthy growth of your pup.</p>
             <a href="products.html" class="btn btn-primary btn-large">Explore All Products</a>
         </section>
     </main>
@@ -227,7 +291,7 @@
                         <span>USSD</span>
                     </div>
                     <div class="footer-payment-item" title="OPay">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Opay_Digital_Services_Limited.png/1200px-Opay_Digital_Services_Limited.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
+                        <img src="opay.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
                     </div>
                     <div class="footer-payment-item" title="Visa">
                         <div class="footer-payment-icon visa">VISA</div>
@@ -262,24 +326,9 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/products.js"></script>
+    <script src="js/main.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const featuredContainer = document.getElementById('featured-products');
-            const featured = products.slice(0, 6);
-            featured.forEach(product => {
-                featuredContainer.appendChild(createProductCard(product));
-            });
-
-            // Category navigation
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    window.location.href = `products.html?category=${encodeURIComponent(category)}`;
-                });
-            });
-
             // Mobile drawer (home-only)
             const menuButton = document.querySelector('.mobile-menu-button');
             const drawer = document.getElementById('mobile-drawer');

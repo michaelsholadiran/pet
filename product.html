@@ -12,6 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="View product photos, specs, pricing and availability. Add to cart with one click.">
     <title>Product Details - Puppiary</title>
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.cdnfonts.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <!-- Load fonts with link tag for better performance (replaces @import) - non-blocking -->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt"></noscript>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -19,7 +29,9 @@
     <meta name="apple-mobile-web-app-title" content="Puppiary" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/seo.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self' https://js.paystack.co https://cdn.jsdelivr.net https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.cdnfonts.com; font-src 'self' https://fonts.cdnfonts.com data:; connect-src 'self' https://www.google-analytics.com; frame-src https://js.paystack.co https://www.googletagmanager.com; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <script src="js/seo.js" defer></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -29,7 +41,7 @@
     <header class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
-                <img src="logo.webp" alt="Puppiary" class="logo-image" width="50" height="50">
+                <img src="logo.webp" alt="" class="logo-image" width="50" height="50">
                 Puppiary
             </a>
             <nav class="navbar-menu" aria-label="Primary">
@@ -125,7 +137,7 @@
                         <span>USSD</span>
                     </div>
                     <div class="footer-payment-item" title="OPay">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Opay_Digital_Services_Limited.png/1200px-Opay_Digital_Services_Limited.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
+                        <img src="opay.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
                     </div>
                     <div class="footer-payment-item" title="Visa">
                         <div class="footer-payment-icon visa">VISA</div>
@@ -160,8 +172,8 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/products.js"></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/products.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -182,7 +194,7 @@
             }
 
             const thumbnailImages = product.images.map((img, index) => `
-                <img src="${img}" alt="${product.name} - Image ${index + 1}" class="product-thumbnail ${index === 0 ? 'active' : ''}" data-image-index="${index}" loading="lazy" decoding="async">
+                <img src="${img}" alt="${product.name}" class="product-thumbnail ${index === 0 ? 'active' : ''}" data-image-index="${index}" loading="lazy" decoding="async">
             `).join('');
 
             const detailHTML = `

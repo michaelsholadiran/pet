@@ -29,7 +29,7 @@
     <header class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
-                <img src="logo.webp" alt="Puppiary" class="logo-image" width="50" height="50">
+                <img src="logo.webp" alt="" class="logo-image" width="50" height="50">
                 Puppiary
             </a>
             <nav class="navbar-menu" aria-label="Primary">
@@ -82,11 +82,10 @@
                 
                 <select id="category-filter" class="category-filter" aria-label="Filter by category">
                     <option value="">All Categories</option>
-                    <option value="Teething & Chew Destruction">Teething & Chew Destruction</option>
-                    <option value="Anxiety & Comfort">Anxiety & Comfort</option>
-                    <option value="Walks & Training Control">Walks & Training Control</option>
-                    <option value="Hygiene & Home Cleanliness">Hygiene & Home Cleanliness</option>
-                    <option value="Health & Feeding">Health & Feeding</option>
+                    <option value="Training & Safety">Training & Safety</option>
+                    <option value="Play & Teething">Play & Teething</option>
+                    <option value="Grooming & Comfort">Grooming & Comfort</option>
+                    <option value="Feeding">Feeding</option>
                 </select>
             </div>
 
@@ -150,7 +149,7 @@
                         <span>USSD</span>
                     </div>
                     <div class="footer-payment-item" title="OPay">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Opay_Digital_Services_Limited.png/1200px-Opay_Digital_Services_Limited.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
+                        <img src="opay.png" alt="OPay" class="footer-payment-logo opay-logo-footer">
                     </div>
                     <div class="footer-payment-item" title="Visa">
                         <div class="footer-payment-icon visa">VISA</div>
@@ -226,9 +225,10 @@
             const category = urlParams.get('category');
             if (category) {
                 document.getElementById('category-filter').value = category;
+                filterProducts(); // Apply the filter immediately
+            } else {
+                renderProducts(); // Only render if no category filter
             }
-
-            renderProducts();
 
             // Add ItemList JSON-LD once for initial listing
             if (window.SEO && !window.__itemListAdded) {

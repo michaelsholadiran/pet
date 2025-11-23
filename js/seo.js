@@ -2,7 +2,7 @@
 	// Basic site configuration. Update SITE_URL to your production domain.
 	const SITE_URL = 'https://www.puppiary.com'
 	const SITE_NAME = 'Puppiary'
-	const DEFAULT_OG_IMAGE = 'https://picsum.photos/seed/puppiary/1200/630'
+	const DEFAULT_OG_IMAGE = '/products/indestructible-chew-toy/indestructible-chew-toy-1.jpg'
 	const THEME_COLOR = '#ffffff'
 	const TWITTER_HANDLE = '@puppiaryhq' // update if you have one
 
@@ -110,7 +110,7 @@
 		if (description) ensureMetaByProperty('og:description', description)
 		ensureMetaByProperty('og:type', type)
 		ensureMetaByProperty('og:url', absoluteUrl(path))
-		if (ogImage) ensureMetaByProperty('og:image', ogImage)
+		if (ogImage) ensureMetaByProperty('og:image', absoluteUrl(ogImage))
 		if (ogImageWidth) ensureMetaByProperty('og:image:width', String(ogImageWidth))
 		if (ogImageHeight) ensureMetaByProperty('og:image:height', String(ogImageHeight))
 
@@ -119,7 +119,7 @@
 		if (TWITTER_HANDLE) ensureMetaByName('twitter:site', TWITTER_HANDLE)
 		if (title) ensureMetaByName('twitter:title', title)
 		if (description) ensureMetaByName('twitter:description', description)
-		if (ogImage) ensureMetaByName('twitter:image', ogImage)
+		if (ogImage) ensureMetaByName('twitter:image', absoluteUrl(ogImage))
 	}
 
 	function addJsonLd(obj) {
@@ -191,9 +191,7 @@
 
 	// Page bootstrapping
 	document.addEventListener('DOMContentLoaded', function () {
-		// Preconnect to image CDN used in this project
-		preconnect('https://picsum.photos')
-		preconnect('https://cdn.shopify.com')
+		// Preconnect to critical origins
 		preconnect('https://fonts.cdnfonts.com')
 		preconnect('https://js.paystack.co')
 		preconnect('https://cdn.jsdelivr.net')
