@@ -4,7 +4,7 @@ const products = [
     id: 1,
     name: "Indestructible Chew Toy",
     category: "Play & Teething",
-    price: 24.99,
+    price: 6500,
     shortDescription: "Durable, non-toxic chew toy for teething puppies",
     description:
       "Made from 100% food-grade rubber, this indestructible chew toy is perfect for teething puppies. Designed to soothe sore gums while redirecting destructive chewing away from furniture. Non-toxic and dishwasher safe for easy cleaning.",
@@ -24,7 +24,7 @@ const products = [
     id: 2,
     name: "Calming Dog Bed",
     category: "Grooming & Comfort",
-    price: 49.99,
+    price: 18500,
     shortDescription: "Soft, cozy bed for anxious puppies",
     description:
       "Ultra-soft calming bed designed to provide comfort and security for anxious puppies. Features raised edges that create a safe, den-like environment perfect for separation anxiety. Machine washable cover and orthopedic support for growing pups.",
@@ -44,7 +44,7 @@ const products = [
     id: 3,
     name: "No-Pull Harness",
     category: "Training & Safety",
-    price: 29.99,
+    price: 8500,
     shortDescription: "Safe, adjustable no-pull harness for growing pups",
     description:
       "Perfect for first walks and training! This adjustable no-pull harness grows with your puppy, featuring multiple sizing points for a secure, comfortable fit. No-pull design protects your puppy's neck and provides better control during training walks.",
@@ -64,7 +64,7 @@ const products = [
     id: 4,
     name: "Dog Paw Washer Cup",
     category: "Grooming & Comfort",
-    price: 32.99,
+    price: 7500,
     shortDescription: "Easy-to-use paw cleaning system",
     description:
       "Keep your home clean with this convenient paw washer cup! Simply fill with water, insert your puppy's paw, and the soft silicone bristles gently remove dirt and mud. Quick-dry design means no more muddy paw prints throughout your house.",
@@ -81,7 +81,7 @@ const products = [
     id: 5,
     name: "Grooming Glove",
     category: "Grooming & Comfort",
-    price: 27.99,
+    price: 5500,
     shortDescription: "Gentle grooming glove for puppy coat care",
     description:
       "Complete grooming glove designed for sensitive puppy skin. The soft, flexible design allows for comfortable grooming while removing loose hair and dirt. Perfect for maintaining a clean, healthy coat while bonding with your pup.",
@@ -101,7 +101,7 @@ const products = [
     id: 6,
     name: "Feeding Bowl",
     category: "Feeding",
-    price: 18.99,
+    price: 4500,
     shortDescription: "Durable feeding bowl for puppies",
     description:
       "Designed for healthy feeding habits. The unique design encourages your puppy to eat at a comfortable pace. Made from food-safe, BPA-free materials that are easy to clean and dishwasher safe.",
