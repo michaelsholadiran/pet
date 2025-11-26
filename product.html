@@ -214,7 +214,7 @@
                     <div class="product-info-section">
                         <h1>${product.name}</h1>
                         <p class="product-category">Category: ${product.category}</p>
-                        <p class="product-price">₦${product.price.toFixed(2)}</p>
+                        <p class="product-price">₦${formatPrice(product.price)}</p>
                         <p class="product-stock ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}">
                             ${product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
                         </p>

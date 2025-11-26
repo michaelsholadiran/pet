@@ -398,13 +398,13 @@
                     orderItems.innerHTML += `
                         <div class="order-item">
                             <span>${product.name} x ${item.quantity}</span>
-                            <span>₦${itemTotal.toFixed(2)}</span>
+                            <span>₦${formatPrice(itemTotal)}</span>
                         </div>
                     `;
                 }
             });
 
-            document.getElementById('total-price').textContent = total.toFixed(2);
+            document.getElementById('total-price').textContent = formatPrice(total);
 
             const checkoutForm = document.getElementById('checkout-form');
             if (!checkoutForm) {
@@ -461,8 +461,8 @@
 				const orderSummary = cart.map(item => {
 					const product = products.find(p => p.id === item.id);
 					if (!product) return `Item ${item.id} x ${item.quantity}`;
-					const itemTotal = (product.price * item.quantity).toFixed(2);
-					return `${product.name} x ${item.quantity} = ₦${itemTotal}`;
+					const itemTotal = product.price * item.quantity;
+					return `${product.name} x ${item.quantity} = ₦${formatPrice(itemTotal)}`;
 				}).join('; ');
 				const addressLine = [address1, state, country].filter(Boolean).join(', ');
 

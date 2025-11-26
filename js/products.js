@@ -144,7 +144,7 @@ function createProductCard(product) {
             <p class="product-card-category">${product.category}</p>
             <p class="product-card-description">${product.shortDescription}</p>
             <div class="product-card-footer">
-                <span class="product-card-price">₦${product.price.toFixed(2)}</span>
+                <span class="product-card-price">₦${formatPrice(product.price)}</span>
                 <div class="product-card-actions">
                     <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}" style="flex: 1;">Add</button>
                 </div>

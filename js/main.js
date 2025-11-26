@@ -53,6 +53,14 @@ function updateCartItemQuantity(productId, quantity) {
   }
 }
 
+// Format price with commas
+function formatPrice(price) {
+  return price.toLocaleString('en-NG', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })
+}
+
 // Update cart counter in navbar
 function updateCartCounter() {
   const cart = getCart()

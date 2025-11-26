@@ -40,7 +40,7 @@ function renderCart() {
                         <img src="${product.images[0]}" alt="${product.name}" class="cart-item-image" loading="lazy" decoding="async" width="80" height="60">
                         <span class="cart-item-name">${product.name}</span>
                     </td>
-                    <td class="cart-item-price">₦${product.price.toFixed(2)}</td>
+                    <td class="cart-item-price">₦${formatPrice(product.price)}</td>
                     <td>
                         <div class="cart-qty-control">
                             <button onclick="decrementQuantity(${product.id})">−</button>
@@ -48,7 +48,7 @@ function renderCart() {
                             <button onclick="incrementQuantity(${product.id})">+</button>
                         </div>
                     </td>
-                    <td>₦${subtotal.toFixed(2)}</td>
+                    <td>₦${formatPrice(subtotal)}</td>
                     <td>
                         <button class="remove-btn" onclick="removeFromCart(${product.id}); renderCart();">Remove</button>
                     </td>
@@ -63,7 +63,7 @@ function renderCart() {
         <div class="cart-summary">
             <div class="cart-summary-row">
                 <span>Subtotal:</span>
-                <span>₦${total.toFixed(2)}</span>
+                <span>₦${formatPrice(total)}</span>
             </div>
             <div class="cart-summary-row">
                 <span>Shipping:</span>
@@ -75,7 +75,7 @@ function renderCart() {
             </div>
             <div class="cart-total">
                 <strong>Total:</strong>
-                <strong>₦${total.toFixed(2)}</strong>
+                <strong>₦${formatPrice(total)}</strong>
             </div>
             <a href="/checkout" class="btn btn-primary btn-large" style="width: 100%; margin-top: 1rem; text-align: center;">Proceed to Checkout</a>
             <a href="/products" class="btn btn-secondary btn-large" style="width: 100%; margin-top: 0.75rem; text-align: center;">Continue Shopping</a>
