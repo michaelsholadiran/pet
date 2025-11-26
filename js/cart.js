@@ -59,6 +59,9 @@ function renderCart() {
 
   cartHTML += "</tbody></table></div>"
 
+  const deliveryFee = DELIVERY_FEE
+  const grandTotal = total + deliveryFee
+
   cartHTML += `
         <div class="cart-summary">
             <div class="cart-summary-row">
@@ -66,8 +69,8 @@ function renderCart() {
                 <span>₦${formatPrice(total)}</span>
             </div>
             <div class="cart-summary-row">
-                <span>Shipping:</span>
-                <span>Free</span>
+                <span>Delivery Fee:</span>
+                <span>₦${formatPrice(deliveryFee)}</span>
             </div>
             <div class="cart-summary-row">
                 <span>Tax:</span>
@@ -75,7 +78,7 @@ function renderCart() {
             </div>
             <div class="cart-total">
                 <strong>Total:</strong>
-                <strong>₦${formatPrice(total)}</strong>
+                <strong>₦${formatPrice(grandTotal)}</strong>
             </div>
             <a href="/checkout" class="btn btn-primary btn-large" style="width: 100%; margin-top: 1rem; text-align: center;">Proceed to Checkout</a>
             <a href="/products" class="btn btn-secondary btn-large" style="width: 100%; margin-top: 0.75rem; text-align: center;">Continue Shopping</a>

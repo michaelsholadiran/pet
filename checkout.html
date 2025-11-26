@@ -241,6 +241,10 @@
 					<div id="order-items">
 						<!-- Populated by JS -->
 					</div>
+					<div class="summary-row" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-top: 1px solid #eee;">
+						<span>Delivery Fee:</span>
+						<span id="delivery-fee">₦0.00</span>
+					</div>
 					<div class="summary-total">
 						<strong>Total: ₦<span id="total-price">0.00</span></strong>
 					</div>
@@ -404,7 +408,11 @@
                 }
             });
 
-            document.getElementById('total-price').textContent = formatPrice(total);
+            const deliveryFee = DELIVERY_FEE
+            const grandTotal = total + deliveryFee
+
+            document.getElementById('delivery-fee').textContent = `₦${formatPrice(deliveryFee)}`
+            document.getElementById('total-price').textContent = formatPrice(grandTotal);
 
             const checkoutForm = document.getElementById('checkout-form');
             if (!checkoutForm) {
@@ -423,8 +431,12 @@
 					return;
 				}
 
+				// Calculate grand total with delivery fee
+				const deliveryFee = DELIVERY_FEE
+				const grandTotal = total + deliveryFee
+
 				// Check if total is valid
-				if (total <= 0) {
+				if (grandTotal <= 0) {
 					alert('Invalid order total. Please check your cart.');
 					return;
 				}
@@ -471,7 +483,7 @@
 				const handler = PaystackPop.setup({
 					key: PAYSTACK_PUBLIC_KEY,
 					email: email,
-					amount: Math.round(total * 100), // amount in kobo
+					amount: Math.round(grandTotal * 100), // amount in kobo
 					currency: 'NGN',
 					ref: 'PUPPIARY_' + Date.now(),
 					metadata: {
@@ -495,7 +507,9 @@
 								line_total: product ? +(product.price * i.quantity).toFixed(2) : undefined
 							};
 						}),
-						total: +total.toFixed(2),
+						subtotal: +total.toFixed(2),
+						delivery_fee: +deliveryFee.toFixed(2),
+						total: +grandTotal.toFixed(2),
 						custom_fields: [
 							{
 								display_name: 'Customer Name',
@@ -520,7 +534,7 @@
 							{
 								display_name: 'Order Total (NGN)',
 								variable_name: 'order_total',
-								value: `₦${total.toFixed(2)}`
+								value: `₦${formatPrice(grandTotal)}`
 							}
 						]
 					},

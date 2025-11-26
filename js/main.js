@@ -53,6 +53,9 @@ function updateCartItemQuantity(productId, quantity) {
   }
 }
 
+// Delivery fee constant
+const DELIVERY_FEE = 4800
+
 // Format price with commas
 function formatPrice(price) {
   return price.toLocaleString('en-NG', {
