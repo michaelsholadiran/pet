@@ -24,7 +24,7 @@ const products = [
     id: 2,
     name: "Calming Dog Bed",
     category: "Grooming & Comfort",
-    price: 32200,
+    price: 44000,
     shortDescription: "Soft, cozy bed for anxious puppies",
     description:
       "Ultra-soft calming bed designed to provide comfort and security for anxious puppies. Features raised edges that create a safe, den-like environment perfect for separation anxiety. Machine washable cover and orthopedic support for growing pups.",
