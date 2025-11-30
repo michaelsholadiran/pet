@@ -81,7 +81,7 @@ const products = [
     id: 5,
     name: "Grooming Glove",
     category: "Grooming & Comfort",
-    price: 8500,
+    price: 9000,
     shortDescription: "Gentle grooming glove for puppy coat care",
     description:
       "Complete grooming glove designed for sensitive puppy skin. The soft, flexible design allows for comfortable grooming while removing loose hair and dirt. Perfect for maintaining a clean, healthy coat while bonding with your pup.",
