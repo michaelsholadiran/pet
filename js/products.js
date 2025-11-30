@@ -81,7 +81,7 @@ const products = [
     id: 5,
     name: "Grooming Glove",
     category: "Grooming & Comfort",
-    price: 6200,
+    price: 8500,
     shortDescription: "Gentle grooming glove for puppy coat care",
     description:
       "Complete grooming glove designed for sensitive puppy skin. The soft, flexible design allows for comfortable grooming while removing loose hair and dirt. Perfect for maintaining a clean, healthy coat while bonding with your pup.",
@@ -101,7 +101,7 @@ const products = [
     id: 6,
     name: "Feeding Bowl",
     category: "Feeding",
-    price: 4200,
+    price: 8000,
     shortDescription: "Durable feeding bowl for puppies",
     description:
       "Designed for healthy feeding habits. The unique design encourages your puppy to eat at a comfortable pace. Made from food-safe, BPA-free materials that are easy to clean and dishwasher safe.",
