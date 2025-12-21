@@ -157,22 +157,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="birthday-month">Your Birthday Month *</label>
-                            <select id="birthday-month" name="birthday-month" required>
-                                <option value="">Select Month</option>
-                                <option value="January">January</option>
-                                <option value="February">February</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="August">August</option>
-                                <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
-                            </select>
+                            <label for="birthday">Your Birthday *</label>
+                            <input type="date" id="birthday" name="birthday" required>
                         </div>
 
                         <input type="hidden" id="country" name="country" value="Nigeria">
@@ -475,14 +461,23 @@
 				const phone = document.getElementById('phone').value.trim();
 				const address1 = document.getElementById('address1').value.trim();
 				const state = document.getElementById('state').value;
-				const birthdayMonth = document.getElementById('birthday-month').value;
+				const birthday = document.getElementById('birthday').value;
 				const country = document.getElementById('country').value;
 
 				// Validate all required fields
-				if (!email || !fullname || !phone || !address1 || !state || !birthdayMonth) {
-					alert('Please fill in all required fields: Name, Email, Phone, Address, State, and Birthday Month.');
+				if (!email || !fullname || !phone || !address1 || !state || !birthday) {
+					alert('Please fill in all required fields: Name, Email, Phone, Address, State, and Birthday.');
 					return;
 				}
+
+				// Extract day, month, and year from birthday date
+				const birthdayDate = new Date(birthday);
+				const birthdayDay = birthdayDate.getDate();
+				const birthdayMonth = birthdayDate.getMonth() + 1; // getMonth() returns 0-11, so add 1
+				const birthdayYear = birthdayDate.getFullYear();
+				const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+					'July', 'August', 'September', 'October', 'November', 'December'];
+				const birthdayMonthName = monthNames[birthdayDate.getMonth()];
 
 				// Validate email format
 				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -515,7 +510,11 @@
 						lastname: lastName,
 						phone: phone,
 						email: email,
+						birthday_day: birthdayDay,
 						birthday_month: birthdayMonth,
+						birthday_month_name: birthdayMonthName,
+						birthday_year: birthdayYear,
+						birthday: birthday,
 						address: {
 							address1: address1,
 							state: state,
@@ -551,9 +550,24 @@
 								value: addressLine
 							},
 							{
+								display_name: 'Birthday',
+								variable_name: 'birthday',
+								value: `${birthdayMonthName} ${birthdayDay}, ${birthdayYear}`
+							},
+							{
+								display_name: 'Birthday Day',
+								variable_name: 'birthday_day',
+								value: birthdayDay.toString()
+							},
+							{
 								display_name: 'Birthday Month',
 								variable_name: 'birthday_month',
-								value: birthdayMonth
+								value: birthdayMonth.toString()
+							},
+							{
+								display_name: 'Birthday Year',
+								variable_name: 'birthday_year',
+								value: birthdayYear.toString()
 							},
 							{
 								display_name: 'Order Items',
