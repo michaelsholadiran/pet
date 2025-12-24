@@ -77,7 +77,7 @@
 	}
 
 	function setFavicons() {
-		ensureLink('icon', '/favicon/favicon.svg', { type: 'image/svg+xml' })
+		ensureLink('icon', '/favicon.svg', { type: 'image/svg+xml' })
 		ensureLink('manifest', '/site.webmanifest')
 	}
 
@@ -146,7 +146,7 @@
 			'@type': 'Organization',
 			name: SITE_NAME,
 			url: SITE_URL,
-			logo: absoluteUrl('/favicon/favicon.svg'),
+			logo: absoluteUrl('/favicon.svg'),
 		})
 	}
 
