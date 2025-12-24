@@ -98,10 +98,18 @@
 		ensureMetaByName('robots', robots)
 		ensureMetaByName('theme-color', THEME_COLOR)
 
-		// Canonical and hreflang
-		setCanonical(path)
-		setHreflang('en', path)
-		setHreflang('x-default', path)
+		// Canonical and hreflang - skip for noindex pages
+		if (!robots.includes('noindex')) {
+			setCanonical(path)
+			setHreflang('en', path)
+			setHreflang('x-default', path)
+		} else {
+			// Remove any existing canonical tag for noindex pages
+			const existingCanonical = document.querySelector('link[rel="canonical"]')
+			if (existingCanonical) {
+				existingCanonical.remove()
+			}
+		}
 
 		// Open Graph
 		ensureMetaByProperty('og:site_name', SITE_NAME)
@@ -381,6 +389,14 @@
 				description: 'Your order has been confirmed.',
 				path: '/success' + window.location.search,
 				robots: 'noindex,nofollow',
+			})
+		}
+		if (path.endsWith('/404') || path.endsWith('/404.html')) {
+			applyCommonSEO({
+				title: '404 - Page Not Found | Puppiary',
+				description: 'Page not found - The page you\'re looking for doesn\'t exist. Return to Puppiary home or browse our puppy products.',
+				path: '/404',
+				robots: 'noindex,nofollow,noarchive',
 			})
 		}
 	})
