@@ -113,6 +113,24 @@ const products = [
     ],
     stock: 20,
   },
+  {
+    id: 7,
+    name: "Roll N Lick Ball",
+    category: "Play & Teething",
+    price: 8500,
+    shortDescription: "Interactive treat-dispensing ball for mental stimulation",
+    description:
+      "Keep your puppy engaged and entertained with this interactive roll and lick ball! Perfect for mental stimulation and slow feeding, this durable ball dispenses treats as your pup plays. The textured surface provides a satisfying licking experience while encouraging natural foraging behaviors. Made from food-safe materials, easy to clean, and perfect for keeping your puppy busy and happy.",
+    images: [
+      "/products/roll-n-lick-ball/roll-n-lick-ball-1.jpg",
+      "/products/roll-n-lick-ball/roll-n-lick-ball-2.jpg",
+      "/products/roll-n-lick-ball/roll-n-lick-ball-3.png",
+      "/products/roll-n-lick-ball/roll-n-lick-ball-4.png",
+      "/products/roll-n-lick-ball/roll-n-lick-ball-5.png",
+      "/products/roll-n-lick-ball/roll-n-lick-ball-6.png"
+    ],
+    stock: 18,
+  },
 ]
 
 // Slug helper and assignment
