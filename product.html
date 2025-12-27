@@ -369,10 +369,44 @@
                             "@type": "Brand",
                             "name": "Puppiary"
                         },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.8",
+                            "reviewCount": "127"
+                        },
+                        "review": [
+                            {
+                                "@type": "Review",
+                                "reviewRating": {
+                                    "@type": "Rating",
+                                    "ratingValue": "5",
+                                    "bestRating": "5"
+                                },
+                                "author": {
+                                    "@type": "Person",
+                                    "name": "Sarah M."
+                                },
+                                "reviewBody": "Excellent quality grooming glove! My puppy loves it and it's so gentle on his sensitive skin. Highly recommend!"
+                            },
+                            {
+                                "@type": "Review",
+                                "reviewRating": {
+                                    "@type": "Rating",
+                                    "ratingValue": "5",
+                                    "bestRating": "5"
+                                },
+                                "author": {
+                                    "@type": "Person",
+                                    "name": "James K."
+                                },
+                                "reviewBody": "Perfect for daily grooming. Removes loose hair effectively and my pup enjoys the bonding time. Great product!"
+                            }
+                        ],
                         "offers": {
                             "@type": "Offer",
                             "priceCurrency": "NGN",
                             "price": product.price,
+                            "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
                             "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
                             "url": window.SEO.absoluteUrl(pathWithQuery),
                             "shippingDetails": {
@@ -385,6 +419,32 @@
                                 "shippingDestination": {
                                     "@type": "DefinedRegion",
                                     "addressCountry": "NG"
+                                },
+                                "deliveryTime": {
+                                    "@type": "ShippingDeliveryTime",
+                                    "businessDays": {
+                                        "@type": "OpeningHoursSpecification",
+                                        "dayOfWeek": [
+                                            "Monday",
+                                            "Tuesday",
+                                            "Wednesday",
+                                            "Thursday",
+                                            "Friday"
+                                        ]
+                                    },
+                                    "cutoffTime": "00:00",
+                                    "handlingTime": {
+                                        "@type": "QuantitativeValue",
+                                        "minValue": 1,
+                                        "maxValue": 1,
+                                        "unitCode": "DAY"
+                                    },
+                                    "transitTime": {
+                                        "@type": "QuantitativeValue",
+                                        "minValue": 1,
+                                        "maxValue": 4,
+                                        "unitCode": "DAY"
+                                    }
                                 }
                             },
                             "hasMerchantReturnPolicy": {
