@@ -86,9 +86,9 @@ const products = [
     description:
       "Complete grooming glove designed for sensitive puppy skin. The soft, flexible design allows for comfortable grooming while removing loose hair and dirt. Perfect for maintaining a clean, healthy coat while bonding with your pup.",
     images: [
+      "/products/grooming-glove/grooming-glove-3.jpg",
       "/products/grooming-glove/grooming-glove-1.avif",
       "/products/grooming-glove/grooming-glove-2.avif",
-      "/products/grooming-glove/grooming-glove-3.jpg",
       "/products/grooming-glove/grooming-glove-4.jpg",
       "/products/grooming-glove/grooming-glove-5.png",
       "/products/grooming-glove/grooming-glove-6.png",
