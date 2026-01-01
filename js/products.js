@@ -164,7 +164,7 @@ function createProductCard(product) {
             <div class="product-card-footer">
                 <span class="product-card-price">₦${formatPrice(product.price)}</span>
                 <div class="product-card-actions">
-                    <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}" style="flex: 1;">Add</button>
+                    <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}" style="flex: 1;">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -192,7 +192,7 @@ function createProductCard(product) {
     addToCart(product, 1)
     this.textContent = "Added!"
     setTimeout(() => {
-      this.textContent = "Add"
+      this.textContent = "Add to Cart"
     }, 1500)
     })
 

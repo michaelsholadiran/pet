@@ -76,6 +76,28 @@ function updateCartCounter() {
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCounter()
+
+  // Enhanced sticky navbar
+  const navbar = document.querySelector('.navbar')
+  if (navbar) {
+    let lastScrollY = window.scrollY
+
+    function updateNavbar() {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > 50) {
+        navbar.classList.add('navbar-scrolled')
+      } else {
+        navbar.classList.remove('navbar-scrolled')
+      }
+
+      lastScrollY = currentScrollY
+    }
+
+    window.addEventListener('scroll', updateNavbar)
+    updateNavbar() // Initial call
+  }
+
   // Mobile drawer (global)
   const menuButton = document.querySelector(".mobile-menu-button")
   const drawer = document.getElementById("mobile-drawer")
