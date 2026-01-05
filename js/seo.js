@@ -186,14 +186,25 @@
 	}
 
 	function jsonLdFAQ(questions) {
+		// Prevent duplicate FAQPage structured data
+		if (window.__faqStructuredDataAdded) {
+			console.warn('FAQPage structured data already added, skipping duplicate');
+			return null;
+		}
+
+		window.__faqStructuredDataAdded = true;
+
 		return addJsonLd({
 			'@context': 'https://schema.org',
 			'@type': 'FAQPage',
 			mainEntity: questions.map((q) => ({
 				'@type': 'Question',
 				name: q.question,
-				acceptedAnswer: { '@type': 'Answer', text: q.answer },
-			})),
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: q.answer
+				}
+			}))
 		})
 	}
 
@@ -315,7 +326,7 @@
 				path: '/faq',
 			})
 			jsonLdWebPage({
-				type: 'FAQPage',
+				type: 'WebPage',
 				name: 'FAQ - Puppiary',
 				description:
 					'Find answers to common questions about Puppiary shipping, ordering, returns, guarantees, and product safety for your puppy.',
