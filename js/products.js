@@ -19,6 +19,7 @@ const products = [
       "/products/indestructible-chew-toy/indestructible-chew-toy-8.jpg"
     ],
     stock: 15,
+    published: false,
   },
   {
     id: 2,
@@ -39,6 +40,7 @@ const products = [
       "/products/calming-dog-bed/calming-dog-bed-8.png"
     ],
     stock: 12,
+    published: true,
   },
   {
     id: 3,
@@ -59,6 +61,7 @@ const products = [
       "/products/no-pull-harness/no-pull-harness-8.png"
     ],
     stock: 25,
+    published: true,
   },
   {
     id: 4,
@@ -76,6 +79,7 @@ const products = [
       "/products/dog-paw-washer-cup/dog-paw-washer-cup-5.png"
     ],
     stock: 16,
+    published: false,
   },
   {
     id: 5,
@@ -96,6 +100,7 @@ const products = [
       "/products/grooming-glove/grooming-glove-8.png"
     ],
     stock: 14,
+    published: false,
   },
   {
     id: 6,
@@ -112,6 +117,7 @@ const products = [
       "/products/feeding-bowl/feeding-bowl-4.png"
     ],
     stock: 20,
+    published: false,
   },
   {
     id: 7,
@@ -130,6 +136,7 @@ const products = [
       "/products/roll-n-lick-ball/roll-n-lick-ball-6.png"
     ],
     stock: 18,
+    published: false,
   },
 ]
 

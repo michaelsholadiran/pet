@@ -85,13 +85,13 @@ function renderCart() {
     cartHTML =
       '<div class="table-responsive" role="region" aria-label="Shopping cart items" tabindex="0"><table class="cart-table"><thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th></th></tr></thead><tbody>'
 
-    cart.forEach((item) => {
-      const product = products.find((p) => p.id === item.id)
-      if (product) {
-        const subtotal = product.price * item.quantity
-        total += subtotal
+  cart.forEach((item) => {
+    const product = products.find((p) => p.id === item.id)
+    if (product) {
+      const subtotal = product.price * item.quantity
+      total += subtotal
 
-        cartHTML += `
+      cartHTML += `
                 <tr>
                     <td>
                         <img src="${product.images[0]}" alt="${product.name}" class="cart-item-image" loading="lazy" decoding="async" width="80" height="60">
@@ -111,10 +111,10 @@ function renderCart() {
                     </td>
                 </tr>
             `
-      }
-    })
+    }
+  })
 
-    cartHTML += "</tbody></table></div>"
+  cartHTML += "</tbody></table></div>"
   }
 
   const deliveryFee = DELIVERY_FEE

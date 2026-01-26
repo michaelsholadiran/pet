@@ -3,7 +3,7 @@
 	const SITE_URL = 'https://www.puppiary.com'
 	const SITE_NAME = 'Puppiary'
 	const DEFAULT_OG_IMAGE = '/products/indestructible-chew-toy/indestructible-chew-toy-1.jpg'
-	const THEME_COLOR = '#ffffff'
+	const THEME_COLOR = '#e38106'
 	const TWITTER_HANDLE = '@puppiaryhq' // update if you have one
 
 	function absoluteUrl(pathWithQuery) {

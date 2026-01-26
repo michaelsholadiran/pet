@@ -94,7 +94,7 @@
                 >
                 
                 <select id="category-filter" class="category-filter" aria-label="Filter by category">
-                    <option value="">All Categories</option>
+                    <option value="">Sort by</option>
                     <option value="Training & Safety">Training & Safety</option>
                     <option value="Play & Teething">Play & Teething</option>
                     <option value="Grooming & Comfort">Grooming & Comfort</option>
@@ -200,21 +200,102 @@
     <script src="/js/main.js"></script>
     <script src="/js/products.js"></script>
     <script>
-        let filteredProducts = [...products];
+        // Filter to only show published products
+        let filteredProducts = products.filter(product => product.published !== false);
 
         function renderProducts() {
             const productList = document.getElementById('product-list');
             const noResults = document.getElementById('no-results');
-            
+
             productList.innerHTML = '';
-            
+
             if (filteredProducts.length === 0) {
                 noResults.style.display = 'block';
+                productList.innerHTML = '';
             } else {
+                // Check how many products are in stock
+                const inStockProducts = filteredProducts.filter(product => product.stock > 0);
+                const outOfStockProducts = filteredProducts.filter(product => product.stock === 0);
+
                 noResults.style.display = 'none';
-                filteredProducts.forEach(product => {
-                    productList.appendChild(createProductCard(product));
-                });
+
+                // If most products are out of stock (more than 60%), show special restocking message
+                if (outOfStockProducts.length > inStockProducts.length && outOfStockProducts.length > 2) {
+                    productList.innerHTML = `
+                        <div class="restocking-section">
+                            <div class="restocking-header">
+                                <div class="restocking-icon">🔄</div>
+                                <h2>Restocking Soon!</h2>
+                                <p>We're working hard to bring back our full range of products. Check back soon!</p>
+                            </div>
+
+                            <div class="available-products-section">
+                                <h3>✨ Currently Available</h3>
+                                <p>While you wait, check out these popular items that are ready to ship:</p>
+                                <div class="available-products-grid">
+                                    ${inStockProducts.map(product => createProductCard(product).outerHTML).join('')}
+                                </div>
+                            </div>
+
+                            <div class="restocking-benefits">
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">🚚</div>
+                                    <h4>Fast Shipping</h4>
+                                    <p>Nationwide delivery in 1-4 business days</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">💚</div>
+                                    <h4>Quality Guaranteed</h4>
+                                    <p>All products are vet-approved and safe for puppies</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">📞</div>
+                                    <h4>Expert Support</h4>
+                                    <p>Get personalized advice from our puppy care specialists</p>
+                                </div>
+                            </div>
+
+                            <div class="newsletter-signup">
+                                <h3>🔔 Get Notified When We Restock</h3>
+                                <p>Be the first to know when your favorite products are back in stock!</p>
+                                <div class="newsletter-form">
+                                    <input type="email" placeholder="Enter your email address" class="newsletter-input">
+                                    <button class="btn btn-primary newsletter-btn">Notify Me</button>
+                                </div>
+                                <p class="newsletter-note">No spam, unsubscribe anytime.</p>
+                            </div>
+                        </div>
+                    `;
+
+                    // Add newsletter functionality
+                    const newsletterBtn = productList.querySelector('.newsletter-btn');
+                    const newsletterInput = productList.querySelector('.newsletter-input');
+
+                    if (newsletterBtn && newsletterInput) {
+                        newsletterBtn.addEventListener('click', function() {
+                            const email = newsletterInput.value.trim();
+                            if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                                alert('Thank you! We\'ll notify you when products are back in stock.');
+                                newsletterInput.value = '';
+                            } else {
+                                alert('Please enter a valid email address.');
+                                newsletterInput.focus();
+                            }
+                        });
+
+                        // Allow Enter key to submit
+                        newsletterInput.addEventListener('keypress', function(e) {
+                            if (e.key === 'Enter') {
+                                newsletterBtn.click();
+                            }
+                        });
+                    }
+                } else {
+                    // Normal product grid display
+                    filteredProducts.forEach(product => {
+                        productList.appendChild(createProductCard(product));
+                    });
+                }
             }
         }
 
@@ -223,6 +304,8 @@
             const categoryFilter = document.getElementById('category-filter').value;
 
             filteredProducts = products.filter(product => {
+                // Only show published products
+                if (product.published === false) return false;
                 const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
                                     product.shortDescription.toLowerCase().includes(searchTerm);
                 const matchesCategory = categoryFilter === '' || product.category === categoryFilter;
