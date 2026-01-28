@@ -249,7 +249,7 @@
                                 <input type="number" id="quantity" value="1" min="1" max="${product.stock}" aria-label="Quantity">
                                 <button class="qty-btn" id="qty-increase">+</button>
                             </div>
-                            <button class="btn btn-primary" id="add-to-cart" ${product.stock === 0 ? 'disabled' : ''}>
+                            <button class="btn btn-primary add-to-cart-btn" id="add-to-cart" ${product.stock === 0 ? 'disabled' : ''}>
                                 Add to Cart
                             </button>
                         </div>
