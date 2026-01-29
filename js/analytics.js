@@ -102,6 +102,60 @@ function trackPurchase(transactionId, cart, total, deliveryFee, email) {
   });
 }
 
+// View item event (product detail page)
+function trackViewItem(product) {
+  if (!product) return;
+  
+  pushDataLayer({
+    event: 'view_item',
+    ecommerce: {
+      currency: 'NGN',
+      value: product.price,
+      items: [
+        {
+          item_id: product.id.toString(),
+          item_name: product.name,
+          item_category: product.category,
+          price: product.price,
+          quantity: 1
+        }
+      ]
+    }
+  });
+}
+
+// View cart event (cart page)
+function trackViewCart(cart) {
+  if (!cart || !Array.isArray(cart) || cart.length === 0) return;
+  
+  let total = 0;
+  const items = cart.map(item => {
+    if (typeof products === 'undefined') return null;
+    const product = products.find(p => p.id === item.id);
+    if (!product) return null;
+    const itemTotal = product.price * item.quantity;
+    total += itemTotal;
+    return {
+      item_id: product.id.toString(),
+      item_name: product.name,
+      item_category: product.category,
+      price: product.price,
+      quantity: item.quantity
+    };
+  }).filter(Boolean);
+
+  if (items.length === 0) return;
+
+  pushDataLayer({
+    event: 'view_cart',
+    ecommerce: {
+      currency: 'NGN',
+      value: total,
+      items: items
+    }
+  });
+}
+
 // Track pageview on page load
 document.addEventListener('DOMContentLoaded', function() {
   trackPageView();

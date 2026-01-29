@@ -222,6 +222,11 @@
                 return;
             }
 
+            // Track view item event
+            if (typeof trackViewItem === 'function') {
+                trackViewItem(product);
+            }
+
             const thumbnailImages = product.images.map((img, index) => `
                 <img src="${img}" alt="${product.name}" class="product-thumbnail ${index === 0 ? 'active' : ''}" data-image-index="${index}" loading="lazy" decoding="async">
             `).join('');

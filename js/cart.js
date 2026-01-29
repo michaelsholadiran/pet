@@ -1,6 +1,18 @@
 // Cart Page Logic
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Only run on cart page
+  const cartContent = document.getElementById("cart-content")
+  if (!cartContent) {
+    return // Exit early if not on cart page
+  }
+
+  // Track view cart event
+  const cart = getCart()
+  if (typeof trackViewCart === 'function' && cart.length > 0) {
+    trackViewCart(cart)
+  }
+
   renderCart()
 
   // Re-render cart on window resize to switch between mobile/desktop layouts
@@ -18,8 +30,7 @@ function renderCart() {
   const cartContent = document.getElementById("cart-content")
 
   if (!cartContent) {
-    console.warn("Cart content element not found")
-    return
+    return // Silently exit if not on cart page
   }
 
   if (cart.length === 0) {
