@@ -205,15 +205,36 @@
     </footer>
 
 	<script src="/js/main.js"></script>
+	<script src="/js/products.js"></script>
+	<script src="/js/analytics.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 	<script>
-		// Set reference text
+		// Set reference text and track purchase
 		document.addEventListener('DOMContentLoaded', function() {
 			const params = new URLSearchParams(window.location.search);
 			const ref = params.get('ref');
 			if (ref) {
 				const el = document.getElementById('order-ref');
 				if (el) el.textContent = ref;
+			}
+
+			// Track purchase event
+			const orderDataStr = localStorage.getItem('puppiary-order-data');
+			if (orderDataStr && typeof trackPurchase === 'function') {
+				try {
+					const orderData = JSON.parse(orderDataStr);
+					trackPurchase(
+						orderData.transaction_id || ref,
+						orderData.cart || [],
+						orderData.total || 0,
+						orderData.delivery_fee || 0,
+						orderData.email || ''
+					);
+					// Clear order data after tracking
+					localStorage.removeItem('puppiary-order-data');
+				} catch (e) {
+					console.error('Error tracking purchase:', e);
+				}
 			}
 		});
 

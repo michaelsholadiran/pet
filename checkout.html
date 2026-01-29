@@ -381,6 +381,7 @@
 	<script src="/js/main.js"></script>
 	<script src="/js/products.js"></script>
 	<script src="/js/cart.js"></script>
+	<script src="/js/analytics.js"></script>
 	<script src="https://js.paystack.co/v1/inline.js"></script>
     <script>
 		// Configure your Paystack public key (Test or Live)
@@ -478,6 +479,11 @@
 				}).join('; ');
 				const addressLine = [address1, state, country].filter(Boolean).join(', ');
 
+				// Track begin checkout event
+				if (typeof trackBeginCheckout === 'function') {
+					trackBeginCheckout(cart, total, deliveryFee);
+				}
+
 				// Initialize Paystack popup
 				try {
 				const handler = PaystackPop.setup({
@@ -539,6 +545,17 @@
 						]
 					},
 					callback: function(response) {
+						// Store order data before clearing cart for purchase tracking
+						const orderData = {
+							transaction_id: response.reference,
+							cart: cart,
+							total: total,
+							delivery_fee: deliveryFee,
+							grand_total: grandTotal,
+							email: email
+						};
+						localStorage.setItem('puppiary-order-data', JSON.stringify(orderData));
+						
 						// Payment successful: clear cart and redirect to success page with reference
 						try {
 							clearCart();

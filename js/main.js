@@ -30,6 +30,11 @@ function addToCart(product, quantity = 1) {
   }
 
   saveCart(cart)
+
+  // Track add to cart event
+  if (typeof trackAddToCart === 'function') {
+    trackAddToCart(product, quantity)
+  }
 }
 
 // Remove item from cart
