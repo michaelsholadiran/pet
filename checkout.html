@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Initialize dataLayer before GTM to prevent CSP interference -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -477,9 +481,29 @@
 				}).join('; ');
 				const addressLine = [address1, state, country].filter(Boolean).join(', ');
 
-				// Track begin checkout event
-				if (typeof trackBeginCheckout === 'function') {
-					trackBeginCheckout(cart, total, deliveryFee);
+				// Track begin checkout event - push directly to dataLayer immediately
+				window.dataLayer = window.dataLayer || [];
+				const checkoutItems = cart.map(item => {
+					const product = products.find(p => p.id === item.id);
+					if (!product) return null;
+					return {
+						item_id: product.id.toString(),
+						item_name: product.name,
+						item_category: product.category,
+						price: product.price,
+						quantity: item.quantity
+					};
+				}).filter(Boolean);
+
+				if (checkoutItems.length > 0) {
+					window.dataLayer.push({
+						event: 'begin_checkout',
+						ecommerce: {
+							currency: 'NGN',
+							value: grandTotal,
+							items: checkoutItems
+						}
+					});
 				}
 
 				// Initialize Paystack popup
