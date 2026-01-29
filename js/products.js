@@ -25,7 +25,7 @@ const products = [
     id: 2,
     name: "Calming Dog Bed",
     category: "Grooming & Comfort",
-    price: 44000,
+    price: 43999,
     shortDescription: "Soft, cozy bed for anxious puppies",
     description:
       "Ultra-soft calming bed designed to provide comfort and security for anxious puppies. Features raised edges that create a safe, den-like environment perfect for separation anxiety. Machine washable cover and orthopedic support for growing pups.",
@@ -46,7 +46,7 @@ const products = [
     id: 3,
     name: "No-Pull Harness",
     category: "Training & Safety",
-    price: 12200,
+    price: 9999,
     shortDescription: "Safe, adjustable no-pull harness for growing pups",
     description:
       "Perfect for first walks and training! This adjustable no-pull harness grows with your puppy, featuring multiple sizing points for a secure, comfortable fit. No-pull design protects your puppy's neck and provides better control during training walks.",

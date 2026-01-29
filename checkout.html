@@ -153,11 +153,6 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label for="birthday">Your Birthday *</label>
-                            <input type="date" id="birthday" name="birthday" required>
-                        </div>
-
                         <input type="hidden" id="country" name="country" value="Nigeria">
                     </fieldset>
 
@@ -458,23 +453,13 @@
 				const phone = document.getElementById('phone').value.trim();
 				const address1 = document.getElementById('address1').value.trim();
 				const state = document.getElementById('state').value;
-				const birthday = document.getElementById('birthday').value;
 				const country = document.getElementById('country').value;
 
 				// Validate all required fields
-				if (!email || !fullname || !phone || !address1 || !state || !birthday) {
-					alert('Please fill in all required fields: Name, Email, Phone, Address, State, and Birthday.');
+				if (!email || !fullname || !phone || !address1 || !state) {
+					alert('Please fill in all required fields: Name, Email, Phone, Address, and State.');
 					return;
 				}
-
-				// Extract day, month, and year from birthday date
-				const birthdayDate = new Date(birthday);
-				const birthdayDay = birthdayDate.getDate();
-				const birthdayMonth = birthdayDate.getMonth() + 1; // getMonth() returns 0-11, so add 1
-				const birthdayYear = birthdayDate.getFullYear();
-				const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
-					'July', 'August', 'September', 'October', 'November', 'December'];
-				const birthdayMonthName = monthNames[birthdayDate.getMonth()];
 
 				// Validate email format
 				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -507,11 +492,6 @@
 						lastname: lastName,
 						phone: phone,
 						email: email,
-						birthday_day: birthdayDay,
-						birthday_month: birthdayMonth,
-						birthday_month_name: birthdayMonthName,
-						birthday_year: birthdayYear,
-						birthday: birthday,
 						address: {
 							address1: address1,
 							state: state,
@@ -545,26 +525,6 @@
 								display_name: 'Address',
 								variable_name: 'address',
 								value: addressLine
-							},
-							{
-								display_name: 'Birthday',
-								variable_name: 'birthday',
-								value: `${birthdayMonthName} ${birthdayDay}, ${birthdayYear}`
-							},
-							{
-								display_name: 'Birthday Day',
-								variable_name: 'birthday_day',
-								value: birthdayDay.toString()
-							},
-							{
-								display_name: 'Birthday Month',
-								variable_name: 'birthday_month',
-								value: birthdayMonth.toString()
-							},
-							{
-								display_name: 'Birthday Year',
-								variable_name: 'birthday_year',
-								value: birthdayYear.toString()
 							},
 							{
 								display_name: 'Order Items',
