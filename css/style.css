@@ -692,8 +692,8 @@ h1 {
 .product-card-actions button,
 .product-card-actions a {
   flex: 1;
-  padding: 0.5rem;
-  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
 }
 
 .btn-secondary {
