@@ -1,5 +1,11 @@
-/* Font loading moved to HTML for better performance and font-display control */
-/* @import url("https://fonts.cdnfonts.com/css/futura-pt"); */
+/* Font loading: head.php links to cdnfonts; font-display: swap for fallback and size-adjust to reduce layout shift */
+@font-face {
+  font-family: 'Futura PT';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Futura PT'), local('FuturaPT-Book');
+}
 
 * {
   margin: 0;

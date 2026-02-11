@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }).join('');
     var detailHTML = '<div class="product-detail-container">' +
         '<div class="product-image-section">' +
-        '<img src="' + product.images[0] + '" alt="' + (product.name) + '" class="product-detail-image" id="main-product-image" loading="eager" decoding="async" width="800" height="600">' +
+        '<img src="' + product.images[0] + '" alt="' + (product.name) + '" class="product-detail-image" id="main-product-image" loading="eager" decoding="async" fetchpriority="high" width="800" height="600">' +
         '<div class="product-thumbnails">' + thumbnails + '</div></div>' +
         '<div class="product-info-section">' +
         '<h1>' + product.name + '</h1>' +

@@ -36,6 +36,7 @@ $canonical_url = SITE_URL . (isset($page_canonical) ? $page_canonical : '/');
     <link rel="dns-prefetch" href="https://fonts.cdnfonts.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="preload" href="https://fonts.cdnfonts.com/css/futura-pt" as="style">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt"></noscript>
     <link rel="preload" href="/css/style.css" as="style">
