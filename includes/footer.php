@@ -1,0 +1,144 @@
+<?php
+/**
+ * Site footer + default scripts + floating buttons.
+ * Optional: $footer_scripts - extra HTML/script before closing body (e.g. page-specific JS)
+ */
+require_once __DIR__ . '/config.php';
+?>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <p>&copy; <?php echo COPYRIGHT_YEAR; ?> <?php echo htmlspecialchars(SITE_NAME); ?>. All rights reserved.</p>
+            </div>
+            <nav class="footer-section" aria-label="Footer">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms & Conditions</a>
+                <a href="/refund">Return & Refund Policy</a>
+            </nav>
+            <div class="footer-section">
+                <p>Follow us:</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/puppiaryhq" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram" title="Instagram: @puppiaryhq">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 110 2 1 1 0 010-2z" fill="currentColor"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@puppiaryhq" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok" title="TikTok: @puppiaryhq">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M13 2h3.2c.3 1.2 1 2.4 2 3.2A6.9 6.9 0 0021 6.5V9c-1.8 0-3.5-.5-5-1.4v6.2A6.8 6.8 0 019.2 21 6.7 6.7 0 013 14.3 6.7 6.7 0 019.7 7.6c.4 0 .9 0 1.3.1V11a3.8 3.8 0 00-1.3-.2A3.3 3.3 0 006.4 14.2a3.3 3.3 0 003.3 3.3c1.8 0 3.3-1.5 3.3-3.3V2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/puppiaryhq" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter" title="Twitter: @puppiaryhq">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1MnzQWo5Xd%2F%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio&e=AT0IVKuzQghtUD9YjeDUvhEA38yQEGqQfku_VQAv2hsqJvHFd6xjei5ZJ8yEi3OCA9pm8L09XoyK_k00jP9ytEOzoBndcX2o_5Jl9woQxQ" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" title="Facebook: @puppiaryhq">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H7.898v-2.89h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.261c-1.243 0-1.631.771-1.631 1.562v1.875h2.773l-.443 2.89h-2.33V21.88C18.343 21.128 22 16.991 22 12z" fill="currentColor"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-payment-section">
+            <div class="footer-payment-container">
+                <p class="footer-payment-label">Accepted Payment Methods:</p>
+                <div class="footer-payment-grid">
+                    <div class="footer-payment-item footer-payment-left" title="Bank Transfer">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <span>Bank Transfer</span>
+                    </div>
+                    <div class="footer-payment-item" title="Verve">
+                        <div class="footer-payment-icon verve">VERVE</div>
+                    </div>
+                    <div class="footer-payment-item footer-payment-left" title="USSD">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>USSD</span>
+                    </div>
+                    <div class="footer-payment-item" title="OPay">
+                        <img src="/images/opay.webp" alt="OPay" class="footer-payment-logo opay-logo-footer">
+                    </div>
+                    <div class="footer-payment-item" title="Visa">
+                        <div class="footer-payment-icon visa">VISA</div>
+                    </div>
+                    <div class="footer-payment-item" title="Mastercard">
+                        <div class="footer-payment-icon mastercard">
+                            <div class="footer-mc-circle footer-mc-red"></div>
+                            <div class="footer-mc-circle footer-mc-orange"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-secured-section">
+            <div class="footer-secured-container">
+                <p class="footer-secured-label">Secured by:</p>
+                <div class="footer-secured-badges">
+                    <div class="footer-secured-item">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+                        </svg>
+                        <span>Paystack</span>
+                    </div>
+                    <div class="footer-secured-item">
+                        <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>SSL Secure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js" defer></script>
+    <script src="/js/analytics.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuButton = document.querySelector('.mobile-menu-button');
+            var drawer = document.getElementById('mobile-drawer');
+            var overlay = document.querySelector('[data-overlay]');
+            var closeButton = document.querySelector('.drawer-close');
+            function openDrawer() {
+                if (drawer && menuButton && overlay) {
+                    drawer.classList.add('open');
+                    drawer.setAttribute('aria-hidden', 'false');
+                    menuButton.setAttribute('aria-expanded', 'true');
+                    overlay.hidden = false;
+                    document.body.classList.add('no-scroll');
+                }
+            }
+            function closeDrawer() {
+                if (drawer && menuButton && overlay) {
+                    drawer.classList.remove('open');
+                    drawer.setAttribute('aria-hidden', 'true');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                    overlay.hidden = true;
+                    document.body.classList.remove('no-scroll');
+                }
+            }
+            if (menuButton && drawer && overlay && closeButton) {
+                menuButton.addEventListener('click', openDrawer);
+                closeButton.addEventListener('click', closeDrawer);
+                overlay.addEventListener('click', closeDrawer);
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+                });
+            }
+        });
+    </script>
+    <?php if (!empty($footer_scripts)) echo $footer_scripts . "\n"; ?>
+
+    <a href="tel:+2347016426458" class="call-float" aria-label="Call us" title="Call us">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+    </a>
+    <a href="https://wa.me/2347016426458" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+</body>
+</html>

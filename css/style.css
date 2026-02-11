@@ -614,7 +614,8 @@ h1 {
 }
 
 /* Product Grid */
-.product-grid {
+.product-grid,
+.available-products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
@@ -631,8 +632,11 @@ h1 {
 }
 
 
-.product-card[role="link"] {
+.product-card[role="link"],
+a.product-card {
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .product-card-image {

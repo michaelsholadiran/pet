@@ -78,6 +78,25 @@ function updateCartCounter() {
   })
 }
 
+// Add to Cart: delegated handler for .add-to-cart-btn (PHP-rendered or JS-rendered cards)
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".add-to-cart-btn")
+  if (!btn) return
+  const id = btn.getAttribute("data-product-id")
+  if (!id) return
+  e.preventDefault()
+  e.stopPropagation()
+  const products = window.products || []
+  const product = products.find((p) => p.id == id)
+  if (product && typeof addToCart === "function") {
+    addToCart(product, 1)
+    btn.textContent = "Added!"
+    setTimeout(() => {
+      btn.textContent = "Add to Cart"
+    }, 1500)
+  }
+})
+
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCounter()
