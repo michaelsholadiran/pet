@@ -2,9 +2,9 @@
 require_once __DIR__ . '/includes/products_data.php';
 
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
-$category = isset($_GET['category']) ? trim($_GET['category']) : '';
+$category = ''; // Category filter disabled – kept for HTML only (hidden)
 
-// Filter: published only, then by search and category
+// Filter: published only, then by search (category filter not applied)
 $filtered = array_filter($products, function ($p) {
     if (empty($p['published'])) return false;
     return true;
@@ -15,11 +15,6 @@ if ($search !== '') {
         $name = mb_strtolower($p['name']);
         $short = isset($p['shortDescription']) ? mb_strtolower($p['shortDescription']) : '';
         return (strpos($name, $searchLower) !== false || strpos($short, $searchLower) !== false);
-    });
-}
-if ($category !== '') {
-    $filtered = array_filter($filtered, function ($p) use ($category) {
-        return isset($p['category']) && $p['category'] === $category;
     });
 }
 $filtered = array_values($filtered);
@@ -44,13 +39,13 @@ require __DIR__ . '/includes/header.php';
             <h1>Our Products</h1>
             <form method="get" action="/products" class="shop-controls" role="search">
                 <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search products..." aria-label="Search products" value="<?php echo htmlspecialchars($search); ?>">
-                <select name="category" id="category-filter" class="category-filter" aria-label="Filter by category">
+                <span class="shop-controls-category" style="display: none;"><select name="category" id="category-filter" class="category-filter" aria-label="Filter by category">
                     <option value="">Sort by</option>
                     <option value="Training & Safety"<?php echo $category === 'Training & Safety' ? ' selected' : ''; ?>>Training & Safety</option>
                     <option value="Play & Teething"<?php echo $category === 'Play & Teething' ? ' selected' : ''; ?>>Play & Teething</option>
                     <option value="Grooming & Comfort"<?php echo $category === 'Grooming & Comfort' ? ' selected' : ''; ?>>Grooming & Comfort</option>
                     <option value="Feeding"<?php echo $category === 'Feeding' ? ' selected' : ''; ?>>Feeding</option>
-                </select>
+                </select></span>
             </form>
 
             <?php if (count($filtered) === 0): ?>
