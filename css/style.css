@@ -1,10 +1,52 @@
-/* Font loading: head.php links to cdnfonts; font-display: swap for fallback and size-adjust to reduce layout shift */
+/* Override cdnfonts Futura PT with font-display: swap so text stays visible during load */
+@font-face {
+  font-family: 'Futura PT';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Futura PT'), url('https://fonts.cdnfonts.com/s/72205/FuturaCyrillicLight.woff') format('woff');
+}
 @font-face {
   font-family: 'Futura PT';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Futura PT'), local('FuturaPT-Book');
+  src: local('Futura PT'), url('https://fonts.cdnfonts.com/s/72205/FuturaCyrillicBook.woff') format('woff');
+}
+@font-face {
+  font-family: 'Futura PT';
+  font-style: normal;
+  font-weight: 450;
+  font-display: swap;
+  src: local('Futura PT'), url('https://fonts.cdnfonts.com/s/72205/FuturaCyrillicMedium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Futura PT';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Futura PT'), url('https://fonts.cdnfonts.com/s/72205/FuturaCyrillicDemi.woff') format('woff');
+}
+@font-face {
+  font-family: 'Futura PT';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Futura PT'), url('https://fonts.cdnfonts.com/s/72205/FuturaCyrillicHeavy.woff') format('woff');
+}
+@font-face {
+  font-family: 'Futura PT';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Futura PT'), url('https://fonts.cdnfonts.com/s/72205/FuturaCyrillicBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Futura PT';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local('Futura PT'), url('https://fonts.cdnfonts.com/s/72205/FuturaCyrillicExtraBold.woff') format('woff');
 }
 
 * {
