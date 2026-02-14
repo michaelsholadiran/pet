@@ -98,6 +98,6 @@ require __DIR__ . '/includes/header.php';
         </section>
     </main>
 <?php
-$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="/js/main.js"></script><script src="/js/analytics.js"></script><script src="https://js.paystack.co/v1/inline.js"></script><script src="/js/checkout.js"></script>';
+$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="https://js.paystack.co/v1/inline.js"></script><script src="/js/checkout.js"></script>';
 require __DIR__ . '/includes/footer.php';
 ?>
