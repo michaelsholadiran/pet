@@ -7,10 +7,6 @@ require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
     <main>
-        <section class="contact-section" style="margin-bottom: 2rem;">
-            <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem;">$_SERVER dump</h2>
-            <pre style="background: #f5f5f5; padding: 1rem; overflow: auto; max-height: 60vh; font-size: 0.75rem; border: 1px solid #ddd;"><?php var_dump($_SERVER); ?></pre>
-        </section>
         <section class="contact-section">
             <h1>Get in Touch</h1>
             <p class="contact-intro">We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.</p>
