@@ -92,8 +92,10 @@ require_once __DIR__ . '/config.php';
         </div>
     </footer>
 
+    <?php if (empty($footer_scripts)): ?>
     <script src="/js/main.js" defer></script>
     <script src="/js/analytics.js" defer></script>
+    <?php endif; ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var menuButton = document.querySelector('.mobile-menu-button');
