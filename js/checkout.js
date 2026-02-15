@@ -2,18 +2,20 @@
     var PAYSTACK_PUBLIC_KEY = 'pk_live_b502bc43c6a41a29f804bacde50cf34f9b35502a';
 
     document.addEventListener('DOMContentLoaded', function() {
-        var cart = getCart();
+        var cart = typeof getCart === 'function' ? getCart() : [];
+        var productsList = (typeof products !== 'undefined' ? products : null) || (typeof window.products !== 'undefined' ? window.products : []) || [];
         var orderItems = document.getElementById('order-items');
         var total = 0;
 
         if (!orderItems) return;
 
         cart.forEach(function(item) {
-            var product = products.find(function(p) { return p.id === item.id; });
+            var product = productsList.find(function(p) { return p.id === item.id; });
             if (product) {
                 var itemTotal = product.price * item.quantity;
                 total += itemTotal;
-                orderItems.innerHTML += '<div class="order-item"><span>' + product.name + ' x ' + item.quantity + '</span><span>₦' + formatPrice(itemTotal) + '</span></div>';
+                var fmt = typeof formatPrice === 'function' ? formatPrice(itemTotal) : itemTotal.toLocaleString('en-NG', { minimumFractionDigits: 2 });
+                orderItems.innerHTML += '<div class="order-item"><span>' + product.name + ' x ' + item.quantity + '</span><span>₦' + fmt + '</span></div>';
             }
         });
 
@@ -22,8 +24,25 @@
 
         var deliveryEl = document.getElementById('delivery-fee');
         var totalEl = document.getElementById('total-price');
-        if (deliveryEl) deliveryEl.textContent = '₦' + formatPrice(deliveryFee);
-        if (totalEl) totalEl.textContent = formatPrice(grandTotal);
+        var fmtTotal = typeof formatPrice === 'function' ? formatPrice(grandTotal) : grandTotal.toLocaleString('en-NG', { minimumFractionDigits: 2 });
+        var fmtFee = typeof formatPrice === 'function' ? formatPrice(deliveryFee) : deliveryFee.toLocaleString('en-NG', { minimumFractionDigits: 2 });
+        if (deliveryEl) deliveryEl.textContent = '₦' + fmtFee;
+        if (totalEl) totalEl.textContent = fmtTotal;
+
+        if (cart.length > 0) {
+            if (typeof trackBeginCheckout === 'function') {
+                trackBeginCheckout(cart, total, deliveryFee);
+            } else {
+                window.dataLayer = window.dataLayer || [];
+                var items = cart.map(function(item) {
+                    var p = productsList.find(function(x) { return x.id === item.id; });
+                    return p ? { item_id: String(p.id), item_name: p.name, item_category: p.category, price: p.price, quantity: item.quantity } : null;
+                }).filter(Boolean);
+                if (items.length) {
+                    window.dataLayer.push({ event: 'begin_checkout', ecommerce: { currency: 'NGN', value: grandTotal, items: items } });
+                }
+            }
+        }
 
         var checkoutForm = document.getElementById('checkout-form');
         if (!checkoutForm) return;
@@ -63,15 +82,18 @@
             var firstName = nameParts[0] || '';
             var lastName = nameParts.slice(1).join(' ') || '';
             var orderSummary = cart.map(function(item) {
-                var product = products.find(function(p) { return p.id === item.id; });
+                var product = productsList.find(function(p) { return p.id === item.id; });
                 if (!product) return 'Item ' + item.id + ' x ' + item.quantity;
                 var itemTotal = product.price * item.quantity;
-                return product.name + ' x ' + item.quantity + ' = ₦' + formatPrice(itemTotal);
+                return product.name + ' x ' + item.quantity + ' = ₦' + (typeof formatPrice === 'function' ? formatPrice(itemTotal) : itemTotal.toLocaleString('en-NG', { minimumFractionDigits: 2 }));
             }).join('; ');
             var addressLine = [address1, state, country].filter(Boolean).join(', ');
 
-            if (typeof trackBeginCheckout === 'function') {
-                trackBeginCheckout(cart, total, deliveryFee);
+            if (typeof trackAddPaymentInfo === 'function') {
+                trackAddPaymentInfo('paystack', { value: grandTotal, currency: 'NGN' });
+            } else {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: 'add_payment_info', payment_method: 'paystack', ecommerce: { currency: 'NGN', value: grandTotal } });
             }
 
             try {
@@ -89,7 +111,7 @@
                         email: email,
                         address: { address1: address1, state: state, country: country },
                         cart: cart.map(function(i) {
-                            var product = products.find(function(p) { return p.id === i.id; });
+                            var product = productsList.find(function(p) { return p.id === i.id; });
                             return {
                                 id: i.id,
                                 name: product ? product.name : 'Item ' + i.id,

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/includes/products_data.php';
 $page_title = 'Checkout - Puppiary';
 $page_description = 'Secure checkout at Puppiary.';
 $page_canonical = '/checkout';
