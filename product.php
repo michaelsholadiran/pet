@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '<div class="product-info-section">' +
         '<h1>' + product.name + '</h1>' +
         '<p class="product-category">Category: ' + product.category + '</p>' +
-        '<p class="product-price">₦' + (typeof formatPrice === 'function' ? formatPrice(product.price) : product.price.toLocaleString()) + '</p>' +
+        '<p class="product-price">' + (typeof window.CURRENCY_SYMBOL !== 'undefined' && window.CURRENCY_SYMBOL ? window.CURRENCY_SYMBOL : '₦') + (typeof formatPrice === 'function' ? formatPrice((window.CURRENCY === 'USD' ? (product.price_usd != null ? product.price_usd : product.price / 1500) : product.price)) : (window.CURRENCY === 'USD' ? (product.price_usd != null ? product.price_usd : product.price / 1500) : product.price).toLocaleString()) + '</p>' +
         '<p class="product-stock ' + (product.stock > 0 ? 'in-stock' : 'out-of-stock') + '">' + (product.stock > 0 ? product.stock + ' in stock' : 'Out of stock') + '</p>' +
         '<p class="product-description">' + product.description + '</p>' +
         '<div class="product-actions">' +
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '<div class="product-shipping-info" style="margin-top:2rem;padding-top:2rem;border-top:1px solid #eee">' +
         '<h3 style="font-size:1.25rem;margin-bottom:1rem;font-weight:600">Shipping Details</h3>' +
         '<div style="display:flex;flex-direction:column;gap:0.75rem">' +
-        '<div style="display:flex;align-items:flex-start;gap:0.5rem"><svg viewBox="0 0 24 24" width="20" height="20" style="flex-shrink:0" aria-hidden="true"><path fill="currentColor" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z"/></svg><div><strong>Delivery Fee:</strong> ₦' + (typeof formatPrice === 'function' && typeof DELIVERY_FEE !== 'undefined' ? formatPrice(DELIVERY_FEE) : '4,800.00') + '<br><span style="color:#666;font-size:0.9rem">Standard delivery within Lagos</span></div></div></div></div></div></div>';
+        '<div style="display:flex;align-items:flex-start;gap:0.5rem"><svg viewBox="0 0 24 24" width="20" height="20" style="flex-shrink:0" aria-hidden="true"><path fill="currentColor" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z"/></svg><div><strong>Delivery Fee:</strong> ' + (typeof window.CURRENCY_SYMBOL !== 'undefined' && window.CURRENCY_SYMBOL ? window.CURRENCY_SYMBOL : '₦') + (typeof formatPrice === 'function' && typeof window.DELIVERY_FEE !== 'undefined' ? formatPrice(window.DELIVERY_FEE) : (typeof window.DELIVERY_FEE !== 'undefined' && window.DELIVERY_FEE != null ? (window.CURRENCY === 'USD' ? Number(window.DELIVERY_FEE).toLocaleString('en-US', { minimumFractionDigits: 2 }) : Number(window.DELIVERY_FEE).toLocaleString('en-NG')) : '')) + '<br><span style="color:#666;font-size:0.9rem">Standard delivery within Lagos</span></div></div></div></div></div></div>';
     container.innerHTML = detailHTML;
     var mainImg = document.getElementById('main-product-image');
     var thumbs = container.querySelectorAll('.product-thumbnail');

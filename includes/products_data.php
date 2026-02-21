@@ -3,6 +3,8 @@
  * Single source of product data. Require once per request; sets $products.
  * Used by products.php, product.php, cart.php, checkout.php, success.php.
  */
+require_once __DIR__ . '/config.php';
+
 $products = [
         [
             'id' => 1,
@@ -10,6 +12,7 @@ $products = [
             'slug' => 'indestructible-chew-toy',
             'category' => 'Play & Teething',
             'price' => 8200,
+            'price_usd' => 5.47,
             'shortDescription' => 'Durable, non-toxic chew toy for teething puppies',
             'description' => 'Made from 100% food-grade rubber, this indestructible chew toy is perfect for teething puppies. Designed to soothe sore gums while redirecting destructive chewing away from furniture. Non-toxic and dishwasher safe for easy cleaning.',
             'images' => [
@@ -31,6 +34,7 @@ $products = [
             'slug' => 'calming-dog-bed',
             'category' => 'Grooming & Comfort',
             'price' => 43999,
+            'price_usd' => 49.99,
             'shortDescription' => 'Soft, cozy bed for anxious puppies',
             'description' => 'Ultra-soft calming bed designed to provide comfort and security for anxious puppies. Features raised edges that create a safe, den-like environment perfect for separation anxiety. Machine washable cover and orthopedic support for growing pups.',
             'images' => [
@@ -52,6 +56,7 @@ $products = [
             'slug' => 'no-pull-harness',
             'category' => 'Training & Safety',
             'price' => 9999,
+            'price_usd' => 29.99,
             'shortDescription' => 'Safe, adjustable no-pull harness for growing pups',
             'description' => 'Perfect for first walks and training! This adjustable no-pull harness grows with your puppy, featuring multiple sizing points for a secure, comfortable fit. No-pull design protects your puppy\'s neck and provides better control during training walks.',
             'images' => [
@@ -73,6 +78,7 @@ $products = [
             'slug' => 'dog-paw-washer-cup',
             'category' => 'Grooming & Comfort',
             'price' => 10200,
+            'price_usd' => 6.80,
             'shortDescription' => 'Easy-to-use paw cleaning system',
             'description' => 'Keep your home clean with this convenient paw washer cup! Simply fill with water, insert your puppy\'s paw, and the soft silicone bristles gently remove dirt and mud. Quick-dry design means no more muddy paw prints throughout your house.',
             'images' => [
@@ -90,7 +96,8 @@ $products = [
             'name' => 'Grooming Glove',
             'slug' => 'grooming-glove',
             'category' => 'Grooming & Comfort',
-            'price' => 4950,
+            'price' => 1500,
+            'price_usd' => 1,
             'shortDescription' => 'Gentle grooming glove for puppy coat care',
             'description' => 'Complete grooming glove designed for sensitive puppy skin. The soft, flexible design allows for comfortable grooming while removing loose hair and dirt. Perfect for maintaining a clean, healthy coat while bonding with your pup.',
             'images' => [
@@ -104,7 +111,8 @@ $products = [
                 '/products/grooming-glove/grooming-glove-8.png',
             ],
             'stock' => 14,
-            'published' => false,
+            'published' => true,
+            'list_in_catalog' => false,
         ],
         [
             'id' => 6,
@@ -112,6 +120,7 @@ $products = [
             'slug' => 'feeding-bowl',
             'category' => 'Feeding',
             'price' => 8000,
+            'price_usd' => 5.33,
             'shortDescription' => 'Durable feeding bowl for puppies',
             'description' => 'Designed for healthy feeding habits. The unique design encourages your puppy to eat at a comfortable pace. Made from food-safe, BPA-free materials that are easy to clean and dishwasher safe.',
             'images' => [
@@ -129,6 +138,7 @@ $products = [
             'slug' => 'roll-n-lick-ball',
             'category' => 'Play & Teething',
             'price' => 8500,
+            'price_usd' => 5.67,
             'shortDescription' => 'Interactive treat-dispensing ball for mental stimulation',
             'description' => 'Keep your puppy engaged and entertained with this interactive roll and lick ball! Perfect for mental stimulation and slow feeding, this durable ball dispenses treats as your pup plays. The textured surface provides a satisfying licking experience while encouraging natural foraging behaviors. Made from food-safe materials, easy to clean, and perfect for keeping your puppy busy and happy.',
             'images' => [

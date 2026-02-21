@@ -1,11 +1,15 @@
 <?php
 require_once __DIR__ . '/includes/products_data.php';
+require_once __DIR__ . '/includes/states_data.php';
 $page_title = 'Checkout - Puppiary';
 $page_description = 'Secure checkout at Puppiary.';
 $page_canonical = '/checkout';
 $robots_noindex = true;
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
+// State dropdown and country value by region: Nigeria vs US (from config country/currency)
+$checkout_states = CURRENCY_IS_NGN ? $STATES_NG : $STATES_US;
+$checkout_country = CURRENCY_IS_NGN ? 'Nigeria' : 'United States';
 ?>
     <main>
         <section class="checkout-section">
@@ -15,10 +19,6 @@ require __DIR__ . '/includes/header.php';
                     <fieldset>
                         <legend>Shipping Information</legend>
                         <div class="form-group">
-                            <label for="fullname">Full Name *</label>
-                            <input type="text" id="fullname" name="fullname" required>
-                        </div>
-                        <div class="form-group">
                             <label for="email">Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
@@ -27,17 +27,27 @@ require __DIR__ . '/includes/header.php';
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
+                            <label for="fullname">Name *</label>
+                            <input type="text" id="fullname" name="fullname" required>
+                        </div>
+                        <div class="form-group">
                             <label for="address1">Address *</label>
                             <input type="text" id="address1" name="address1" required>
                         </div>
                         <div class="form-group">
                             <label for="state">State *</label>
                             <select id="state" name="state" required>
-                                <option value="">Select State</option>
-                                <option value="Lagos">Lagos</option>
+                                <option value="" selected>Select State</option>
+                                <?php foreach ($checkout_states as $state): ?>
+                                <option value="<?php echo htmlspecialchars($state, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($state, ENT_QUOTES, 'UTF-8'); ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
-                        <input type="hidden" id="country" name="country" value="Nigeria">
+                        <div class="form-group">
+                            <label for="postal_code"><?php echo $checkout_country === 'Nigeria' ? 'Postal code' : 'ZIP code'; ?> *</label>
+                            <input type="text" id="postal_code" name="postal_code" required placeholder="<?php echo $checkout_country === 'Nigeria' ? 'e.g. 100001' : 'e.g. 90210'; ?>" maxlength="20" aria-label="Postal or ZIP code">
+                        </div>
+                        <input type="hidden" id="country" name="country" value="<?php echo htmlspecialchars($checkout_country, ENT_QUOTES, 'UTF-8'); ?>">
                     </fieldset>
                     <div class="accepted-payment-methods">
                         <p class="payment-methods-label">We Accept:</p>
@@ -64,9 +74,13 @@ require __DIR__ . '/includes/header.php';
                         <div class="trust-item"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span>SSL Encrypted</span></div>
                         <div class="trust-item"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>Money-Back Guarantee</span></div>
                     </div>
-                    <div class="checkout-actions">
-                        <button type="submit" class="btn btn-primary btn-large">Complete Order</button>
-                        <a href="/products" class="btn btn-secondary btn-large">Continue Shopping</a>
+                    <div class="checkout-actions checkout-payment-buttons">
+                        <button type="button" class="btn btn-primary btn-large btn-paystack" id="btn-paystack">Pay Now</button>
+                        <div id="paypal-button-container" class="paypal-button-container" aria-live="polite">
+                            <p id="paypal-placeholder" class="paypal-placeholder">Loading PayPal…</p>
+                            <!-- <paypal-button type="pay" hidden></paypal-button> -->
+                            <paypal-button hidden></paypal-button>
+                        </div>
                     </div>
                     <div class="checkout-guarantees">
                         <p class="guarantee-text"><strong>✓ 30-Day Money-Back Guarantee</strong><br>Not satisfied? Get a full refund, no questions asked.</p>
@@ -81,7 +95,7 @@ require __DIR__ . '/includes/header.php';
                         <span>Delivery Fee:</span>
                         <span id="delivery-fee">₦0.00</span>
                     </div>
-                    <div class="summary-total"><strong>Total: ₦<span id="total-price">0.00</span></strong></div>
+                    <div class="summary-total"><strong>Total: <span id="total-currency">₦</span><span id="total-price">0.00</span></strong></div>
                     <div class="checkout-social-proof">
                         <div class="social-proof-item"><div class="proof-stars">★★★★★</div><p class="proof-text"><strong>4.8/5</strong> from 2,500+ happy customers</p></div>
                         <div class="social-proof-item"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span>Trusted by 10,000+ customers</span></div>
@@ -91,6 +105,7 @@ require __DIR__ . '/includes/header.php';
                         <p class="security-label">Secured by:</p>
                         <div class="security-badges">
                             <div class="security-badge"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg><span>Paystack</span></div>
+                            <div class="security-badge"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><path fill="currentColor" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg><span>PayPal</span></div>
                             <div class="security-badge"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span>SSL Secure</span></div>
                         </div>
                     </div>
@@ -99,6 +114,8 @@ require __DIR__ . '/includes/header.php';
         </section>
     </main>
 <?php
-$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="https://js.paystack.co/v1/inline.js"></script><script src="/js/checkout.js"></script>';
+$paypal_api_path = (dirname($_SERVER['SCRIPT_NAME']) === '/' || dirname($_SERVER['SCRIPT_NAME']) === '\\') ? '' : rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$paypal_api_path = $paypal_api_path . '/api/paypal.php';
+$footer_scripts = '<script>window.PAYPAL_API="' . htmlspecialchars($paypal_api_path, ENT_QUOTES, 'UTF-8') . '";</script><script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="https://js.paystack.co/v1/inline.js"></script><script src="/js/paystack-checkout.js"></script><script src="' . htmlspecialchars(PAYPAL_SDK_URL, ENT_QUOTES, 'UTF-8') . '" async onload="if(typeof window.onPayPalWebSdkLoaded===\'function\'){window.onPayPalWebSdkLoaded();}"></script><script src="/js/paypal-checkout.js"></script><script src="/js/checkout.js"></script>';
 require __DIR__ . '/includes/footer.php';
 ?>

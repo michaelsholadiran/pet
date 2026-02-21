@@ -54,10 +54,12 @@ function renderCart() {
     // Mobile card layout
     cartHTML = '<div class="cart-items-mobile">'
 
+    const sym = (typeof window.CURRENCY_SYMBOL !== 'undefined' && window.CURRENCY_SYMBOL) ? window.CURRENCY_SYMBOL : '₦'
     cart.forEach((item) => {
       const product = products.find((p) => p.id === item.id)
       if (product) {
-        const subtotal = product.price * item.quantity
+        const unitPrice = getProductPrice(product)
+        const subtotal = unitPrice * item.quantity
         total += subtotal
 
         cartHTML += `
@@ -66,7 +68,7 @@ function renderCart() {
                         <img src="${product.images[0]}" alt="${product.name}" class="cart-item-image-mobile" loading="lazy" decoding="async" width="80" height="60">
                         <div class="cart-item-info">
                             <h3 class="cart-item-name-mobile">${product.name}</h3>
-                            <p class="cart-item-price-mobile">₦${formatPrice(product.price)}</p>
+                            <p class="cart-item-price-mobile">${sym}${formatPrice(unitPrice)}</p>
                         </div>
                         <button class="remove-btn-mobile" onclick="removeFromCart(${product.id}); renderCart();">
                             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
@@ -82,7 +84,7 @@ function renderCart() {
                         </div>
                         <div class="cart-item-subtotal">
                             <span>Subtotal: </span>
-                            <strong>₦${formatPrice(subtotal)}</strong>
+                            <strong>${sym}${formatPrice(subtotal)}</strong>
                         </div>
                     </div>
                 </div>
@@ -96,10 +98,12 @@ function renderCart() {
     cartHTML =
       '<div class="table-responsive" role="region" aria-label="Shopping cart items" tabindex="0"><table class="cart-table"><thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th></th></tr></thead><tbody>'
 
+  const sym = (typeof window.CURRENCY_SYMBOL !== 'undefined' && window.CURRENCY_SYMBOL) ? window.CURRENCY_SYMBOL : '₦'
   cart.forEach((item) => {
     const product = products.find((p) => p.id === item.id)
     if (product) {
-      const subtotal = product.price * item.quantity
+      const unitPrice = getProductPrice(product)
+      const subtotal = unitPrice * item.quantity
       total += subtotal
 
       cartHTML += `
@@ -108,7 +112,7 @@ function renderCart() {
                         <img src="${product.images[0]}" alt="${product.name}" class="cart-item-image" loading="lazy" decoding="async" width="80" height="60">
                         <span class="cart-item-name">${product.name}</span>
                     </td>
-                    <td class="cart-item-price">₦${formatPrice(product.price)}</td>
+                    <td class="cart-item-price">${sym}${formatPrice(unitPrice)}</td>
                     <td>
                         <div class="cart-qty-control">
                             <button onclick="decrementQuantity(${product.id})">−</button>
@@ -116,7 +120,7 @@ function renderCart() {
                             <button onclick="incrementQuantity(${product.id})">+</button>
                         </div>
                     </td>
-                    <td>₦${formatPrice(subtotal)}</td>
+                    <td>${sym}${formatPrice(subtotal)}</td>
                     <td>
                         <button class="remove-btn" onclick="removeFromCart(${product.id}); renderCart();">Remove</button>
                     </td>
@@ -128,22 +132,23 @@ function renderCart() {
   cartHTML += "</tbody></table></div>"
   }
 
-  const deliveryFee = DELIVERY_FEE
+  const deliveryFee = typeof DELIVERY_FEE !== 'undefined' ? DELIVERY_FEE : (window.DELIVERY_FEE != null ? window.DELIVERY_FEE : 4800)
   const grandTotal = total + deliveryFee
+  const summarySym = (typeof window.CURRENCY_SYMBOL !== 'undefined' && window.CURRENCY_SYMBOL) ? window.CURRENCY_SYMBOL : '₦'
 
   const summaryHTML = `
         <div class="cart-summary">
             <div class="cart-summary-row">
                 <span>Subtotal:</span>
-                <span>₦${formatPrice(total)}</span>
+                <span>${summarySym}${formatPrice(total)}</span>
             </div>
             <div class="cart-summary-row">
                 <span>Delivery Fee:</span>
-                <span>₦${formatPrice(deliveryFee)}</span>
+                <span>${summarySym}${formatPrice(deliveryFee)}</span>
             </div>
             <div class="cart-total">
                 <strong>Total:</strong>
-                <strong>₦${formatPrice(grandTotal)}</strong>
+                <strong>${summarySym}${formatPrice(grandTotal)}</strong>
             </div>
             <a href="/checkout" class="btn btn-primary btn-large" style="width: 100%; margin-top: 1rem; text-align: center;">Proceed to Checkout</a>
             <a href="/products" class="btn btn-secondary btn-large" style="width: 100%; margin-top: 0.75rem; text-align: center;">Continue Shopping</a>

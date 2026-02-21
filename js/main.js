@@ -58,12 +58,21 @@ function updateCartItemQuantity(productId, quantity) {
   }
 }
 
-// Delivery fee constant
-const DELIVERY_FEE = 4800
+// Delivery fee (set by PHP from head; fallback for NGN)
+const DELIVERY_FEE = typeof window.DELIVERY_FEE !== 'undefined' ? window.DELIVERY_FEE : 4800
 
-// Format price with commas
+// Effective product price for current currency (NGN or USD)
+function getProductPrice(product) {
+  if (!product) return 0
+  const isNGN = (typeof window.CURRENCY !== 'undefined' && window.CURRENCY === 'NGN')
+  if (isNGN) return product.price
+  return (product.price_usd != null ? product.price_usd : (product.price / 1500))
+}
+
+// Format price with commas (respects window.CURRENCY)
 function formatPrice(price) {
-  return price.toLocaleString('en-NG', {
+  const isNGN = (typeof window.CURRENCY !== 'undefined' && window.CURRENCY === 'NGN')
+  return price.toLocaleString(isNGN ? 'en-NG' : 'en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   })

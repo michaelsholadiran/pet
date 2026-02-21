@@ -49,6 +49,11 @@ $canonical_url = SITE_URL . (isset($page_canonical) ? $page_canonical : '/');
     <link rel="stylesheet" href="/css/style.css">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url); ?>">
+    <script>
+    window.CURRENCY = <?php echo json_encode(CURRENCY_IS_NGN ? 'NGN' : 'USD'); ?>;
+    window.CURRENCY_SYMBOL = <?php echo json_encode(CURRENCY_IS_NGN ? '₦' : '$'); ?>;
+    window.DELIVERY_FEE = <?php echo CURRENCY_IS_NGN ? DELIVERY_FEE_NGN : DELIVERY_FEE_USD; ?>;
+    </script>
     <script src="/js/seo.js" defer></script>
     <?php if (!empty($extra_head)) echo $extra_head . "\n"; ?>
 </head>

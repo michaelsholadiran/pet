@@ -4,9 +4,10 @@ require_once __DIR__ . '/includes/products_data.php';
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $category = ''; // Category filter disabled – kept for HTML only (hidden)
 
-// Filter: published only, then by search (category filter not applied)
+// Filter: published only, list_in_catalog not false (e.g. test products hidden), then by search
 $filtered = array_filter($products, function ($p) {
     if (empty($p['published'])) return false;
+    if (isset($p['list_in_catalog']) && $p['list_in_catalog'] === false) return false;
     return true;
 });
 if ($search !== '') {
@@ -25,6 +26,14 @@ $showRestocking = count($outOfStock) > count($inStock) && count($outOfStock) >= 
 
 function format_price_php($price) {
     return number_format((float) $price, 2, '.', ',');
+}
+
+function product_display_price($p) {
+    if (defined('CURRENCY_IS_NGN') && CURRENCY_IS_NGN) {
+        return ['symbol' => '₦', 'value' => $p['price'], 'formatted' => format_price_php($p['price'])];
+    }
+    $usd = isset($p['price_usd']) ? $p['price_usd'] : round($p['price'] / 1500, 2);
+    return ['symbol' => '$', 'value' => $usd, 'formatted' => number_format((float) $usd, 2, '.', ',')];
 }
 
 $page_title = 'Shop - Puppiary';
@@ -69,7 +78,8 @@ require __DIR__ . '/includes/header.php';
                                         <p class="product-card-category"><?php echo htmlspecialchars($p['category']); ?></p>
                                         <p class="product-card-description"><?php echo htmlspecialchars($p['shortDescription'] ?? ''); ?></p>
                                         <div class="product-card-footer">
-                                            <span class="product-card-price">₦<?php echo format_price_php($p['price']); ?></span>
+                                            <?php $dp = product_display_price($p); ?>
+                                            <span class="product-card-price"><?php echo htmlspecialchars($dp['symbol'] . $dp['formatted']); ?></span>
                                             <div class="product-card-actions">
                                                 <button type="button" class="btn btn-primary add-to-cart-btn" data-product-id="<?php echo (int)$p['id']; ?>">Add to Cart</button>
                                             </div>
@@ -104,7 +114,8 @@ require __DIR__ . '/includes/header.php';
                                 <p class="product-card-category"><?php echo htmlspecialchars($p['category']); ?></p>
                                 <p class="product-card-description"><?php echo htmlspecialchars($p['shortDescription'] ?? ''); ?></p>
                                 <div class="product-card-footer">
-                                    <span class="product-card-price">₦<?php echo format_price_php($p['price']); ?></span>
+                                    <?php $dp = product_display_price($p); ?>
+                                    <span class="product-card-price"><?php echo htmlspecialchars($dp['symbol'] . $dp['formatted']); ?></span>
                                     <div class="product-card-actions">
                                         <button type="button" class="btn btn-primary add-to-cart-btn" data-product-id="<?php echo (int)$p['id']; ?>">Add to Cart</button>
                                     </div>
