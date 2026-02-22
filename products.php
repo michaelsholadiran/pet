@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/products_data.php';
 
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
@@ -40,6 +41,9 @@ $page_title = 'Shop - Puppiary';
 $page_description = 'Browse our full catalog across categories. Filter by category and search to find your next favorite.';
 $page_canonical = '/products';
 $current_nav = 'shop';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'CollectionPage', 'name' => $page_title, 'url' => SITE_URL . '/products', 'description' => $page_description]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>

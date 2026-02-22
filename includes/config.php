@@ -37,6 +37,11 @@ define('DELIVERY_FEE_USD', 15);
 // Site name for titles
 define('SITE_NAME', 'Puppiary');
 
+// SEO: default OG image path, theme color, Twitter handle
+define('DEFAULT_OG_IMAGE', '/products/indestructible-chew-toy/indestructible-chew-toy-1.jpg');
+define('THEME_COLOR', '#e38106');
+define('TWITTER_HANDLE', '@puppiaryhq');
+
 // Google Tag Manager ID
 define('GTM_ID', 'GTM-TD5BTHNQ');
 

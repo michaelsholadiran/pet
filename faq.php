@@ -1,8 +1,12 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'FAQ - Puppiary';
 $page_description = 'Find answers to common questions about Puppiary shipping, ordering, returns, guarantees, and product safety for your puppy.';
 $page_canonical = '/faq';
 $current_nav = 'faq';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'WebPage', 'name' => $page_title, 'url' => SITE_URL . '/faq', 'description' => $page_description]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>

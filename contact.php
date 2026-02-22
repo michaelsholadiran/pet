@@ -1,8 +1,13 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'Contact Us - Puppiary';
 $page_description = "Questions or feedback? Get in touch with the Puppiary team — we're here to help.";
 $page_canonical = '/contact';
 $current_nav = 'contact';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'ContactPage', 'name' => $page_title, 'url' => SITE_URL . '/contact', 'description' => $page_description],
+    ['@context' => 'https://schema.org', '@type' => 'Organization', 'name' => SITE_NAME, 'url' => SITE_URL, 'contactPoint' => ['@type' => 'ContactPoint', 'telephone' => '+2347016426458', 'contactType' => 'customer service', 'email' => 'hello@puppiary.com', 'availableLanguage' => 'English']]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>

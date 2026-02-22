@@ -1,10 +1,15 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'Puppy Toys, Teething & Starter Kits | Non-Toxic Supplies | Puppiary';
 $page_description = 'The ultimate resource for new puppy parents. Shop durable chew toys, training gear, and comfort essentials designed to solve teething pain and separation anxiety.';
 $page_canonical = '/';
 $page_keywords = 'puppy toys, puppy chew toys, puppy teething toys, puppy starter kits, non-toxic puppy toys, puppy supplies, puppy training gear';
 $body_class = 'home';
-$extra_head = '    <link rel="preload" href="/images/indestructible-chew-toy/indestructible-chew-toy-1.jpg" as="image" fetchpriority="high">';
+$extra_head = '    <link rel="preload" href="/products/indestructible-chew-toy/indestructible-chew-toy-1.jpg" as="image" fetchpriority="high">';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'Organization', 'name' => SITE_NAME, 'url' => SITE_URL],
+    ['@context' => 'https://schema.org', '@type' => 'WebSite', 'name' => SITE_NAME, 'url' => SITE_URL, 'publisher' => ['@type' => 'Organization', 'name' => SITE_NAME], 'potentialAction' => ['@type' => 'SearchAction', 'target' => ['@type' => 'EntryPoint', 'urlTemplate' => SITE_URL . '/products?search={search_term_string}'], 'query-input' => 'required name=search_term_string']]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>

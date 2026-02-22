@@ -1,7 +1,11 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'Privacy Policy - Puppiary';
 $page_description = 'Read how Puppiary collects, uses and protects your personal information. Your trust is essential to our mission.';
 $page_canonical = '/privacy';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'WebPage', 'name' => $page_title, 'url' => SITE_URL . '/privacy', 'description' => $page_description]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>

@@ -1,8 +1,12 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'About Us - Puppiary';
 $page_description = 'Learn about Puppiary - your trusted partner for puppy and dog care essentials. Quality, safety, and genuine pet-parent support.';
 $page_canonical = '/about';
 $current_nav = 'about';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'AboutPage', 'name' => $page_title, 'url' => SITE_URL . '/about', 'description' => $page_description]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>

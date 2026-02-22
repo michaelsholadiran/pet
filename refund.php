@@ -1,7 +1,11 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'Return & Refund Policy - Puppiary';
 $page_description = "Learn about Puppiary's 24-Month Durability Promise and 30-Day Happiness Guarantee. Shop worry-free with our comprehensive return and refund policy.";
 $page_canonical = '/refund';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'WebPage', 'name' => $page_title, 'url' => SITE_URL . '/refund', 'description' => $page_description]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>

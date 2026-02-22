@@ -1,7 +1,11 @@
 <?php
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'Terms & Conditions - Puppiary';
 $page_description = 'Understand the terms that govern your use of Puppiary and our services.';
 $page_canonical = '/terms';
+$json_ld_scripts = [
+    ['@context' => 'https://schema.org', '@type' => 'WebPage', 'name' => $page_title, 'url' => SITE_URL . '/terms', 'description' => $page_description]
+];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
