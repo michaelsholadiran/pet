@@ -71,7 +71,7 @@ require __DIR__ . '/includes/header.php';
                         <p>While you wait, check out these popular items that are ready to ship:</p>
                         <div class="available-products-grid">
                             <?php foreach ($inStock as $p): ?>
-                                <div class="product-card" role="link" tabindex="0" data-href="/product/<?php echo htmlspecialchars($p['slug']); ?>">
+                                <div class="product-card" role="link" tabindex="0" data-href="/product/<?php echo htmlspecialchars($p['slug']); ?>" data-product-id="<?php echo (int)$p['id']; ?>">
                                     <img src="<?php echo htmlspecialchars($p['images'][0]); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>" class="product-card-image" loading="lazy" decoding="async" width="800" height="600">
                                     <div class="product-card-content">
                                         <h3 class="product-card-name"><?php echo htmlspecialchars($p['name']); ?></h3>
@@ -107,7 +107,7 @@ require __DIR__ . '/includes/header.php';
             <?php else: ?>
                 <div class="product-grid" id="product-list">
                     <?php foreach ($filtered as $p): ?>
-                        <a href="/product/<?php echo htmlspecialchars($p['slug']); ?>" class="product-card">
+                        <a href="/product/<?php echo htmlspecialchars($p['slug']); ?>" class="product-card" data-product-id="<?php echo (int)$p['id']; ?>">
                             <img src="<?php echo htmlspecialchars($p['images'][0]); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>" class="product-card-image" loading="lazy" decoding="async" width="800" height="600">
                             <div class="product-card-content">
                                 <h3 class="product-card-name"><?php echo htmlspecialchars($p['name']); ?></h3>
@@ -143,24 +143,52 @@ foreach ($filtered as $i => $p) {
 }
 $footer_scripts = '<script type="application/ld+json">' . json_encode($item_list_ld, JSON_UNESCAPED_SLASHES) . '</script>';
 $footer_scripts .= '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script>';
+$footer_scripts .= '<script>window.productListFiltered = ' . json_encode($filtered, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script>';
 $footer_scripts .= '<script>document.addEventListener("DOMContentLoaded", function() {
     var form = document.querySelector(".shop-section form[method=\"get\"]");
     var cat = document.getElementById("category-filter");
     if (form && cat) cat.addEventListener("change", function() { form.submit(); });
     var searchBar = document.getElementById("search-bar");
     if (form && searchBar) searchBar.addEventListener("keypress", function(e) { if (e.key === "Enter") form.submit(); });
+    if (typeof trackViewItemList === "function" && window.productListFiltered && window.productListFiltered.length) trackViewItemList("Product List", window.productListFiltered);
+    var list = document.getElementById("product-list");
+    if (list) {
+        list.querySelectorAll(".product-card[data-product-id]").forEach(function(card) {
+            card.addEventListener("click", function(e) {
+                if (e.target.closest(".add-to-cart-btn")) return;
+                var id = card.getAttribute("data-product-id");
+                var product = window.products && window.products.find(function(p) { return String(p.id) === id; });
+                if (product && typeof trackSelectItem === "function") trackSelectItem("Product List", product);
+            });
+        });
+    }
 });</script>';
 if ($showRestocking):
+    $restocking_ids = array_map(function($p) { return $p['id']; }, $inStock);
+    $footer_scripts .= '<script>window.restockingProductIds = ' . json_encode($restocking_ids) . ';</script>';
     $footer_scripts .= '<script>
     document.addEventListener("DOMContentLoaded", function() {
+        if (typeof trackViewItemList === "function" && window.products && window.restockingProductIds && window.restockingProductIds.length) {
+            var list = window.products.filter(function(p) { return window.restockingProductIds.indexOf(p.id) !== -1; });
+            if (list.length) trackViewItemList("Currently Available", list);
+        }
         var cards = document.querySelectorAll(".restocking-section .product-card[data-href]");
         cards.forEach(function(card) {
             card.addEventListener("click", function(e) {
                 if (e.target.closest(".add-to-cart-btn")) return;
+                var id = card.getAttribute("data-product-id");
+                var product = window.products && window.products.find(function(p) { return String(p.id) === id; });
+                if (product && typeof trackSelectItem === "function") trackSelectItem("Currently Available", product);
                 window.location.href = card.getAttribute("data-href");
             });
             card.addEventListener("keydown", function(e) {
-                if (e.key === "Enter" || e.key === " ") { e.preventDefault(); window.location.href = card.getAttribute("data-href"); }
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    var id = card.getAttribute("data-product-id");
+                    var product = window.products && window.products.find(function(p) { return String(p.id) === id; });
+                    if (product && typeof trackSelectItem === "function") trackSelectItem("Currently Available", product);
+                    window.location.href = card.getAttribute("data-href");
+                }
             });
         });
         var newsletterBtn = document.querySelector(".newsletter-btn");

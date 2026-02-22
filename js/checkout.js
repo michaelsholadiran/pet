@@ -34,19 +34,8 @@
         if (totalEl) totalEl.textContent = fmtTotal;
         if (totalCurrencyEl) totalCurrencyEl.textContent = sym;
 
-        if (cart.length > 0) {
-            if (typeof trackBeginCheckout === 'function') {
-                trackBeginCheckout(cart, total, deliveryFee);
-            } else {
-                window.dataLayer = window.dataLayer || [];
-                var items = cart.map(function(item) {
-                    var p = productsList.find(function(x) { return x.id === item.id; });
-                    return p ? { item_id: String(p.id), item_name: p.name, item_category: p.category, price: p.price, quantity: item.quantity } : null;
-                }).filter(Boolean);
-                if (items.length) {
-                    window.dataLayer.push({ event: 'begin_checkout', ecommerce: { currency: 'NGN', value: grandTotal, items: items } });
-                }
-            }
+        if (cart.length > 0 && typeof trackBeginCheckout === 'function') {
+            trackBeginCheckout(cart, total, deliveryFee);
         }
         // ----- END Order summary (cart items, totals, analytics) -----
 
