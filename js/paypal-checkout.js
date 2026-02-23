@@ -159,9 +159,14 @@
                         : Math.max(0.01, (amounts.grandTotal / NGN_TO_USD_RATE).toFixed(2));
                     var usdValueNum = parseFloat(usdValue, 10);
                     if (typeof trackAddPaymentInfo === 'function') {
-                        trackAddPaymentInfo('paypal', { value: usdValueNum, currency: 'USD' });
-                    } else if (typeof pushDataLayer === 'function') {
-                        pushDataLayer({ event: 'add_payment_info', payment_method: 'paypal', ecommerce: { currency: 'USD', value: usdValueNum } });
+                        trackAddPaymentInfo('paypal', cart, amounts.total, amounts.deliveryFee, 'USD', usdValueNum);
+                    } else if (typeof pushDataLayer === 'function' && typeof buildEcommerceItem === 'function') {
+                        var productsListRef = productsList || (typeof window.products !== 'undefined' ? window.products : []) || [];
+                        var paypalItems = cart.map(function(item) {
+                            var product = productsListRef.find(function(p) { return p.id === item.id; });
+                            return product ? buildEcommerceItem(product, item.quantity) : null;
+                        }).filter(Boolean);
+                        pushDataLayer({ event: 'add_payment_info', payment_method: 'paypal', ecommerce: { currency: 'USD', value: usdValueNum, items: paypalItems } });
                     } else {
                         window.dataLayer = window.dataLayer || [];
                         window.dataLayer.push({ ecommerce: null });

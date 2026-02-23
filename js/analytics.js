@@ -145,6 +145,28 @@ function trackPurchase(transactionId, cart, total, deliveryFee, email, options) 
   pushDataLayer(payload);
 }
 
+// add_payment_info: when user selects payment method (same ecommerce shape as begin_checkout: currency, value, items)
+function trackAddPaymentInfo(paymentMethod, cart, total, deliveryFee, currency, value) {
+  if (!cart || !Array.isArray(cart) || cart.length === 0) return;
+  var productsList = (typeof products !== 'undefined' ? products : null) || (typeof window.products !== 'undefined' ? window.products : []) || [];
+  var items = cart.map(function(item) {
+    var product = productsList.find(function(p) { return p.id === item.id; });
+    return product ? buildEcommerceItem(product, item.quantity) : null;
+  }).filter(Boolean);
+  if (items.length === 0) return;
+  var val = value != null ? Number(value) : (total + (deliveryFee || 0));
+  var curr = currency || getCurrency();
+  pushDataLayer({
+    event: 'add_payment_info',
+    payment_method: paymentMethod,
+    ecommerce: {
+      currency: curr,
+      value: val,
+      items: items
+    }
+  });
+}
+
 // view_cart: cart page (optional; keep for consistency)
 function trackViewCart(cart) {
   if (!cart || !Array.isArray(cart) || cart.length === 0) return;

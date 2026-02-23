@@ -50,9 +50,14 @@
         var addressLine = [address1, state, country].filter(Boolean).join(', ');
 
         if (typeof trackAddPaymentInfo === 'function') {
-            trackAddPaymentInfo('paystack', { value: grandTotal, currency: 'NGN' });
-        } else if (typeof pushDataLayer === 'function') {
-            pushDataLayer({ event: 'add_payment_info', payment_method: 'paystack', ecommerce: { currency: 'NGN', value: grandTotal } });
+            trackAddPaymentInfo('paystack', cart, total, deliveryFee, 'NGN', grandTotal);
+        } else if (typeof pushDataLayer === 'function' && typeof buildEcommerceItem === 'function') {
+            var productsListRef = options.productsList || (typeof window.products !== 'undefined' ? window.products : []) || [];
+            var items = cart.map(function(item) {
+                var product = productsListRef.find(function(p) { return p.id === item.id; });
+                return product ? buildEcommerceItem(product, item.quantity) : null;
+            }).filter(Boolean);
+            pushDataLayer({ event: 'add_payment_info', payment_method: 'paystack', ecommerce: { currency: 'NGN', value: grandTotal, items: items } });
         } else {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({ ecommerce: null });
