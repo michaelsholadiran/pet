@@ -51,8 +51,11 @@
 
         if (typeof trackAddPaymentInfo === 'function') {
             trackAddPaymentInfo('paystack', { value: grandTotal, currency: 'NGN' });
+        } else if (typeof pushDataLayer === 'function') {
+            pushDataLayer({ event: 'add_payment_info', payment_method: 'paystack', ecommerce: { currency: 'NGN', value: grandTotal } });
         } else {
             window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ ecommerce: null });
             window.dataLayer.push({ event: 'add_payment_info', payment_method: 'paystack', ecommerce: { currency: 'NGN', value: grandTotal } });
         }
 

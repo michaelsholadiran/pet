@@ -157,6 +157,16 @@
                     var usdValue = (typeof window.CURRENCY !== 'undefined' && window.CURRENCY === 'USD')
                         ? Math.max(0.01, Number(amounts.grandTotal).toFixed(2))
                         : Math.max(0.01, (amounts.grandTotal / NGN_TO_USD_RATE).toFixed(2));
+                    var usdValueNum = parseFloat(usdValue, 10);
+                    if (typeof trackAddPaymentInfo === 'function') {
+                        trackAddPaymentInfo('paypal', { value: usdValueNum, currency: 'USD' });
+                    } else if (typeof pushDataLayer === 'function') {
+                        pushDataLayer({ event: 'add_payment_info', payment_method: 'paypal', ecommerce: { currency: 'USD', value: usdValueNum } });
+                    } else {
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({ ecommerce: null });
+                        window.dataLayer.push({ event: 'add_payment_info', payment_method: 'paypal', ecommerce: { currency: 'USD', value: usdValueNum } });
+                    }
                     function createOrder() {
                         var api = (typeof window.PAYPAL_API !== 'undefined' && window.PAYPAL_API) ? window.PAYPAL_API : PAYPAL_API;
                         return fetch(api + '?action=create-order', {

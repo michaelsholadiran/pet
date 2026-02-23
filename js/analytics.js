@@ -5,6 +5,8 @@ var DATA_LAYER_ITEM_LIST_NAME = 'Product List';
 var DATA_LAYER_ITEM_BRAND = 'Puppiary';
 
 function pushDataLayer(eventData) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ ecommerce: null });
   window.dataLayer.push(eventData);
 }
 
