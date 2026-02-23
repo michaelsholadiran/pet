@@ -29,7 +29,7 @@ $products = [
             'published' => false,
         ],
         [
-            'id' => 2,
+            'id' => 'jnnj67b1h3',
             'name' => 'Calming Dog Bed',
             'slug' => 'calming-dog-bed',
             'category' => 'Grooming & Comfort',
@@ -51,7 +51,7 @@ $products = [
             'published' => true,
         ],
         [
-            'id' => 3,
+            'id' => 'km3jy4eqg0',
             'name' => 'No-Pull Harness',
             'slug' => 'no-pull-harness',
             'category' => 'Training & Safety',
