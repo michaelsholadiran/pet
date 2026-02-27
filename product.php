@@ -1,9 +1,81 @@
 <?php
 require_once __DIR__ . '/includes/products_data.php';
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
-$page_title = 'Product - Puppiary';
-$page_description = 'Shop quality puppy and dog products at Puppiary.';
+if ($slug === '' && !empty($_SERVER['REQUEST_URI'])) {
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $parts = array_values(array_filter(explode('/', trim($path, '/'))));
+    if (count($parts) >= 2 && $parts[0] === 'product') {
+        $slug = $parts[1];
+    }
+}
+$product_ld = null;
+if ($slug !== '') {
+    foreach ($products as $p) {
+        if (isset($p['slug']) && $p['slug'] === $slug && !empty($p['published'])) {
+            $product_ld = $p;
+            break;
+        }
+    }
+}
+$page_title = $product_ld ? ($product_ld['name'] . ' - Puppiary') : 'Product - Puppiary';
+$page_description = $product_ld ? (isset($product_ld['shortDescription']) ? $product_ld['shortDescription'] : 'Shop quality puppy and dog products at Puppiary.') : 'Shop quality puppy and dog products at Puppiary.';
 $page_canonical = '/product' . ($slug ? '/' . $slug : '');
+$json_ld_scripts = [];
+if ($product_ld) {
+    $price = isset($product_ld['price']) ? (float) $product_ld['price'] : 0;
+    $price_usd = isset($product_ld['price_usd']) ? (float) $product_ld['price_usd'] : round($price / 1500, 2);
+    $currency = (defined('CURRENCY_IS_NGN') && CURRENCY_IS_NGN) ? 'NGN' : 'USD';
+    $price_value = $currency === 'NGN' ? $price : $price_usd;
+    $product_url = rtrim(SITE_URL, '/') . '/product/' . $product_ld['slug'];
+    $image_url = (strpos($product_ld['images'][0], 'http') === 0) ? $product_ld['images'][0] : rtrim(SITE_URL, '/') . $product_ld['images'][0];
+    $availability = (isset($product_ld['stock']) && $product_ld['stock'] > 0)
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock';
+    $json_ld_scripts[] = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $product_ld['name'],
+        'description' => isset($product_ld['description']) ? $product_ld['description'] : (isset($product_ld['shortDescription']) ? $product_ld['shortDescription'] : ''),
+        'image' => $image_url,
+        'url' => $product_url,
+        'sku' => (string) $product_ld['id'],
+        'category' => isset($product_ld['category']) ? $product_ld['category'] : '',
+        'offers' => [
+            '@type' => 'Offer',
+            'url' => $product_url,
+            'priceCurrency' => $currency,
+            'price' => $price_value,
+            'availability' => $availability,
+            'priceValidUntil' => date('Y-m-d', strtotime('+1 year')),
+            'shippingDetails' => [
+                '@type' => 'OfferShippingDetails',
+                'deliveryTime' => [
+                    '@type' => 'ShippingDeliveryTime',
+                    'handlingTime' => [
+                        '@type' => 'QuantitativeValue',
+                        'minValue' => 0,
+                        'maxValue' => 2,
+                        'unitCode' => 'DAY',
+                    ],
+                    'transitTime' => [
+                        '@type' => 'QuantitativeValue',
+                        'minValue' => 1,
+                        'maxValue' => 4,
+                        'unitCode' => 'DAY',
+                    ],
+                ],
+            ],
+            'hasMerchantReturnPolicy' => [
+                '@type' => 'MerchantReturnPolicy',
+                'applicableCountry' => ['NG', 'US'],
+                'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+                'merchantReturnDays' => 30,
+                'returnMethod' => 'https://schema.org/ReturnByMail',
+                'returnFees' => 'https://schema.org/ReturnShippingFees',
+            ],
+        ],
+    ];
+}
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
