@@ -4,7 +4,24 @@ $page_title = 'Return & Refund Policy - Puppiary';
 $page_description = "Learn about Puppiary's 24-Month Durability Promise and 30-Day Happiness Guarantee. Shop worry-free with our comprehensive return and refund policy.";
 $page_canonical = '/refund';
 $json_ld_scripts = [
-    ['@context' => 'https://schema.org', '@type' => 'WebPage', 'name' => $page_title, 'url' => SITE_URL . '/refund', 'description' => $page_description]
+    [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebPage',
+        'name' => $page_title,
+        'url' => SITE_URL . '/refund',
+        'description' => $page_description
+    ],
+    [
+        '@context' => 'https://schema.org',
+        '@type' => 'MerchantReturnPolicy',
+        'applicableCountry' => 'GB',
+        'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        'merchantReturnDays' => 30,
+        'returnMethod' => 'https://schema.org/ReturnByMail',
+        'returnFees' => 'https://schema.org/ReturnFeesCustomerResponsibility',
+        'refundType' => 'https://schema.org/FullRefund',
+        'url' => SITE_URL . '/refund'
+    ]
 ];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
