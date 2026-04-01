@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/admin/Library/Application Support/Herd/bin/php82",
+            "args": [
+                "/Users/admin/Desktop/proj/puppiary/artisan",
+                "boost:mcp"
+            ]
+        },
+        "herd": {
+            "command": "/Users/admin/Library/Application Support/Herd/bin/php82",
+            "args": [
+                "/Applications/Herd.app/Contents/Resources/herd-mcp.phar"
+            ],
+            "env": {
+                "SITE_PATH": "/Users/admin/Desktop/proj/puppiary"
+            }
+        }
+    }
+}
