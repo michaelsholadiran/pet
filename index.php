@@ -14,17 +14,17 @@ require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
     <main>
-        <section class="promo-banner" aria-label="Featured Products">
+        <section class="promo-banner" aria-label="Puppiary">
             <div class="promo-banner-container">
                 <div class="promo-banner-image">
                     <img src="/images/puppiary-homepage-promotional-banner.webp" alt="Three dogs laying down on calming comfort bed - Puppiary" loading="eager" decoding="async" fetchpriority="high">
                 </div>
                 <div class="promo-banner-content">
-                    <h2 class="promo-banner-headline">New Year's Sale is here!</h2>
-                    <p class="promo-banner-description">Enjoy special discounts on select products - Calming Dog Bed, No-Pull Harness, and Grooming Glove. Limited time only.</p>
+                    <h2 class="promo-banner-headline">Puppiary Solving Puppies&rsquo; Daily Problems</h2>
+                    <p class="promo-banner-description">Simple, effective products designed to keep your puppy happy, healthy, and comfortable.</p>
                     <div class="promo-banner-actions">
                         <a href="/products" class="btn btn-promo-primary">Shop</a>
-                        <a href="/about" class="btn btn-promo-secondary">Learn More</a>
+                        <a href="/about" class="btn btn-promo-secondary">Our Story</a>
                     </div>
                 </div>
             </div>

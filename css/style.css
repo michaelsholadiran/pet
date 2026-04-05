@@ -2187,19 +2187,20 @@ textarea:focus {
   background-color: var(--secondary-white);
   padding: 1.5rem;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-light);
+  box-shadow: none;
 }
 
-/* Center content in email tab contact card */
-#tab-email .contact-card {
+/* Center content on contact page card */
+.contact-section .contact-card {
   text-align: center;
 }
 
-#tab-email .contact-card h2 {
+.contact-section .contact-card h2 {
   text-align: center;
 }
 
-#tab-email .contact-card p {
+.contact-section .contact-card p {
   text-align: center;
 }
 
@@ -3551,95 +3552,57 @@ textarea:focus {
   }
 }
 
-/* Floating Call Button */
-.call-float {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: var(--primary-orange);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(236, 163, 60, 0.4);
-  z-index: 1000;
-  transition: all 0.3s ease;
-  color: white;
-  text-decoration: none;
-}
+/*
+Floating Call / WhatsApp (disabled — use .email-float)
+.call-float { ... }
+.whatsapp-float { ... }
+*/
 
-.call-float:hover {
-  background-color: #d8942a;
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(236, 163, 60, 0.6);
-}
-
-.call-float:active {
-  transform: scale(0.95);
-}
-
-.call-float svg {
-  width: 32px;
-  height: 32px;
-}
-
-/* Floating WhatsApp Button */
-.whatsapp-float {
+/* Floating email button */
+.email-float {
   position: fixed;
   bottom: 30px;
   right: 20px;
   width: 60px;
   height: 60px;
-  background-color: #25D366;
+  background-color: #111111;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  border: 2px solid #000000;
+  box-shadow: none;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   color: white;
   text-decoration: none;
 }
 
-.whatsapp-float:hover {
-  background-color: #20BA5A;
+.email-float:hover {
+  background-color: #333333;
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+  border-color: #1a1a1a;
+  box-shadow: none;
 }
 
-.whatsapp-float:active {
+.email-float:active {
   transform: scale(0.95);
 }
 
-.whatsapp-float svg {
+.email-float svg {
   width: 32px;
   height: 32px;
 }
 
 @media (max-width: 768px) {
-  .call-float {
+  .email-float {
     width: 56px;
     height: 56px;
-    bottom: 160px; /* Positioned above WhatsApp button on mobile */
+    bottom: 90px;
     right: 20px;
   }
 
-  .call-float svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  .whatsapp-float {
-    width: 56px;
-    height: 56px;
-    bottom: 90px; /* Higher position for mobile - above browser UI and easily thumb-accessible */
-    right: 20px;
-  }
-
-  .whatsapp-float svg {
+  .email-float svg {
     width: 28px;
     height: 28px;
   }
