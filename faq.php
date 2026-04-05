@@ -22,7 +22,7 @@ require __DIR__ . '/includes/header.php';
                         <span class="accordion-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>Yes! We ship our safe, quality supplies to customers in the regions we serve. Standard delivery is typically 1–4 working days where available, with expedited options at checkout when offered—for urgent training or teething needs.</p>
+                        <p>Yes! We ship our safe, quality supplies to customers in the regions we serve. Standard delivery is typically 3–7 working days, with expedited options at checkout when offered—for urgent training or teething needs.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     if (window.SEO && typeof window.SEO.jsonLdFAQ === "function") {
         window.SEO.jsonLdFAQ([
-            { question: "Do you deliver nationwide?", answer: "Yes! We ship our safe, quality supplies to customers in the regions we serve. Standard delivery is typically 1–4 working days where available, with expedited options at checkout when offered—for urgent training or teething needs." },
+            { question: "Do you deliver nationwide?", answer: "Yes! We ship our safe, quality supplies to customers in the regions we serve. Standard delivery is typically 3–7 working days, with expedited options at checkout when offered—for urgent training or teething needs." },
             { question: "Can I pay on delivery (PoD)?", answer: "For your convenience and trust, we offer Cash on Delivery (PoD) in select areas where it is supported. If this option is available for your address, you will see it at checkout." },
             { question: "Where is Puppiary located?", answer: "We are online. Puppiary is a digital-first pet brand—you shop on our website, and we ship from fulfillment partners so orders reach you efficiently. We don\'t operate a traditional retail storefront; we\'re built to serve puppy parents wherever we deliver." },
             { question: "What if my puppy doesn\'t like the product?", answer: "We are so confident in the quality and safety of our gear, we offer a 100% Puppy-Approved Money-Back Guarantee. If you or your pup aren\'t completely satisfied with the fit or function within 7 days of delivery, we guarantee a full refund or a hassle-free exchange." },

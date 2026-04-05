@@ -42,7 +42,7 @@ require __DIR__ . '/includes/header.php';
             <article>
                 <h2>3. Shipping and Delivery</h2>
                 <h3>3.1. Processing</h3>
-                <p>Orders are processed within 24 hours as outlined in our Transaction Blueprint.</p>
+                <p>Orders are processed within 24 hours as outlined in our Transaction Blueprint. Estimated standard delivery is 3–7 working days after dispatch, subject to carrier schedules and your location.</p>
                 <h3>3.2. Delivery Risk</h3>
                 <p>Risk of loss and title for items purchased pass to you upon our delivery to the courier service.</p>
                 <h3>3.3. Delays</h3>

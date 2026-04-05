@@ -94,7 +94,7 @@ require __DIR__ . '/includes/header.php';
                         </div>
                     </div>
                     <div class="restocking-benefits">
-                        <div class="benefit-card"><div class="benefit-icon">🚚</div><h4>Fast Shipping</h4><p>Nationwide delivery in 1-4 business days</p></div>
+                        <div class="benefit-card"><div class="benefit-icon">🚚</div><h4>Fast Shipping</h4><p>Delivery in 3–7 working days</p></div>
                         <div class="benefit-card"><div class="benefit-icon">💚</div><h4>Quality Guaranteed</h4><p>All products are vet-approved and safe for puppies</p></div>
                         <div class="benefit-card"><div class="benefit-icon">📞</div><h4>Expert Support</h4><p>Get personalized advice from our puppy care specialists</p></div>
                     </div>
