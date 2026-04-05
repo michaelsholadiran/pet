@@ -8,19 +8,33 @@ if ($slug === '' && !empty($_SERVER['REQUEST_URI'])) {
         $slug = $parts[1];
     }
 }
+$idParam = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+
 $product_ld = null;
+$matched = null;
 if ($slug !== '') {
     foreach ($products as $p) {
         if (isset($p['slug']) && $p['slug'] === $slug) {
-            if (!empty($p['published'])) {
-                $product_ld = $p;
-            } else {
-                http_response_code(404);
-                $robots_noindex = true;
-            }
+            $matched = $p;
             break;
         }
     }
+} elseif ($idParam > 0) {
+    foreach ($products as $p) {
+        if (isset($p['id']) && (int) $p['id'] === $idParam) {
+            $matched = $p;
+            break;
+        }
+    }
+}
+
+// Unknown slug/id or unpublished → full 404 page (not the product shell + JS message)
+if ($slug !== '' || $idParam > 0) {
+    if ($matched === null || empty($matched['published'])) {
+        require __DIR__ . '/404.php';
+        exit;
+    }
+    $product_ld = $matched;
 }
 $page_title = $product_ld ? ($product_ld['name'] . ' - Puppiary') : 'Product - Puppiary';
 $page_description = $product_ld ? (isset($product_ld['shortDescription']) ? $product_ld['shortDescription'] : 'Shop quality puppy and dog products at Puppiary.') : 'Shop quality puppy and dog products at Puppiary.';
