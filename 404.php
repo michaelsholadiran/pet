@@ -1,5 +1,8 @@
 <?php
-http_response_code(404);
+if (!headers_sent()) {
+    header('HTTP/1.1 404 Not Found');
+    header('Status: 404 Not Found');
+}
 $page_title = '404 - Page Not Found | Puppiary';
 $page_description = "Page not found - The page you're looking for doesn't exist. Return to Puppiary home or browse our puppy products.";
 $page_canonical = '/404';

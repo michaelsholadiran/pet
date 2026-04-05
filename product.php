@@ -31,6 +31,10 @@ if ($slug !== '') {
 // Unknown slug/id or unpublished → full 404 page (not the product shell + JS message)
 if ($slug !== '' || $idParam > 0) {
     if ($matched === null || empty($matched['published'])) {
+        if (!headers_sent()) {
+            header('HTTP/1.1 404 Not Found');
+            header('Status: 404 Not Found');
+        }
         require __DIR__ . '/404.php';
         exit;
     }
