@@ -14,6 +14,6 @@ require __DIR__ . '/includes/header.php';
         </section>
     </main>
 <?php
-$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="/js/cart.js"></script>';
+$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="/js/cart.js?v=' . (int) puppiary_asset_mtime('js/cart.js') . '"></script>';
 require __DIR__ . '/includes/footer.php';
 ?>

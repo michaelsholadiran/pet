@@ -47,14 +47,14 @@ $seo_noindex = !empty($robots_noindex);
     <link rel="preload" href="https://fonts.cdnfonts.com/css/futura-pt" as="style">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.cdnfonts.com/css/futura-pt"></noscript>
-    <link rel="preload" href="/css/style.css" as="style">
+    <link rel="preload" href="/css/style.css?v=<?php echo (int) puppiary_asset_mtime('css/style.css'); ?>" as="style">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="<?php echo htmlspecialchars(SITE_NAME); ?>" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=<?php echo (int) puppiary_asset_mtime('css/style.css'); ?>">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url); ?>">
     <?php if (!$seo_noindex): ?>

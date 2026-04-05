@@ -72,3 +72,16 @@ if (PAYPAL_MODE === 'sandbox') {
     define('PAYPAL_API_BASE_URL', 'https://api-m.paypal.com');
     define('PAYPAL_SDK_URL', 'https://www.paypal.com/web-sdk/v6/core');
 }
+
+/**
+ * Last modified time of a project-root file (for cache-busting ?v= on CSS/JS URLs).
+ *
+ * @param string $relativePath path under project root, e.g. 'js/main.js' or 'css/style.css'
+ */
+if (!function_exists('puppiary_asset_mtime')) {
+    function puppiary_asset_mtime(string $relativePath): int
+    {
+        $path = __DIR__ . '/../' . ltrim($relativePath, '/');
+        return is_file($path) ? filemtime($path) : 0;
+    }
+}

@@ -98,8 +98,8 @@ require_once __DIR__ . '/config.php';
         </div>
     </footer>
 
-    <script src="/js/main.js" defer></script>
-    <script src="/js/analytics.js" defer></script>
+    <script src="/js/main.js?v=<?php echo (int) puppiary_asset_mtime('js/main.js'); ?>" defer></script>
+    <script src="/js/analytics.js?v=<?php echo (int) puppiary_asset_mtime('js/analytics.js'); ?>" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var menuButton = document.querySelector('.mobile-menu-button');
