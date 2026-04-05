@@ -22,7 +22,7 @@ require __DIR__ . '/includes/header.php';
                         <span class="accordion-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>Yes! We proudly deliver our safe, quality supplies anywhere in Nigeria. Our standard delivery time is 1–4 working days, with expedited options available during checkout for urgent training or teething needs.</p>
+                        <p>Yes! We ship our safe, quality supplies to customers in the regions we serve. Standard delivery is typically 1–4 working days where available, with expedited options at checkout when offered—for urgent training or teething needs.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -31,7 +31,7 @@ require __DIR__ . '/includes/header.php';
                         <span class="accordion-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>For your convenience and trust, we offer Cash on Delivery (PoD) in many major metropolitan areas, including Lagos, Abuja, and Port Harcourt. If this option is available in your area, you will see it at checkout.</p>
+                        <p>For your convenience and trust, we offer Cash on Delivery (PoD) in select areas where it is supported. If this option is available for your address, you will see it at checkout.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -40,7 +40,7 @@ require __DIR__ . '/includes/header.php';
                         <span class="accordion-icon">+</span>
                     </button>
                     <div class="accordion-content">
-                        <p>Puppiary is an online-based pet brand, allowing us to deliver quickly to pups across Nigeria. Our headquarters and primary distribution center are located in Lagos, ensuring efficient nationwide fulfillment.</p>
+                        <p>We are online. Puppiary is a digital-first pet brand—you shop on our website, and we ship from fulfillment partners so orders reach you efficiently. We don’t operate a traditional retail storefront; we’re built to serve puppy parents wherever we deliver.</p>
                     </div>
                 </div>
             </div>
@@ -107,9 +107,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     if (window.SEO && typeof window.SEO.jsonLdFAQ === "function") {
         window.SEO.jsonLdFAQ([
-            { question: "Do you deliver nationwide?", answer: "Yes! We proudly deliver our safe, quality supplies anywhere in Nigeria. Our standard delivery time is 1–4 working days, with expedited options available during checkout for urgent training or teething needs." },
-            { question: "Can I pay on delivery (PoD)?", answer: "For your convenience and trust, we offer Cash on Delivery (PoD) in many major metropolitan areas, including Lagos, Abuja, and Port Harcourt. If this option is available in your area, you will see it at checkout." },
-            { question: "Where is Puppiary located?", answer: "Puppiary is an online-based pet brand, allowing us to deliver quickly to pups across Nigeria. Our headquarters and primary distribution center are located in Lagos, ensuring efficient nationwide fulfillment." },
+            { question: "Do you deliver nationwide?", answer: "Yes! We ship our safe, quality supplies to customers in the regions we serve. Standard delivery is typically 1–4 working days where available, with expedited options at checkout when offered—for urgent training or teething needs." },
+            { question: "Can I pay on delivery (PoD)?", answer: "For your convenience and trust, we offer Cash on Delivery (PoD) in select areas where it is supported. If this option is available for your address, you will see it at checkout." },
+            { question: "Where is Puppiary located?", answer: "We are online. Puppiary is a digital-first pet brand—you shop on our website, and we ship from fulfillment partners so orders reach you efficiently. We don\'t operate a traditional retail storefront; we\'re built to serve puppy parents wherever we deliver." },
             { question: "What if my puppy doesn\'t like the product?", answer: "We are so confident in the quality and safety of our gear, we offer a 100% Puppy-Approved Money-Back Guarantee. If you or your pup aren\'t completely satisfied with the fit or function within 7 days of delivery, we guarantee a full refund or a hassle-free exchange." },
             { question: "Is the harness adjustable to accommodate a growing pup?", answer: "Absolutely. Our harnesses are specifically designed for the growing pup\'s journey. They are fully adjustable and feature multiple custom sizing points, ensuring a secure, comfortable fit from their first walk right up to their transition into adulthood." },
             { question: "How do I clean the paw washer?", answer: "We designed our paw washer for maximum owner convenience! Simply disassemble the unit by removing the soft silicone bristles, rinse all parts with warm water, and let them air dry. It\'s designed to be quick and easy, making messy paws manageable." },
