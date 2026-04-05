@@ -139,20 +139,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function openDrawer() {
     if (!drawer || !menuButton || !overlay) return
+    drawer.inert = false
     drawer.classList.add("open")
     drawer.setAttribute("aria-hidden", "false")
     menuButton.setAttribute("aria-expanded", "true")
     overlay.hidden = false
     document.body.classList.add("no-scroll")
+    closeButton?.focus()
   }
 
   function closeDrawer() {
     if (!drawer || !menuButton || !overlay) return
     drawer.classList.remove("open")
     drawer.setAttribute("aria-hidden", "true")
+    drawer.inert = true
     menuButton.setAttribute("aria-expanded", "false")
     overlay.hidden = true
     document.body.classList.remove("no-scroll")
+    menuButton.focus()
   }
 
   if (menuButton && drawer && overlay && closeButton) {

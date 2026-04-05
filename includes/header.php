@@ -34,7 +34,7 @@ require_once __DIR__ . '/config.php';
     </header>
 
     <div class="drawer-overlay" data-overlay hidden></div>
-    <aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-label="Mobile navigation">
+    <aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" inert aria-label="Mobile navigation">
         <button class="drawer-close" aria-label="Close menu">
             <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                 <path fill="currentColor" d="M18.3 5.71 12 12l6.3 6.29-1.41 1.41L10.59 13.4 4.29 19.7 2.88 18.3 9.17 12 2.88 5.71 4.29 4.3l6.3 6.3 6.29-6.3z"/>

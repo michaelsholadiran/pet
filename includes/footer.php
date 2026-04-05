@@ -106,40 +106,6 @@ require_once __DIR__ . '/config.php';
 
     <script src="/js/main.js?v=<?php echo (int) puppiary_asset_mtime('js/main.js'); ?>" defer></script>
     <script src="/js/analytics.js?v=<?php echo (int) puppiary_asset_mtime('js/analytics.js'); ?>" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var menuButton = document.querySelector('.mobile-menu-button');
-            var drawer = document.getElementById('mobile-drawer');
-            var overlay = document.querySelector('[data-overlay]');
-            var closeButton = document.querySelector('.drawer-close');
-            function openDrawer() {
-                if (drawer && menuButton && overlay) {
-                    drawer.classList.add('open');
-                    drawer.setAttribute('aria-hidden', 'false');
-                    menuButton.setAttribute('aria-expanded', 'true');
-                    overlay.hidden = false;
-                    document.body.classList.add('no-scroll');
-                }
-            }
-            function closeDrawer() {
-                if (drawer && menuButton && overlay) {
-                    drawer.classList.remove('open');
-                    drawer.setAttribute('aria-hidden', 'true');
-                    menuButton.setAttribute('aria-expanded', 'false');
-                    overlay.hidden = true;
-                    document.body.classList.remove('no-scroll');
-                }
-            }
-            if (menuButton && drawer && overlay && closeButton) {
-                menuButton.addEventListener('click', openDrawer);
-                closeButton.addEventListener('click', closeDrawer);
-                overlay.addEventListener('click', closeDrawer);
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
-                });
-            }
-        });
-    </script>
     <?php if (!empty($footer_scripts)) echo $footer_scripts . "\n"; ?>
 
     <!--

@@ -1,12 +1,12 @@
+# Standard robots.txt directives only. Do not add Content-Signal or other
+# non-standard lines here — Google Search Console reports them as errors.
+
 User-agent: *
 Allow: /
 
-# Exclude non-indexable transactional pages
-Disallow: /cart.html
-Disallow: /checkout.html
-Disallow: /success.html
-Disallow: /404.html
+# Non-indexable transactional pages (see meta robots noindex on these URLs)
+Disallow: /cart
+Disallow: /checkout
+Disallow: /success
 
 Sitemap: https://www.puppiary.com/sitemap.xml
-
-
