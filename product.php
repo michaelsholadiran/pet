@@ -11,8 +11,13 @@ if ($slug === '' && !empty($_SERVER['REQUEST_URI'])) {
 $product_ld = null;
 if ($slug !== '') {
     foreach ($products as $p) {
-        if (isset($p['slug']) && $p['slug'] === $slug && !empty($p['published'])) {
-            $product_ld = $p;
+        if (isset($p['slug']) && $p['slug'] === $slug) {
+            if (!empty($p['published'])) {
+                $product_ld = $p;
+            } else {
+                http_response_code(404);
+                $robots_noindex = true;
+            }
             break;
         }
     }

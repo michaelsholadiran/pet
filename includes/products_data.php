@@ -111,8 +111,7 @@ $products = [
                 '/products/grooming-glove/grooming-glove-8.png',
             ],
             'stock' => 14,
-            'published' => true,
-            'list_in_catalog' => false,
+            'published' => false,
         ],
         [
             'id' => 6,
