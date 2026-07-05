@@ -95,8 +95,8 @@
         var paypalContainer = document.getElementById('paypal-button-container');
         var btnPaystack = document.getElementById('btn-paystack');
 
-        // ----- BEGIN PayPal init -----
-        if (window.PaypalCheckout && window.PaypalCheckout.init) {
+        // ----- BEGIN PayPal init (USD / non-Nigeria only) -----
+        if (window.CURRENCY !== 'NGN' && window.PaypalCheckout && window.PaypalCheckout.init) {
             window.PaypalCheckout.init({
                 paypalContainer: paypalContainer,
                 checkoutForm: checkoutForm,

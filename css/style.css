@@ -278,6 +278,54 @@ body.no-scroll {
   max-width: 560px;
 }
 
+/* Homepage trust bar */
+.home-trust-bar {
+  max-width: 100%;
+  margin: 0;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent-light) 0%, #fff8f0 100%);
+  border-bottom: 1px solid rgba(227, 129, 6, 0.12);
+}
+
+.home-trust-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 2rem;
+}
+
+.home-trust-bar .trust-item {
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .home-trust-bar {
+    padding: 0.75rem 1rem;
+  }
+
+  .home-trust-bar-inner {
+    gap: 0.75rem 1.25rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .home-trust-bar-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-trust-bar .trust-item {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+  }
+}
+
 /* Promotional Banner Section - Atoms-style design */
 .promo-banner {
   background: #ffffff;
@@ -833,6 +881,10 @@ a.product-card {
 /* Shop Section */
 .shop-section {
   min-height: 70vh;
+}
+
+.home-products-section {
+  min-height: auto;
 }
 
 .shop-controls {
@@ -3552,25 +3604,19 @@ textarea:focus {
   }
 }
 
-/*
-Floating Call / WhatsApp (disabled — use .email-float)
-.call-float { ... }
-.whatsapp-float { ... }
-*/
-
-/* Floating email button */
-.email-float {
+/* Floating WhatsApp button */
+.whatsapp-float {
   position: fixed;
   bottom: 30px;
   right: 20px;
   width: 60px;
   height: 60px;
-  background-color: #111111;
+  background-color: #25d366;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #000000;
+  border: 2px solid #1da851;
   box-shadow: none;
   z-index: 1000;
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
@@ -3578,31 +3624,31 @@ Floating Call / WhatsApp (disabled — use .email-float)
   text-decoration: none;
 }
 
-.email-float:hover {
-  background-color: #333333;
+.whatsapp-float:hover {
+  background-color: #20bd5a;
   transform: scale(1.1);
-  border-color: #1a1a1a;
+  border-color: #1a9e4a;
   box-shadow: none;
 }
 
-.email-float:active {
+.whatsapp-float:active {
   transform: scale(0.95);
 }
 
-.email-float svg {
+.whatsapp-float svg {
   width: 32px;
   height: 32px;
 }
 
 @media (max-width: 768px) {
-  .email-float {
+  .whatsapp-float {
     width: 56px;
     height: 56px;
     bottom: 90px;
     right: 20px;
   }
 
-  .email-float svg {
+  .whatsapp-float svg {
     width: 28px;
     height: 28px;
   }

@@ -1,7 +1,7 @@
 <?php
 /**
  * State/region lists by country. Used for checkout and any form that needs state dropdown.
- * Nigeria = NG (CURRENCY_IS_NGN) — we only deliver to Lagos. US/others — only California.
+ * Nigeria only — we deliver to Lagos.
  */
 if (!defined('PUPPIARY_STATES_LOADED')) {
     define('PUPPIARY_STATES_LOADED', true);
@@ -11,4 +11,4 @@ if (!defined('PUPPIARY_STATES_LOADED')) {
 $STATES_NG = ['Lagos'];
 
 // US (and other non-NG): only California available
-$STATES_US = ['California'];
+// $STATES_US = ['California'];

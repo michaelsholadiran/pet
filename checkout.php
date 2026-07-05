@@ -7,9 +7,11 @@ $page_canonical = '/checkout';
 $robots_noindex = true;
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
-// State dropdown and country value by region: Nigeria vs US (from config country/currency)
-$checkout_states = CURRENCY_IS_NGN ? $STATES_NG : $STATES_US;
-$checkout_country = CURRENCY_IS_NGN ? 'Nigeria' : 'United States';
+// State dropdown and country: Nigeria only
+$checkout_states = $STATES_NG;
+$checkout_country = 'Nigeria';
+// $checkout_states = CURRENCY_IS_NGN ? $STATES_NG : $STATES_US;
+// $checkout_country = CURRENCY_IS_NGN ? 'Nigeria' : 'United States';
 ?>
     <main>
         <section class="checkout-section">
@@ -80,11 +82,12 @@ $checkout_country = CURRENCY_IS_NGN ? 'Nigeria' : 'United States';
                     </div>
                     <div class="checkout-actions checkout-payment-buttons">
                         <button type="button" class="btn btn-primary btn-large btn-paystack" id="btn-paystack">Pay Now</button>
+                        <?php if (!CURRENCY_IS_NGN): ?>
                         <div id="paypal-button-container" class="paypal-button-container" aria-live="polite">
                             <p id="paypal-placeholder" class="paypal-placeholder">Loading PayPal…</p>
-                            <!-- <paypal-button type="pay" hidden></paypal-button> -->
                             <paypal-button hidden></paypal-button>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="checkout-guarantees">
                         <p class="guarantee-text"><strong>✓ 30-Day Money-Back Guarantee</strong><br>Not satisfied? Get a full refund, no questions asked.</p>
@@ -118,8 +121,14 @@ $checkout_country = CURRENCY_IS_NGN ? 'Nigeria' : 'United States';
         </section>
     </main>
 <?php
-$paypal_api_path = (dirname($_SERVER['SCRIPT_NAME']) === '/' || dirname($_SERVER['SCRIPT_NAME']) === '\\') ? '' : rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-$paypal_api_path = $paypal_api_path . '/api/paypal.php';
-$footer_scripts = '<script>window.PAYPAL_API="' . htmlspecialchars($paypal_api_path, ENT_QUOTES, 'UTF-8') . '";</script><script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="https://js.paystack.co/v1/inline.js"></script><script src="/js/paystack-checkout.js?v=' . (int) puppiary_asset_mtime('js/paystack-checkout.js') . '"></script><script src="' . htmlspecialchars(PAYPAL_SDK_URL, ENT_QUOTES, 'UTF-8') . '" async onload="if(typeof window.onPayPalWebSdkLoaded===\'function\'){window.onPayPalWebSdkLoaded();}"></script><script src="/js/paypal-checkout.js?v=' . (int) puppiary_asset_mtime('js/paypal-checkout.js') . '"></script><script src="/js/checkout.js?v=' . (int) puppiary_asset_mtime('js/checkout.js') . '"></script>';
+$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="https://js.paystack.co/v1/inline.js"></script><script src="/js/paystack-checkout.js?v=' . (int) puppiary_asset_mtime('js/paystack-checkout.js') . '"></script>';
+if (!CURRENCY_IS_NGN) {
+    $paypal_api_path = (dirname($_SERVER['SCRIPT_NAME']) === '/' || dirname($_SERVER['SCRIPT_NAME']) === '\\') ? '' : rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+    $paypal_api_path = $paypal_api_path . '/api/paypal.php';
+    $footer_scripts .= '<script>window.PAYPAL_API="' . htmlspecialchars($paypal_api_path, ENT_QUOTES, 'UTF-8') . '";</script>';
+    $footer_scripts .= '<script src="' . htmlspecialchars(PAYPAL_SDK_URL, ENT_QUOTES, 'UTF-8') . '" async onload="if(typeof window.onPayPalWebSdkLoaded===\'function\'){window.onPayPalWebSdkLoaded();}"></script>';
+    $footer_scripts .= '<script src="/js/paypal-checkout.js?v=' . (int) puppiary_asset_mtime('js/paypal-checkout.js') . '"></script>';
+}
+$footer_scripts .= '<script src="/js/checkout.js?v=' . (int) puppiary_asset_mtime('js/checkout.js') . '"></script>';
 require __DIR__ . '/includes/footer.php';
 ?>

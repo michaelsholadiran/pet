@@ -9,36 +9,40 @@ if (!defined('PUPPIARY_CONFIG_LOADED')) {
 // Canonical base URL (no trailing slash)
 define('SITE_URL', 'https://www.puppiary.com');
 
+// Market: Nigeria only (NGN). Re-enable geo detection below to serve US/USD again.
+define('MARKET_COUNTRY', 'NG');
+define('CURRENCY_IS_NGN', true);
+define('DELIVERY_FEE_NGN', 4800);
+// define('DELIVERY_FEE_USD', 15);
+
 // Country cookie: set once from Cloudflare HTTP_CF_IPCOUNTRY, then reuse
-define('COUNTRY_COOKIE_NAME', 'puppiary_country');
-define('COUNTRY_COOKIE_LIFETIME_DAYS', 365);
-if (!isset($_COOKIE[COUNTRY_COOKIE_NAME])) {
-    $country = isset($_SERVER['HTTP_CF_IPCOUNTRY']) && preg_match('/^[A-Z]{2}$/', $_SERVER['HTTP_CF_IPCOUNTRY'])
-        ? $_SERVER['HTTP_CF_IPCOUNTRY']
-        : 'US';
-    if ($country !== null) {
-        $is_https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
-        setcookie(COUNTRY_COOKIE_NAME, $country, [
-            'expires' => time() + (COUNTRY_COOKIE_LIFETIME_DAYS * 86400),
-            'path' => '/',
-            'secure' => $is_https,
-            'httponly' => false,
-            'samesite' => 'Lax',
-        ]);
-        $_COOKIE[COUNTRY_COOKIE_NAME] = $country;
-    }
-}
+// define('COUNTRY_COOKIE_NAME', 'puppiary_country');
+// define('COUNTRY_COOKIE_LIFETIME_DAYS', 365);
+// if (!isset($_COOKIE[COUNTRY_COOKIE_NAME])) {
+//     $country = isset($_SERVER['HTTP_CF_IPCOUNTRY']) && preg_match('/^[A-Z]{2}$/', $_SERVER['HTTP_CF_IPCOUNTRY'])
+//         ? $_SERVER['HTTP_CF_IPCOUNTRY']
+//         : 'US';
+//     if ($country !== null) {
+//         $is_https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+//         setcookie(COUNTRY_COOKIE_NAME, $country, [
+//             'expires' => time() + (COUNTRY_COOKIE_LIFETIME_DAYS * 86400),
+//             'path' => '/',
+//             'secure' => $is_https,
+//             'httponly' => false,
+//             'samesite' => 'Lax',
+//         ]);
+//         $_COOKIE[COUNTRY_COOKIE_NAME] = $country;
+//     }
+// }
 
 // Currency by country: Nigeria = NGN, all others = USD
-define('CURRENCY_IS_NGN', (isset($_COOKIE[COUNTRY_COOKIE_NAME]) && $_COOKIE[COUNTRY_COOKIE_NAME] === 'NG'));
-define('DELIVERY_FEE_NGN', 4800);
-define('DELIVERY_FEE_USD', 15);
+// define('CURRENCY_IS_NGN', (isset($_COOKIE[COUNTRY_COOKIE_NAME]) && $_COOKIE[COUNTRY_COOKIE_NAME] === 'NG'));
 
 // Site name for titles
 define('SITE_NAME', 'Puppiary');
 
 // SEO: default OG image path, theme color, Twitter handle
-define('DEFAULT_OG_IMAGE', '/products/indestructible-chew-toy/indestructible-chew-toy-1.jpg');
+define('DEFAULT_OG_IMAGE', '/products/calming-dog-bed/calming-dog-bed-1.webp');
 define('THEME_COLOR', '#e38106');
 define('TWITTER_HANDLE', '@puppiaryhq');
 

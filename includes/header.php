@@ -1,7 +1,7 @@
 <?php
 /**
  * Navbar + GTM noscript + mobile drawer.
- * Optional: $current_nav = 'shop'|'about'|'faq'|'contact' for active link
+ * Optional: $current_nav = 'shop'|'about'|'faq' for active link
  */
 require_once __DIR__ . '/config.php';
 ?>
@@ -19,7 +19,6 @@ require_once __DIR__ . '/config.php';
                 <a href="/products" class="nav-link<?php echo ($current_nav ?? '') === 'shop' ? ' active' : ''; ?>"<?php echo ($current_nav ?? '') === 'shop' ? ' aria-current="page"' : ''; ?>>Shop</a>
                 <a href="/about" class="nav-link<?php echo ($current_nav ?? '') === 'about' ? ' active' : ''; ?>"<?php echo ($current_nav ?? '') === 'about' ? ' aria-current="page"' : ''; ?>>About</a>
                 <a href="/faq" class="nav-link<?php echo ($current_nav ?? '') === 'faq' ? ' active' : ''; ?>"<?php echo ($current_nav ?? '') === 'faq' ? ' aria-current="page"' : ''; ?>>FAQ</a>
-                <a href="/contact" class="nav-link<?php echo ($current_nav ?? '') === 'contact' ? ' active' : ''; ?>"<?php echo ($current_nav ?? '') === 'contact' ? ' aria-current="page"' : ''; ?>>Contact</a>
             </nav>
             <button class="mobile-menu-button" aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
@@ -44,6 +43,5 @@ require_once __DIR__ . '/config.php';
             <a href="/products" class="drawer-link">Shop</a>
             <a href="/about" class="drawer-link">About</a>
             <a href="/faq" class="drawer-link">FAQ</a>
-            <a href="/contact" class="drawer-link">Contact</a>
         </nav>
     </aside>
