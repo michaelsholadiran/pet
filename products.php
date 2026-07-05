@@ -5,21 +5,14 @@ require_once __DIR__ . '/includes/products_data.php';
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $category = ''; // Category filter disabled – kept for HTML only (hidden)
 
-// Filter: published only, list_in_catalog not false (e.g. test products hidden), then by search
-$filtered = array_filter($products, function ($p) {
+// Published catalog for display (live search filters client-side)
+$catalog = array_values(array_filter($products, function ($p) {
     if (empty($p['published'])) return false;
     if (isset($p['list_in_catalog']) && $p['list_in_catalog'] === false) return false;
     return true;
-});
-if ($search !== '') {
-    $searchLower = mb_strtolower($search);
-    $filtered = array_filter($filtered, function ($p) use ($searchLower) {
-        $name = mb_strtolower($p['name']);
-        $short = isset($p['shortDescription']) ? mb_strtolower($p['shortDescription']) : '';
-        return (strpos($name, $searchLower) !== false || strpos($short, $searchLower) !== false);
-    });
-}
-$filtered = array_values($filtered);
+}));
+
+$filtered = $catalog;
 
 $inStock = array_filter($filtered, function ($p) { return isset($p['stock']) && $p['stock'] > 0; });
 $outOfStock = array_filter($filtered, function ($p) { return !isset($p['stock']) || $p['stock'] <= 0; });
@@ -110,8 +103,15 @@ require __DIR__ . '/includes/header.php';
                 </div>
             <?php else: ?>
                 <div class="product-grid" id="product-list">
-                    <?php foreach ($filtered as $p): ?>
-                        <a href="/product/<?php echo htmlspecialchars($p['slug']); ?>" class="product-card" data-product-id="<?php echo (int)$p['id']; ?>">
+                    <?php foreach ($filtered as $p):
+                        $searchText = mb_strtolower(
+                            $p['name'] . ' ' .
+                            ($p['shortDescription'] ?? '') . ' ' .
+                            ($p['category'] ?? '') . ' ' .
+                            ($p['description'] ?? '')
+                        );
+                    ?>
+                        <a href="/product/<?php echo htmlspecialchars($p['slug']); ?>" class="product-card" data-product-id="<?php echo (int)$p['id']; ?>" data-search-text="<?php echo htmlspecialchars($searchText, ENT_QUOTES, 'UTF-8'); ?>">
                             <img src="<?php echo htmlspecialchars($p['images'][0]); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>" class="product-card-image" loading="lazy" decoding="async" width="800" height="600">
                             <div class="product-card-content">
                                 <h3 class="product-card-name"><?php echo htmlspecialchars($p['name']); ?></h3>
@@ -128,6 +128,7 @@ require __DIR__ . '/includes/header.php';
                         </a>
                     <?php endforeach; ?>
                 </div>
+                <p id="no-results" class="no-results" hidden>No products found. Try a different search term.</p>
             <?php endif; ?>
         </section>
     </main>
@@ -148,12 +149,8 @@ foreach ($filtered as $i => $p) {
 $footer_scripts = '<script type="application/ld+json">' . json_encode($item_list_ld, JSON_UNESCAPED_SLASHES) . '</script>';
 $footer_scripts .= '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script>';
 $footer_scripts .= '<script>window.productListFiltered = ' . json_encode($filtered, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script>';
+$footer_scripts .= '<script src="/js/products-search.js?v=' . (int) puppiary_asset_mtime('js/products-search.js') . '"></script>';
 $footer_scripts .= '<script>document.addEventListener("DOMContentLoaded", function() {
-    var form = document.querySelector(".shop-section form[method=\"get\"]");
-    var cat = document.getElementById("category-filter");
-    if (form && cat) cat.addEventListener("change", function() { form.submit(); });
-    var searchBar = document.getElementById("search-bar");
-    if (form && searchBar) searchBar.addEventListener("keypress", function(e) { if (e.key === "Enter") form.submit(); });
     if (typeof trackViewItemList === "function" && window.productListFiltered && window.productListFiltered.length) trackViewItemList("Product List", window.productListFiltered);
     var list = document.getElementById("product-list");
     if (list) {

@@ -727,6 +727,11 @@ h1 {
   flex-direction: column;
 }
 
+.product-card[hidden],
+.product-card.product-card--search-hidden {
+  display: none !important;
+}
+
 
 .product-card[role="link"],
 a.product-card {
