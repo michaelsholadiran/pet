@@ -54,7 +54,7 @@ require __DIR__ . '/includes/header.php';
                 </div>
                 <div class="trust-item">
                     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>4.8★ from 2,500+ Happy Customers</span>
+                    <span>2,500+ Happy Customers</span>
                 </div>
             </div>
         </section>
