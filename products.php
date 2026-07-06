@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/products_data.php';
+require_once __DIR__ . '/includes/product_display.php';
+require_once __DIR__ . '/includes/seo_helpers.php';
 
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $category = ''; // Category filter disabled – kept for HTML only (hidden)
@@ -18,24 +20,13 @@ $inStock = array_filter($filtered, function ($p) { return isset($p['stock']) && 
 $outOfStock = array_filter($filtered, function ($p) { return !isset($p['stock']) || $p['stock'] <= 0; });
 $showRestocking = count($outOfStock) > count($inStock) && count($outOfStock) >= 3;
 
-function format_price_php($price) {
-    return number_format((float) $price, 2, '.', ',');
-}
-
-function product_display_price($p) {
-    if (defined('CURRENCY_IS_NGN') && CURRENCY_IS_NGN) {
-        return ['symbol' => '₦', 'value' => $p['price'], 'formatted' => format_price_php($p['price'])];
-    }
-    $usd = isset($p['price_usd']) ? $p['price_usd'] : round($p['price'] / 1500, 2);
-    return ['symbol' => '$', 'value' => $usd, 'formatted' => number_format((float) $usd, 2, '.', ',')];
-}
-
-$page_title = 'Shop - Puppiary';
-$page_description = 'Browse our full catalog across categories. Filter by category and search to find your next favorite.';
+$page_title = 'Shop Puppy Products - Toys, Food & Supplies | Puppiary';
+$page_description = 'Browse our full catalog of puppy toys, collars, food, treats, pads, and grooming essentials. Fast Lagos delivery and secure Paystack checkout.';
 $page_canonical = '/products';
 $current_nav = 'shop';
 $json_ld_scripts = [
-    ['@context' => 'https://schema.org', '@type' => 'CollectionPage', 'name' => $page_title, 'url' => SITE_URL . '/products', 'description' => $page_description]
+    ['@context' => 'https://schema.org', '@type' => 'CollectionPage', 'name' => $page_title, 'url' => SITE_URL . '/products', 'description' => $page_description],
+    puppiary_item_list_ld($catalog),
 ];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
@@ -133,21 +124,8 @@ require __DIR__ . '/includes/header.php';
         </section>
     </main>
 <?php
-// ItemList JSON-LD for SEO (PHP-driven)
-$item_list_ld = [
-    '@context' => 'https://schema.org',
-    '@type' => 'ItemList',
-    'itemListElement' => [],
-];
-foreach ($filtered as $i => $p) {
-    $item_list_ld['itemListElement'][] = [
-        '@type' => 'ListItem',
-        'position' => $i + 1,
-        'url' => 'https://www.puppiary.com/product/' . ($p['slug'] ?? $p['id']),
-    ];
-}
-$footer_scripts = '<script type="application/ld+json">' . json_encode($item_list_ld, JSON_UNESCAPED_SLASHES) . '</script>';
-$footer_scripts .= '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script>';
+// ItemList JSON-LD is output in <head> via $json_ld_scripts
+$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script>';
 $footer_scripts .= '<script>window.productListFiltered = ' . json_encode($filtered, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script>';
 $footer_scripts .= '<script src="/js/products-search.js?v=' . (int) puppiary_asset_mtime('js/products-search.js') . '"></script>';
 $footer_scripts .= '<script>document.addEventListener("DOMContentLoaded", function() {

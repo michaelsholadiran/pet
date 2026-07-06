@@ -32,6 +32,8 @@ $seo_noindex = !empty($robots_noindex);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php if ($seo_noindex): ?>
     <meta name="robots" content="noindex,nofollow">
+    <?php else: ?>
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <?php endif; ?>
     <meta name="description" content="<?php echo htmlspecialchars($page_description ?? 'Puppiary - Puppy toys, teething & starter kits.'); ?>">
     <?php if (!empty($page_keywords)): ?>
@@ -69,6 +71,7 @@ $seo_noindex = !empty($robots_noindex);
     <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url); ?>">
     <?php if ($seo_og_image_url): ?>
     <meta property="og:image" content="<?php echo htmlspecialchars($seo_og_image_url); ?>">
+    <meta property="og:image:alt" content="<?php echo htmlspecialchars($page_og_image_alt ?? $page_title ?? SITE_NAME); ?>">
     <?php endif; ?>
     <meta name="twitter:card" content="summary_large_image">
     <?php if (defined('TWITTER_HANDLE') && TWITTER_HANDLE): ?>
@@ -78,6 +81,7 @@ $seo_noindex = !empty($robots_noindex);
     <meta name="twitter:description" content="<?php echo htmlspecialchars($page_description ?? 'Puppiary - Puppy toys, teething & starter kits.'); ?>">
     <?php if ($seo_og_image_url): ?>
     <meta name="twitter:image" content="<?php echo htmlspecialchars($seo_og_image_url); ?>">
+    <meta name="twitter:image:alt" content="<?php echo htmlspecialchars($page_og_image_alt ?? $page_title ?? SITE_NAME); ?>">
     <?php endif; ?>
     <script>
     window.CURRENCY = <?php echo json_encode(CURRENCY_IS_NGN ? 'NGN' : 'USD'); ?>;

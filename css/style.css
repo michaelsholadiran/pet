@@ -962,6 +962,21 @@ a.product-card {
   min-height: 70vh;
 }
 
+.product-breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #666);
+}
+
+.product-breadcrumb a {
+  color: var(--primary-orange);
+  text-decoration: none;
+}
+
+.product-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
 .back-link {
   display: inline-block;
   color: var(--primary-orange);

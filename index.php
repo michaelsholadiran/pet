@@ -1,28 +1,14 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/products_data.php';
+require_once __DIR__ . '/includes/product_display.php';
+require_once __DIR__ . '/includes/seo_helpers.php';
 
 $home_products = array_values(array_filter($products, function ($p) {
     if (empty($p['published'])) return false;
     if (isset($p['list_in_catalog']) && $p['list_in_catalog'] === false) return false;
     return true;
 }));
-
-if (!function_exists('format_price_php')) {
-    function format_price_php($price) {
-        return number_format((float) $price, 2, '.', ',');
-    }
-}
-
-if (!function_exists('product_display_price')) {
-    function product_display_price($p) {
-        if (defined('CURRENCY_IS_NGN') && CURRENCY_IS_NGN) {
-            return ['symbol' => '₦', 'value' => $p['price'], 'formatted' => format_price_php($p['price'])];
-        }
-        $usd = isset($p['price_usd']) ? $p['price_usd'] : round($p['price'] / 1500, 2);
-        return ['symbol' => '$', 'value' => $usd, 'formatted' => number_format((float) $usd, 2, '.', ',')];
-    }
-}
 
 $page_title = 'Puppy Toys, Teething & Starter Kits | Non-Toxic Supplies | Puppiary';
 $page_description = 'The ultimate resource for new puppy parents. Shop durable chew toys, training gear, and comfort essentials designed to solve teething pain and separation anxiety.';
@@ -31,8 +17,9 @@ $page_keywords = 'puppy toys, puppy chew toys, puppy teething toys, puppy starte
 $body_class = 'home';
 $extra_head = '    <link rel="preload" href="/products/calming-dog-bed/calming-dog-bed-1.webp" as="image" fetchpriority="high">';
 $json_ld_scripts = [
-    ['@context' => 'https://schema.org', '@type' => 'Organization', 'name' => SITE_NAME, 'url' => SITE_URL],
-    ['@context' => 'https://schema.org', '@type' => 'WebSite', 'name' => SITE_NAME, 'url' => SITE_URL, 'publisher' => ['@type' => 'Organization', 'name' => SITE_NAME], 'potentialAction' => ['@type' => 'SearchAction', 'target' => ['@type' => 'EntryPoint', 'urlTemplate' => SITE_URL . '/products?search={search_term_string}'], 'query-input' => 'required name=search_term_string']]
+    puppiary_organization_ld(),
+    ['@context' => 'https://schema.org', '@type' => 'WebSite', 'name' => SITE_NAME, 'url' => SITE_URL, 'publisher' => puppiary_organization_ld(), 'potentialAction' => ['@type' => 'SearchAction', 'target' => ['@type' => 'EntryPoint', 'urlTemplate' => SITE_URL . '/products?search={search_term_string}'], 'query-input' => 'required name=search_term_string']],
+    puppiary_item_list_ld($home_products),
 ];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';

@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/products_data.php';
+require_once __DIR__ . '/includes/product_display.php';
+require_once __DIR__ . '/includes/seo_helpers.php';
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 if ($slug === '' && !empty($_SERVER['REQUEST_URI'])) {
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -41,129 +43,112 @@ if ($slug !== '' || $idParam > 0) {
     $product_ld = $matched;
 }
 $page_title = $product_ld ? ($product_ld['name'] . ' - Puppiary') : 'Product - Puppiary';
-$page_description = $product_ld ? (isset($product_ld['shortDescription']) ? $product_ld['shortDescription'] : 'Shop quality puppy and dog products at Puppiary.') : 'Shop quality puppy and dog products at Puppiary.';
+$page_description = $product_ld ? ($product_ld['shortDescription'] ?? 'Shop quality puppy products at Puppiary.') : 'Shop quality puppy products at Puppiary.';
 $page_canonical = '/product' . ($slug ? '/' . $slug : '');
+$page_og_type = $product_ld ? 'product' : 'website';
+$page_og_image = $product_ld ? $product_ld['images'][0] : null;
+$page_og_image_alt = $product_ld ? $product_ld['name'] : null;
+$robots_noindex = !$product_ld;
 $json_ld_scripts = [];
 if ($product_ld) {
-    $price = isset($product_ld['price']) ? (float) $product_ld['price'] : 0;
-    $price_usd = isset($product_ld['price_usd']) ? (float) $product_ld['price_usd'] : round($price / 1500, 2);
-    $currency = (defined('CURRENCY_IS_NGN') && CURRENCY_IS_NGN) ? 'NGN' : 'USD';
-    $price_value = $currency === 'NGN' ? $price : $price_usd;
-    $product_url = rtrim(SITE_URL, '/') . '/product/' . $product_ld['slug'];
-    $image_url = (strpos($product_ld['images'][0], 'http') === 0) ? $product_ld['images'][0] : rtrim(SITE_URL, '/') . $product_ld['images'][0];
-    $availability = (isset($product_ld['stock']) && $product_ld['stock'] > 0)
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock';
-    $json_ld_scripts[] = [
-        '@context' => 'https://schema.org',
-        '@type' => 'Product',
-        'name' => $product_ld['name'],
-        'description' => isset($product_ld['description']) ? $product_ld['description'] : (isset($product_ld['shortDescription']) ? $product_ld['shortDescription'] : ''),
-        'image' => $image_url,
-        'url' => $product_url,
-        'sku' => (string) $product_ld['id'],
-        'category' => isset($product_ld['category']) ? $product_ld['category'] : '',
-        'offers' => [
-            '@type' => 'Offer',
-            'url' => $product_url,
-            'priceCurrency' => $currency,
-            'price' => $price_value,
-            'availability' => $availability,
-            'priceValidUntil' => date('Y-m-d', strtotime('+1 year')),
-            'shippingDetails' => [
-                '@type' => 'OfferShippingDetails',
-                'deliveryTime' => [
-                    '@type' => 'ShippingDeliveryTime',
-                    'handlingTime' => [
-                        '@type' => 'QuantitativeValue',
-                        'minValue' => 1,
-                        'maxValue' => 2,
-                        'unitCode' => 'DAY',
-                    ],
-                    'transitTime' => [
-                        '@type' => 'QuantitativeValue',
-                        'minValue' => 2,
-                        'maxValue' => 5,
-                        'unitCode' => 'DAY',
-                    ],
-                ],
-            ],
-            'hasMerchantReturnPolicy' => [
-                '@type' => 'MerchantReturnPolicy',
-                'applicableCountry' => ['NG', 'US'],
-                'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
-                'merchantReturnDays' => 30,
-                'returnMethod' => 'https://schema.org/ReturnByMail',
-                'returnFees' => 'https://schema.org/ReturnShippingFees',
-            ],
-        ],
-    ];
+    $json_ld_scripts[] = puppiary_product_ld($product_ld);
+    $json_ld_scripts[] = puppiary_breadcrumb_ld([
+        ['name' => 'Home', 'url' => '/'],
+        ['name' => 'Shop', 'url' => '/products'],
+        ['name' => $product_ld['name'], 'url' => '/product/' . $product_ld['slug']],
+    ]);
 }
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
+$delivery_fee_display = product_display_price(['price' => DELIVERY_FEE_NGN]);
 ?>
     <main>
-        <section class="product-detail" id="product-detail">
-            <p>Loading...</p>
+        <section class="product-detail" id="product-detail"<?php echo $product_ld ? ' data-product-slug="' . htmlspecialchars($product_ld['slug']) . '"' : ''; ?>>
+            <?php if ($product_ld): ?>
+                <?php
+                $p = $product_ld;
+                $dp = product_display_price($p);
+                $in_stock = isset($p['stock']) && $p['stock'] > 0;
+                ?>
+                <nav class="product-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a> / <a href="/products">Shop</a> / <span aria-current="page"><?php echo htmlspecialchars($p['name']); ?></span>
+                </nav>
+                <div class="product-detail-container">
+                    <div class="product-image-section">
+                        <img src="<?php echo htmlspecialchars($p['images'][0]); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>" class="product-detail-image" id="main-product-image" loading="eager" decoding="async" fetchpriority="high" width="800" height="600">
+                        <?php if (count($p['images']) > 1): ?>
+                        <div class="product-thumbnails">
+                            <?php foreach ($p['images'] as $index => $img): ?>
+                                <img src="<?php echo htmlspecialchars($img); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>" class="product-thumbnail<?php echo $index === 0 ? ' active' : ''; ?>" data-image-index="<?php echo (int) $index; ?>" loading="lazy" decoding="async">
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="product-info-section">
+                        <h1><?php echo htmlspecialchars($p['name']); ?></h1>
+                        <p class="product-category">Category: <?php echo htmlspecialchars($p['category']); ?></p>
+                        <p class="product-price"><?php echo htmlspecialchars($dp['symbol'] . $dp['formatted']); ?></p>
+                        <p class="product-stock <?php echo $in_stock ? 'in-stock' : 'out-of-stock'; ?>"><?php echo $in_stock ? ((int) $p['stock'] . ' in stock') : 'Out of stock'; ?></p>
+                        <p class="product-description"><?php echo htmlspecialchars($p['description']); ?></p>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button type="button" class="qty-btn" id="qty-decrease" aria-label="Decrease quantity">−</button>
+                                <input type="number" id="quantity" value="1" min="1" max="<?php echo (int) $p['stock']; ?>" aria-label="Quantity">
+                                <button type="button" class="qty-btn" id="qty-increase" aria-label="Increase quantity">+</button>
+                            </div>
+                            <button type="button" class="btn btn-primary add-to-cart-btn" id="add-to-cart"<?php echo $in_stock ? '' : ' disabled'; ?>>Add to Cart</button>
+                        </div>
+                        <div class="product-shipping-info" style="margin-top:2rem;padding-top:2rem;border-top:1px solid #eee">
+                            <h2 style="font-size:1.25rem;margin-bottom:1rem;font-weight:600">Shipping Details</h2>
+                            <div style="display:flex;flex-direction:column;gap:0.75rem">
+                                <div style="display:flex;align-items:flex-start;gap:0.5rem">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" style="flex-shrink:0" aria-hidden="true"><path fill="currentColor" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z"/></svg>
+                                    <div>
+                                        <strong>Delivery Fee:</strong> <?php echo htmlspecialchars($delivery_fee_display['symbol'] . $delivery_fee_display['formatted']); ?>
+                                        <?php if (CURRENCY_IS_NGN): ?><br><span style="color:#666;font-size:0.9rem">Standard delivery within Lagos</span><?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php else: ?>
+                <p>Browse our <a href="/products">puppy product catalog</a> to find what you need.</p>
+            <?php endif; ?>
         </section>
     </main>
 <?php
-// Product page uses JS to render; load product detail script from original product.html
 $footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script>';
 require __DIR__ . '/includes/footer.php';
 ?>
-<!-- Product detail page script (must run after window.products) -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var path = window.location.pathname;
-    var pathParts = path.split('/').filter(function(part) { return part; });
-    var slugFromPath = pathParts.length > 1 && pathParts[0] === 'product' ? pathParts[1] : null;
-    var urlParams = new URLSearchParams(window.location.search);
-    var slugParam = slugFromPath || urlParams.get('slug');
-    var idParam = urlParams.get('id');
-    var productId = idParam ? parseInt(idParam, 10) : null;
+    var container = document.getElementById('product-detail');
+    if (!container) return;
+
+    var slugParam = container.getAttribute('data-product-slug');
     var product = null;
     if (slugParam && typeof products !== 'undefined') {
         product = products.find(function(p) { return p.slug === slugParam; });
     }
-    if (!product && productId && typeof products !== 'undefined') {
-        product = products.find(function(p) { return p.id === productId; });
-    }
-    var container = document.getElementById('product-detail');
-    if (!container) return;
     if (!product) {
-        container.innerHTML = '<p>Product not found.</p>';
-        return;
+        var path = window.location.pathname;
+        var pathParts = path.split('/').filter(function(part) { return part; });
+        var slugFromPath = pathParts.length > 1 && pathParts[0] === 'product' ? pathParts[1] : null;
+        var urlParams = new URLSearchParams(window.location.search);
+        slugParam = slugFromPath || urlParams.get('slug');
+        var idParam = urlParams.get('id');
+        if (slugParam && typeof products !== 'undefined') {
+            product = products.find(function(p) { return p.slug === slugParam; });
+        }
+        if (!product && idParam && typeof products !== 'undefined') {
+            product = products.find(function(p) { return p.id === parseInt(idParam, 10); });
+        }
     }
-    if (product.published === false) {
-        container.innerHTML = '<p>Product not found.</p>';
-        return;
-    }
+
+    if (!product || product.published === false) return;
     if (typeof trackViewItem === 'function') trackViewItem(product);
-    var thumbnails = product.images.map(function(img, index) {
-        return '<img src="' + img + '" alt="' + (product.name) + '" class="product-thumbnail ' + (index === 0 ? 'active' : '') + '" data-image-index="' + index + '" loading="lazy" decoding="async">';
-    }).join('');
-    var detailHTML = '<div class="product-detail-container">' +
-        '<div class="product-image-section">' +
-        '<img src="' + product.images[0] + '" alt="' + (product.name) + '" class="product-detail-image" id="main-product-image" loading="eager" decoding="async" fetchpriority="high" width="800" height="600">' +
-        '<div class="product-thumbnails">' + thumbnails + '</div></div>' +
-        '<div class="product-info-section">' +
-        '<h1>' + product.name + '</h1>' +
-        '<p class="product-category">Category: ' + product.category + '</p>' +
-        '<p class="product-price">' + (typeof window.CURRENCY_SYMBOL !== 'undefined' && window.CURRENCY_SYMBOL ? window.CURRENCY_SYMBOL : '₦') + (typeof formatPrice === 'function' ? formatPrice((window.CURRENCY === 'USD' ? (product.price_usd != null ? product.price_usd : product.price / 1500) : product.price)) : (window.CURRENCY === 'USD' ? (product.price_usd != null ? product.price_usd : product.price / 1500) : product.price).toLocaleString()) + '</p>' +
-        '<p class="product-stock ' + (product.stock > 0 ? 'in-stock' : 'out-of-stock') + '">' + (product.stock > 0 ? product.stock + ' in stock' : 'Out of stock') + '</p>' +
-        '<p class="product-description">' + product.description + '</p>' +
-        '<div class="product-actions">' +
-        '<div class="quantity-selector">' +
-        '<button class="qty-btn" id="qty-decrease">−</button>' +
-        '<input type="number" id="quantity" value="1" min="1" max="' + product.stock + '" aria-label="Quantity">' +
-        '<button class="qty-btn" id="qty-increase">+</button></div>' +
-        '<button class="btn btn-primary add-to-cart-btn" id="add-to-cart"' + (product.stock === 0 ? ' disabled' : '') + '>Add to Cart</button></div>' +
-        '<div class="product-shipping-info" style="margin-top:2rem;padding-top:2rem;border-top:1px solid #eee">' +
-        '<h3 style="font-size:1.25rem;margin-bottom:1rem;font-weight:600">Shipping Details</h3>' +
-        '<div style="display:flex;flex-direction:column;gap:0.75rem">' +
-        '<div style="display:flex;align-items:flex-start;gap:0.5rem"><svg viewBox="0 0 24 24" width="20" height="20" style="flex-shrink:0" aria-hidden="true"><path fill="currentColor" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z"/></svg><div><strong>Delivery Fee:</strong> ' + (typeof window.CURRENCY_SYMBOL !== 'undefined' && window.CURRENCY_SYMBOL ? window.CURRENCY_SYMBOL : '₦') + (typeof formatPrice === 'function' && typeof window.DELIVERY_FEE !== 'undefined' ? formatPrice(window.DELIVERY_FEE) : (typeof window.DELIVERY_FEE !== 'undefined' && window.DELIVERY_FEE != null ? (window.CURRENCY === 'USD' ? Number(window.DELIVERY_FEE).toLocaleString('en-US', { minimumFractionDigits: 2 }) : Number(window.DELIVERY_FEE).toLocaleString('en-NG')) : '')) + (window.CURRENCY === 'NGN' ? '<br><span style="color:#666;font-size:0.9rem">Standard delivery within Lagos</span>' : '') + '</div></div></div></div></div></div>';
-    container.innerHTML = detailHTML;
+
     var mainImg = document.getElementById('main-product-image');
     var thumbs = container.querySelectorAll('.product-thumbnail');
     thumbs.forEach(function(thumb, i) {
@@ -173,11 +158,13 @@ document.addEventListener('DOMContentLoaded', function() {
             thumb.classList.add('active');
         });
     });
+
     var qtyInput = document.getElementById('quantity');
     var qtyDec = document.getElementById('qty-decrease');
     var qtyInc = document.getElementById('qty-increase');
-    if (qtyDec) qtyDec.addEventListener('click', function() { var v = parseInt(qtyInput.value, 10) || 1; if (v > 1) qtyInput.value = v - 1; });
-    if (qtyInc) qtyInc.addEventListener('click', function() { var v = parseInt(qtyInput.value, 10) || 1; var max = product.stock || 999; if (v < max) qtyInput.value = v + 1; });
+    if (qtyDec && qtyInput) qtyDec.addEventListener('click', function() { var v = parseInt(qtyInput.value, 10) || 1; if (v > 1) qtyInput.value = v - 1; });
+    if (qtyInc && qtyInput) qtyInc.addEventListener('click', function() { var v = parseInt(qtyInput.value, 10) || 1; var max = product.stock || 999; if (v < max) qtyInput.value = v + 1; });
+
     var addBtn = document.getElementById('add-to-cart');
     if (addBtn && typeof addToCart === 'function') {
         addBtn.addEventListener('click', function() {

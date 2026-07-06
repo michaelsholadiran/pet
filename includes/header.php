@@ -12,7 +12,7 @@ require_once __DIR__ . '/config.php';
     <header class="navbar">
         <div class="navbar-container">
             <a href="/" class="navbar-logo">
-                <img src="/logo.webp" alt="" class="logo-image" width="50" height="50">
+                <img src="/logo.webp" alt="<?php echo htmlspecialchars(SITE_NAME); ?> logo" class="logo-image" width="50" height="50">
                 <?php echo htmlspecialchars(SITE_NAME); ?>
             </a>
             <nav class="navbar-menu" aria-label="Primary">

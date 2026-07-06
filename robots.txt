@@ -8,5 +8,7 @@ Allow: /
 Disallow: /cart
 Disallow: /checkout
 Disallow: /success
+Disallow: /404
 
+Sitemap: https://www.puppiary.com/sitemap.php
 Sitemap: https://www.puppiary.com/sitemap.xml

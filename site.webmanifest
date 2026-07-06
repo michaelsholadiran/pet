@@ -1,6 +1,9 @@
 {
   "name": "Puppiary",
   "short_name": "Puppiary",
+  "description": "Shop puppy toys, teething gear, and starter kits from Puppiary.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
