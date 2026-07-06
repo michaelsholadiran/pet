@@ -105,8 +105,30 @@ require_once __DIR__ . '/config.php';
         </div>
     </footer>
 
+    <div class="cart-drawer-overlay" data-cart-overlay hidden></div>
+    <aside id="cart-drawer" class="cart-drawer" aria-hidden="true" inert aria-label="Shopping cart">
+        <div class="cart-drawer-header">
+            <h2 class="cart-drawer-title">Your Cart</h2>
+            <button type="button" class="cart-drawer-close" aria-label="Close cart">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M18.3 5.71 12 12l6.3 6.29-1.41 1.41L10.59 13.4 4.29 19.7 2.88 18.3 9.17 12 2.88 5.71 4.29 4.3l6.3 6.3 6.29-6.3z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="cart-drawer-scroll" id="cart-drawer-items"></div>
+        <div class="cart-drawer-footer" id="cart-drawer-summary" hidden></div>
+    </aside>
+
+    <?php
+    if (!isset($products)) {
+        require_once __DIR__ . '/products_data.php';
+    }
+    ?>
+    <script>window.products = window.products || <?php echo json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;</script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js" defer></script>
     <script src="/js/main.js?v=<?php echo (int) puppiary_asset_mtime('js/main.js'); ?>" defer></script>
     <script src="/js/analytics.js?v=<?php echo (int) puppiary_asset_mtime('js/analytics.js'); ?>" defer></script>
+    <script src="/js/cart.js?v=<?php echo (int) puppiary_asset_mtime('js/cart.js'); ?>" defer></script>
     <?php if (!empty($footer_scripts)) echo $footer_scripts . "\n"; ?>
 
     <a href="https://wa.me/2347016426458" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp">

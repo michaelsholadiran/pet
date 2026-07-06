@@ -1,19 +1,18 @@
 <?php
-require_once __DIR__ . '/includes/products_data.php';
+require_once __DIR__ . '/includes/config.php';
 $page_title = 'Cart - Puppiary';
 $page_description = 'Your shopping cart at Puppiary.';
 $page_canonical = '/cart';
 $robots_noindex = true;
+$body_class = 'cart-redirect';
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
     <main>
         <section class="cart-section">
-            <h1>Shopping Cart</h1>
-            <div id="cart-content"></div>
+            <p>Opening your cart…</p>
         </section>
     </main>
 <?php
-$footer_scripts = '<script>window.products = ' . json_encode($products, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ';</script><script>var products = window.products || [];</script><script src="/js/cart.js?v=' . (int) puppiary_asset_mtime('js/cart.js') . '"></script>';
+$footer_scripts = '<script>document.body.dataset.openCart = "true";</script>';
 require __DIR__ . '/includes/footer.php';
-?>

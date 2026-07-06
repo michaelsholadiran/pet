@@ -57,6 +57,7 @@ $seo_noindex = !empty($robots_noindex);
     <meta name="apple-mobile-web-app-title" content="<?php echo htmlspecialchars(SITE_NAME); ?>" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="stylesheet" href="/css/style.css?v=<?php echo (int) puppiary_asset_mtime('css/style.css'); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url); ?>">
     <?php if (!$seo_noindex): ?>

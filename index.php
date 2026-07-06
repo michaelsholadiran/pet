@@ -55,9 +55,18 @@ require __DIR__ . '/includes/header.php';
                     <p class="promo-banner-description">Simple, effective products designed to keep your puppy happy, healthy, and comfortable.</p>
                     <div class="promo-banner-actions">
                         <a href="/products" class="btn btn-promo-primary">Shop</a>
-                        <a href="/about" class="btn btn-promo-secondary">Our Story</a>
+                        <button type="button" class="btn btn-promo-secondary starter-kit-btn">Starter Kit</button>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="home-starter-kit-section" aria-label="Puppy Starter Kit">
+            <div class="home-starter-kit-inner">
+                <h2>Everything Your Puppy Needs. One Simple Starter Kit.</h2>
+                <h3 class="home-starter-kit-subtitle">Skip the stress of figuring out what to buy.</h3>
+                <p>Bringing home a new puppy is exciting&mdash;but knowing what you actually need can feel overwhelming. We&rsquo;ve done the hard work for you.</p>
+                <p>Our Puppy Starter Kit includes the essential food, treats, toys, grooming, and training supplies your puppy needs in one carefully selected bundle. No endless searching. No second-guessing. Just everything you need to give your puppy the best start from day one.</p>
+                <button type="button" class="btn btn-promo-primary starter-kit-btn">Get Starter Kit</button>
             </div>
         </section>
         <section class="shop-section home-products-section" aria-label="Our Products">
@@ -76,9 +85,7 @@ require __DIR__ . '/includes/header.php';
                                 <div class="product-card-footer">
                                     <?php $dp = product_display_price($p); ?>
                                     <span class="product-card-price"><?php echo htmlspecialchars($dp['symbol'] . $dp['formatted']); ?></span>
-                                    <div class="product-card-actions">
-                                        <button type="button" class="btn btn-primary add-to-cart-btn" data-product-id="<?php echo (int)$p['id']; ?>">Add to Cart</button>
-                                    </div>
+                                    <?php require __DIR__ . '/includes/product_card_actions.php'; ?>
                                 </div>
                             </div>
                         </a>
@@ -98,7 +105,7 @@ $footer_scripts .= '<script>document.addEventListener("DOMContentLoaded", functi
     if (grid) {
         grid.querySelectorAll(".product-card[data-product-id]").forEach(function(card) {
             card.addEventListener("click", function(e) {
-                if (e.target.closest(".add-to-cart-btn")) return;
+                if (e.target.closest(".add-to-cart-btn") || e.target.closest(".product-card-qty")) return;
                 var id = card.getAttribute("data-product-id");
                 var product = window.products && window.products.find(function(p) { return String(p.id) === id; });
                 if (product && typeof trackSelectItem === "function") trackSelectItem("Homepage", product);

@@ -25,10 +25,10 @@ require_once __DIR__ . '/config.php';
                     <path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
                 </svg>
             </button>
-            <a href="/cart" class="cart-icon" aria-label="Cart">
+            <button type="button" id="cart-toggle" class="cart-icon" aria-label="Open cart" aria-controls="cart-drawer" aria-expanded="false">
                 <span class="cart-icon-text">🛒</span>
                 <span class="cart-counter" aria-label="Items in cart">0</span>
-            </a>
+            </button>
         </div>
     </header>
 

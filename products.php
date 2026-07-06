@@ -68,9 +68,7 @@ require __DIR__ . '/includes/header.php';
                                         <div class="product-card-footer">
                                             <?php $dp = product_display_price($p); ?>
                                             <span class="product-card-price"><?php echo htmlspecialchars($dp['symbol'] . $dp['formatted']); ?></span>
-                                            <div class="product-card-actions">
-                                                <button type="button" class="btn btn-primary add-to-cart-btn" data-product-id="<?php echo (int)$p['id']; ?>">Add to Cart</button>
-                                            </div>
+                                            <?php require __DIR__ . '/includes/product_card_actions.php'; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -111,9 +109,7 @@ require __DIR__ . '/includes/header.php';
                                 <div class="product-card-footer">
                                     <?php $dp = product_display_price($p); ?>
                                     <span class="product-card-price"><?php echo htmlspecialchars($dp['symbol'] . $dp['formatted']); ?></span>
-                                    <div class="product-card-actions">
-                                        <button type="button" class="btn btn-primary add-to-cart-btn" data-product-id="<?php echo (int)$p['id']; ?>">Add to Cart</button>
-                                    </div>
+                                    <?php require __DIR__ . '/includes/product_card_actions.php'; ?>
                                 </div>
                             </div>
                         </a>
@@ -134,7 +130,7 @@ $footer_scripts .= '<script>document.addEventListener("DOMContentLoaded", functi
     if (list) {
         list.querySelectorAll(".product-card[data-product-id]").forEach(function(card) {
             card.addEventListener("click", function(e) {
-                if (e.target.closest(".add-to-cart-btn")) return;
+                if (e.target.closest(".add-to-cart-btn") || e.target.closest(".product-card-qty")) return;
                 var id = card.getAttribute("data-product-id");
                 var product = window.products && window.products.find(function(p) { return String(p.id) === id; });
                 if (product && typeof trackSelectItem === "function") trackSelectItem("Product List", product);
@@ -154,7 +150,7 @@ if ($showRestocking):
         var cards = document.querySelectorAll(".restocking-section .product-card[data-href]");
         cards.forEach(function(card) {
             card.addEventListener("click", function(e) {
-                if (e.target.closest(".add-to-cart-btn")) return;
+                if (e.target.closest(".add-to-cart-btn") || e.target.closest(".product-card-qty")) return;
                 var id = card.getAttribute("data-product-id");
                 var product = window.products && window.products.find(function(p) { return String(p.id) === id; });
                 if (product && typeof trackSelectItem === "function") trackSelectItem("Currently Available", product);
