@@ -5,6 +5,13 @@
  */
 require_once __DIR__ . '/config.php';
 ?>
+    <section id="recently-viewed-section" class="recently-viewed" hidden aria-label="Recently viewed products">
+        <div class="recently-viewed-inner">
+            <h2 class="recently-viewed-title">Recently Viewed</h2>
+            <div class="recently-viewed-track" id="recently-viewed-track"></div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -129,6 +136,7 @@ require_once __DIR__ . '/config.php';
     <script src="/js/main.js?v=<?php echo (int) puppiary_asset_mtime('js/main.js'); ?>" defer></script>
     <script src="/js/analytics.js?v=<?php echo (int) puppiary_asset_mtime('js/analytics.js'); ?>" defer></script>
     <script src="/js/cart.js?v=<?php echo (int) puppiary_asset_mtime('js/cart.js'); ?>" defer></script>
+    <script src="/js/recently-viewed.js?v=<?php echo (int) puppiary_asset_mtime('js/recently-viewed.js'); ?>" defer></script>
     <?php if (!empty($footer_scripts)) echo $footer_scripts . "\n"; ?>
 
     <a href="https://wa.me/2347016426458" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp">
