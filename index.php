@@ -64,7 +64,7 @@ require __DIR__ . '/includes/header.php';
             <div class="home-starter-kit-inner">
                 <h2>Everything Your Puppy Needs. One Simple Starter Kit.</h2>
                 <h3 class="home-starter-kit-subtitle">Skip the stress of figuring out what to buy.</h3>
-                <p>Bringing home a new puppy is exciting&mdash;but knowing what you actually need can feel overwhelming. We&rsquo;ve done the hard work for you.</p>
+                <p>Bringing home a new puppy is exciting - but knowing what you actually need can feel overwhelming. We&rsquo;ve done the hard work for you.</p>
                 <p>Our Puppy Starter Kit includes the essential food, treats, toys, grooming, and training supplies your puppy needs in one carefully selected bundle. No endless searching. No second-guessing. Just everything you need to give your puppy the best start from day one.</p>
                 <button type="button" class="btn btn-promo-primary starter-kit-btn">Get Starter Kit</button>
             </div>
