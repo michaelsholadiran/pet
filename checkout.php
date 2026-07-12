@@ -45,10 +45,12 @@ $checkout_country = 'Nigeria';
                                 <?php endforeach; ?>
                             </select>
                         </div>
+                        <?php /* PayPal only — re-enable when PayPal checkout is live
                         <div class="form-group">
                             <label for="postal_code"><?php echo $checkout_country === 'Nigeria' ? 'Postal code' : 'ZIP code'; ?> *</label>
                             <input type="text" id="postal_code" name="postal_code" required placeholder="<?php echo $checkout_country === 'Nigeria' ? 'e.g. 100001' : 'e.g. 90210'; ?>" maxlength="20" aria-label="Postal or ZIP code">
                         </div>
+                        */ ?>
                         <input type="hidden" id="country" name="country" value="<?php echo htmlspecialchars($checkout_country, ENT_QUOTES, 'UTF-8'); ?>">
                     </fieldset>
                     <div class="accepted-payment-methods">

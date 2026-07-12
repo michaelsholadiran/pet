@@ -49,8 +49,8 @@
             { id: 'phone', key: 'phone' },
             { id: 'fullname', key: 'fullname' },
             { id: 'address1', key: 'address1' },
-            { id: 'state', key: 'state' },
-            { id: 'postal_code', key: 'postal_code' }
+            { id: 'state', key: 'state' }
+            // { id: 'postal_code', key: 'postal_code' } // PayPal only
         ];
 
         try {
