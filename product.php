@@ -105,7 +105,7 @@ $delivery_fee_display = product_display_price(['price' => DELIVERY_FEE_NGN]);
                                     <svg viewBox="0 0 24 24" width="20" height="20" style="flex-shrink:0" aria-hidden="true"><path fill="currentColor" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z"/></svg>
                                     <div>
                                         <strong>Delivery Fee:</strong> <?php echo htmlspecialchars($delivery_fee_display['symbol'] . $delivery_fee_display['formatted']); ?>
-                                        <?php if (CURRENCY_IS_NGN): ?><br><span style="color:#666;font-size:0.9rem">Standard delivery within Lagos</span><?php endif; ?>
+                                        <?php if (CURRENCY_IS_NGN): ?><br><span style="color:#666;font-size:0.9rem"><?php echo htmlspecialchars(puppiary_delivery_window_text()); ?> · Lagos delivery</span><?php endif; ?>
                                     </div>
                                 </div>
                             </div>

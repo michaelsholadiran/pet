@@ -29,7 +29,7 @@ require __DIR__ . '/includes/header.php';
             <div class="home-trust-bar-inner">
                 <div class="trust-item">
                     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z"/></svg>
-                    <span>Fast Lagos Delivery</span>
+                    <span><?php echo htmlspecialchars(puppiary_delivery_window_text()); ?></span>
                 </div>
                 <div class="trust-item">
                     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>

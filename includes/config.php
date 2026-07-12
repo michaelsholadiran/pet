@@ -13,6 +13,8 @@ define('SITE_URL', 'https://www.puppiary.com');
 define('MARKET_COUNTRY', 'NG');
 define('CURRENCY_IS_NGN', true);
 define('DELIVERY_FEE_NGN', 4800);
+define('DELIVERY_DAYS_MIN', 3);
+define('DELIVERY_DAYS_MAX', 7);
 // define('DELIVERY_FEE_USD', 15);
 
 // Country cookie: set once from Cloudflare HTTP_CF_IPCOUNTRY, then reuse
@@ -87,5 +89,44 @@ if (!function_exists('puppiary_asset_mtime')) {
     {
         $path = __DIR__ . '/../' . ltrim($relativePath, '/');
         return is_file($path) ? filemtime($path) : 0;
+    }
+}
+
+/**
+ * Move Sunday deliveries to Monday (no Sunday delivery).
+ */
+if (!function_exists('puppiary_adjust_delivery_date')) {
+    function puppiary_adjust_delivery_date(DateTimeImmutable $date): DateTimeImmutable
+    {
+        if ((int) $date->format('N') === 7) {
+            return $date->modify('+1 day');
+        }
+
+        return $date;
+    }
+}
+
+/**
+ * Human-readable delivery window, e.g. "Delivery between Wednesday, 15 Jul and Monday, 20 Jul".
+ * Sundays are excluded — they roll forward to Monday.
+ */
+if (!function_exists('puppiary_delivery_window_text')) {
+    function puppiary_delivery_window_text(?int $minDays = null, ?int $maxDays = null): string
+    {
+        $minDays = $minDays ?? (defined('DELIVERY_DAYS_MIN') ? DELIVERY_DAYS_MIN : 3);
+        $maxDays = $maxDays ?? (defined('DELIVERY_DAYS_MAX') ? DELIVERY_DAYS_MAX : 7);
+
+        $today = new DateTimeImmutable('today');
+        $earliest = puppiary_adjust_delivery_date($today->modify('+' . $minDays . ' days'));
+        $latest = puppiary_adjust_delivery_date($today->modify('+' . $maxDays . ' days'));
+
+        $earliestLabel = $earliest->format('l, j M');
+        $latestLabel = $latest->format('l, j M');
+
+        if ($earliest->format('Y-m-d') === $latest->format('Y-m-d')) {
+            return 'Delivery on ' . $earliestLabel;
+        }
+
+        return 'Delivery between ' . $earliestLabel . ' and ' . $latestLabel;
     }
 }
