@@ -23,25 +23,48 @@ $json_ld_scripts = [
 ];
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
+
+$home_trust_delivery_long = puppiary_delivery_window_text();
+$home_trust_delivery_short = puppiary_delivery_window_short_text();
+$home_trust_items = [
+    [
+        'icon' => 'M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z',
+        'long' => $home_trust_delivery_long,
+        'short' => $home_trust_delivery_short,
+    ],
+    [
+        'icon' => 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z',
+        'label' => 'Secure Paystack Checkout',
+    ],
+    [
+        'icon' => 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+        'label' => '30-Day Money-Back Guarantee',
+    ],
+    [
+        'icon' => 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
+        'label' => '2,500+ Happy Customers',
+    ],
+];
 ?>
     <main>
         <section class="home-trust-bar" aria-label="Why shop with Puppiary">
             <div class="home-trust-bar-inner">
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z"/></svg>
-                    <span><?php echo htmlspecialchars(puppiary_delivery_window_text()); ?></span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>
-                    <span>Secure Paystack Checkout</span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <span>30-Day Money-Back Guarantee</span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>2,500+ Happy Customers</span>
+                <div class="home-trust-bar-track">
+                    <?php for ($trust_copy = 0; $trust_copy < 2; $trust_copy++): ?>
+                    <div class="home-trust-bar-group"<?php echo $trust_copy === 1 ? ' aria-hidden="true"' : ''; ?>>
+                        <?php foreach ($home_trust_items as $item): ?>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="<?php echo htmlspecialchars($item['icon'], ENT_QUOTES, 'UTF-8'); ?>"/></svg>
+                            <?php if (isset($item['long'], $item['short'])): ?>
+                                <span class="trust-item-label trust-item-label--long"><?php echo htmlspecialchars($item['long']); ?></span>
+                                <span class="trust-item-label trust-item-label--short"><?php echo htmlspecialchars($item['short']); ?></span>
+                            <?php else: ?>
+                                <span><?php echo htmlspecialchars($item['label']); ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endfor; ?>
                 </div>
             </div>
         </section>
