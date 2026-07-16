@@ -79,7 +79,7 @@ $xml .= '    <link>' . puppiary_xml_escape($baseUrl) . "</link>\n";
 $xml .= '    <description>' . puppiary_xml_escape('The 0-12 Month Puppy Specialist') . "</description>\n";
 
 foreach ($catalog as $product) {
-    $id = 'PUP_' . str_pad((string) (int) $product['id'], 3, '0', STR_PAD_LEFT);
+    $id = (string) (int) $product['id'];
     $title = (string) ($product['name'] ?? '');
     $description = (string) ($product['description'] ?? $product['shortDescription'] ?? $title);
     $slug = (string) ($product['slug'] ?? '');
