@@ -102,19 +102,27 @@ $xml .= "  </channel>\n";
 $xml .= "</rss>\n";
 
 if (file_put_contents($feedFile, $xml) === false) {
-    fwrite(STDERR, "Failed to write {$feedFile}\n");
+    $err = 'Failed to write ' . $feedFile . '. Check that the feeds/ directory is writable by the PHP user (e.g. www-data).';
+    if (PHP_SAPI === 'cli') {
+        fwrite(STDERR, $err . "\n");
+        exit(1);
+    }
+    http_response_code(500);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo $err . "\n";
     exit(1);
 }
 
 $count = count($catalog);
 $message = "Generated feeds/products.xml with {$count} product(s).";
+$feedUrl = $baseUrl . '/feeds/products.xml';
 
 if (PHP_SAPI === 'cli') {
     echo $message . "\n";
-    echo "URL: {$baseUrl}/feeds/products.xml\n";
+    echo 'URL: ' . $feedUrl . "\n";
     exit(0);
 }
 
 header('Content-Type: text/plain; charset=UTF-8');
 echo $message . "\n";
-echo "URL: {$baseUrl}/feeds/products.xml\n";
+echo 'URL: ' . $feedUrl . "\n";
