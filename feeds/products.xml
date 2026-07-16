@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+  <channel>
+    <title>Puppiary</title>
+    <link>https://www.puppiary.com</link>
+    <description>The 0-12 Month Puppy Specialist</description>
+    <item>
+      <g:id>PUP_001</g:id>
+      <g:title>Puppy Calming Bed</g:title>
+      <g:description>Ultra-soft calming bed designed to provide comfort and security for anxious puppies. Features raised edges that create a safe, den-like environment perfect for separation anxiety. Machine washable cover and orthopedic support for growing pups.</g:description>
+      <g:link>https://www.puppiary.com/product/calming-dog-bed</g:link>
+      <g:image_link>https://www.puppiary.com/products/calming-dog-bed/calming-dog-bed-1.webp</g:image_link>
+      <g:price>45999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_002</g:id>
+      <g:title>Puppy Harness</g:title>
+      <g:description>Perfect for first walks and training! This adjustable no-pull harness grows with your puppy, featuring multiple sizing points for a secure, comfortable fit. No-pull design protects your puppy&apos;s neck and provides better control during training walks.</g:description>
+      <g:link>https://www.puppiary.com/product/no-pull-harness</g:link>
+      <g:image_link>https://www.puppiary.com/products/no-pull-harness/puppy-wearing-our-no-pull-harness.webp</g:image_link>
+      <g:price>11900.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_003</g:id>
+      <g:title>Puppy Chew Toy with Treat Dispenser</g:title>
+      <g:description>Keep teething puppies entertained with this durable treat-dispensing chew toy. Fill it with kibble or small treats and let your pup roll, chew, and lick their way to a reward. Non-toxic materials help soothe sore gums while encouraging natural foraging behavior.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-chew-toy-with-treat-dispenser</g:link>
+      <g:image_link>https://www.puppiary.com/products/Puppy%20Chew%20Toy%20with%20Treat%20Dispenser/S30197b04696c4bc8b7b929aa338f9600G.jpg_960x960q75.jpg_.avif</g:image_link>
+      <g:price>7999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_004</g:id>
+      <g:title>Puppy Collar</g:title>
+      <g:description>A lightweight, adjustable nylon collar designed for puppies. Durable buckle and D-ring for leash attachment. Comfortable fit that adjusts as your pup grows — perfect for early training and everyday walks.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-collar</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy%20colar/Medium_Nylon_Collar.webp</g:image_link>
+      <g:price>6999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_005</g:id>
+      <g:title>Puppy Dry Food</g:title>
+      <g:description>Nutrient-rich dry food specially formulated to support healthy growth in puppies. Packed with protein, vitamins, and minerals your pup needs for strong bones, a shiny coat, and steady energy throughout the day.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-dry-food</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy%20dry%20food/MG_6526.webp</g:image_link>
+      <g:price>37999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_006</g:id>
+      <g:title>Puppy Freeze-Dried Training Treats</g:title>
+      <g:description>Small, soft freeze-dried training treats that puppies love. Perfect for positive reinforcement during obedience training, crate training, and socialization. Single-ingredient, easy to break into tiny pieces.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-freeze-dried-training-treats</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy%20Freeze-Dried%20Training%20Treats/MG_7377.webp</g:image_link>
+      <g:price>10500.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_007</g:id>
+      <g:title>Puppy Pad</g:title>
+      <g:description>Super-absorbent potty training pads with leak-proof backing. Ideal for housebreaking puppies, crate training, or travel. Quick-dry top layer keeps paws dry and helps protect your floors during the training phase.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-pad</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy%20pad/MG_5965.webp</g:image_link>
+      <g:price>15999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_008</g:id>
+      <g:title>Puppy Wash Shampoo</g:title>
+      <g:description>Mild, tear-free shampoo designed for puppies with sensitive skin. Cleans without stripping natural oils, leaving your pup&apos;s coat soft and fresh. Free from harsh chemicals — safe for frequent baths during messy puppy adventures.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-wash-shampoo</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy%20wash%20shampoo/MG_6412.webp</g:image_link>
+      <g:price>14999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_009</g:id>
+      <g:title>Puppy Enzymatic Cleaner</g:title>
+      <g:description>Powerful enzymatic formula breaks down urine, feces, and organic stains at the source. Eliminates odors rather than masking them — essential for potty training success. Safe to use on carpets, floors, and upholstery.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-enzymatic-cleaner</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy-enzymatic-cleaner/MG_6399.webp</g:image_link>
+      <g:price>12950.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_010</g:id>
+      <g:title>Puppy Double Stainless Bowl</g:title>
+      <g:description>Rust-resistant stainless steel double bowl set sized for puppies. Non-slip base prevents spills during enthusiastic eating. Easy to clean, dishwasher safe, and built to last through teething, chewing, and daily mealtime chaos.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-stainless-bowl</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy-stainless-bowl/71MRo6RGPwL._AC_SX679_.jpg</g:image_link>
+      <g:price>14999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>PUP_011</g:id>
+      <g:title>Puppy Treats</g:title>
+      <g:description>Soft, flavorful lamb bite treats perfect for rewarding good behavior. Sized for small mouths and easy to chew. A great everyday snack or training reward for puppies of all breeds.</g:description>
+      <g:link>https://www.puppiary.com/product/puppy-treats</g:link>
+      <g:image_link>https://www.puppiary.com/products/puppy-treats/Sigma-Dog-Bite-Lamb.jpeg</g:image_link>
+      <g:price>9999.00 NGN</g:price>
+      <g:brand>Puppiary</g:brand>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:feed_label>NG</g:feed_label>
+      <g:identifier_exists>false</g:identifier_exists>
+    </item>
+  </channel>
+</rss>
