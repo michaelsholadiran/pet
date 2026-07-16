@@ -16,9 +16,23 @@ $feedDir = __DIR__ . '/feeds';
 $feedFile = $feedDir . '/products.xml';
 $baseUrl = rtrim(SITE_URL, '/');
 
-if (!is_dir($feedDir) && !mkdir($feedDir, 0755, true) && !is_dir($feedDir)) {
-    fwrite(STDERR, "Failed to create feeds directory.\n");
+/**
+ * Fail with a clear message in CLI or browser.
+ */
+function puppiary_feed_fail(string $message): void
+{
+    if (PHP_SAPI === 'cli') {
+        fwrite(STDERR, $message . "\n");
+        exit(1);
+    }
+    http_response_code(500);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo $message . "\n";
     exit(1);
+}
+
+if (!is_dir($feedDir) && !mkdir($feedDir, 0755, true) && !is_dir($feedDir)) {
+    puppiary_feed_fail('Failed to create feeds directory. Check permissions.');
 }
 
 /**
@@ -93,7 +107,6 @@ foreach ($catalog as $product) {
     $xml .= '      <g:brand>' . puppiary_xml_escape($brand) . "</g:brand>\n";
     $xml .= "      <g:condition>new</g:condition>\n";
     $xml .= '      <g:availability>' . puppiary_xml_escape($availability) . "</g:availability>\n";
-    $xml .= "      <g:feed_label>NG</g:feed_label>\n";
     $xml .= "      <g:identifier_exists>false</g:identifier_exists>\n";
     $xml .= "    </item>\n";
 }
@@ -102,15 +115,9 @@ $xml .= "  </channel>\n";
 $xml .= "</rss>\n";
 
 if (file_put_contents($feedFile, $xml) === false) {
-    $err = 'Failed to write ' . $feedFile . '. Check that the feeds/ directory is writable by the PHP user (e.g. www-data).';
-    if (PHP_SAPI === 'cli') {
-        fwrite(STDERR, $err . "\n");
-        exit(1);
-    }
-    http_response_code(500);
-    header('Content-Type: text/plain; charset=UTF-8');
-    echo $err . "\n";
-    exit(1);
+    puppiary_feed_fail(
+        'Failed to write ' . $feedFile . '. Check that the feeds/ directory is writable by the PHP user (e.g. www-data).'
+    );
 }
 
 $count = count($catalog);

@@ -14,7 +14,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -27,7 +26,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -40,7 +38,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -53,7 +50,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -66,7 +62,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -79,7 +74,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -92,7 +86,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -105,7 +98,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -118,7 +110,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -131,7 +122,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
     <item>
@@ -144,7 +134,6 @@
       <g:brand>Puppiary</g:brand>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:feed_label>NG</g:feed_label>
       <g:identifier_exists>false</g:identifier_exists>
     </item>
   </channel>
