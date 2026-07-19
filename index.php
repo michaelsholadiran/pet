@@ -24,13 +24,10 @@ $json_ld_scripts = [
 require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 
-$home_trust_delivery_long = puppiary_delivery_window_text();
-$home_trust_delivery_short = puppiary_delivery_window_short_text();
 $home_trust_items = [
     [
         'icon' => 'M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z',
-        'long' => $home_trust_delivery_long,
-        'short' => $home_trust_delivery_short,
+        'label' => 'Fast delivery',
     ],
     [
         'icon' => 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z',
@@ -55,12 +52,7 @@ $home_trust_items = [
                         <?php foreach ($home_trust_items as $item): ?>
                         <div class="trust-item">
                             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="<?php echo htmlspecialchars($item['icon'], ENT_QUOTES, 'UTF-8'); ?>"/></svg>
-                            <?php if (isset($item['long'], $item['short'])): ?>
-                                <span class="trust-item-label trust-item-label--long"><?php echo htmlspecialchars($item['long']); ?></span>
-                                <span class="trust-item-label trust-item-label--short"><?php echo htmlspecialchars($item['short']); ?></span>
-                            <?php else: ?>
-                                <span><?php echo htmlspecialchars($item['label']); ?></span>
-                            <?php endif; ?>
+                            <span><?php echo htmlspecialchars($item['label']); ?></span>
                         </div>
                         <?php endforeach; ?>
                     </div>
