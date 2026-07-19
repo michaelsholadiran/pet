@@ -160,7 +160,7 @@ function showStarterKitToast() {
   if (typeof Toastify !== "function") return
 
   Toastify({
-    text: "Starter Kit added to cart 🐶",
+    text: "Puppy Starter Kit added to cart 🐶",
     duration: 3500,
     gravity: "top",
     position: "center",

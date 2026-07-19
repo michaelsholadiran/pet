@@ -78,7 +78,7 @@ $home_trust_items = [
                     <p class="promo-banner-description">Simple, effective products designed to keep your puppy happy, healthy, and comfortable.</p>
                     <div class="promo-banner-actions">
                         <a href="/products" class="btn btn-promo-primary">Shop</a>
-                        <button type="button" class="btn btn-promo-secondary starter-kit-btn">Starter Kit</button>
+                        <button type="button" class="btn btn-promo-secondary starter-kit-btn">Puppy Starter Kit</button>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ $home_trust_items = [
                 <h3 class="home-starter-kit-subtitle">Skip the stress of figuring out what to buy.</h3>
                 <p>Bringing home a new puppy is exciting - but knowing what you actually need can feel overwhelming. We&rsquo;ve done the hard work for you.</p>
                 <p>Our Puppy Starter Kit includes the essential food, treats, toys, grooming, and training supplies your puppy needs in one carefully selected bundle. No endless searching. No second-guessing. Just everything you need to give your puppy the best start from day one.</p>
-                <button type="button" class="btn btn-promo-primary starter-kit-btn">Get Starter Kit</button>
+                <button type="button" class="btn btn-promo-primary starter-kit-btn">Get Puppy Starter Kit</button>
             </div>
         </section>
         <section class="shop-section home-products-section" aria-label="Our Products">
