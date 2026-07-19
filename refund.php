@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/config.php';
 $page_title = 'Return & Refund Policy - Puppiary';
 $page_description = "Learn about Puppiary's 24-Month Durability Promise and 30-Day Happiness Guarantee. Shop worry-free with our comprehensive return and refund policy.";
+$page_keywords = 'Puppiary return policy, puppy product refund, 30 day money back guarantee, 24 month durability promise, return puppy supplies Nigeria';
 $page_canonical = '/refund';
 $json_ld_scripts = [
     [

@@ -22,6 +22,7 @@ $showRestocking = count($outOfStock) > count($inStock) && count($outOfStock) >= 
 
 $page_title = 'Shop Puppy Products - Toys, Food & Supplies | Puppiary';
 $page_description = 'Browse our full catalog of puppy toys, collars, food, treats, pads, and grooming essentials. Fast Lagos delivery and secure Paystack checkout.';
+$page_keywords = 'shop puppy products Nigeria, puppy toys Lagos, puppy food, puppy treats, puppy harness, puppy collar, puppy pads, puppy shampoo, calming dog bed, stainless steel puppy bowl, puppy starter kit, buy puppy supplies online Nigeria, Puppiary shop';
 $page_canonical = '/products';
 $current_nav = 'shop';
 $json_ld_scripts = [

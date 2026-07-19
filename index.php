@@ -13,7 +13,7 @@ $home_products = array_values(array_filter($products, function ($p) {
 $page_title = 'Puppy Toys, Teething & Starter Kits | Non-Toxic Supplies | Puppiary';
 $page_description = 'The ultimate resource for new puppy parents. Shop durable chew toys, training gear, and comfort essentials designed to solve teething pain and separation anxiety.';
 $page_canonical = '/';
-$page_keywords = 'puppy toys, puppy chew toys, puppy teething toys, puppy starter kits, non-toxic puppy toys, puppy supplies, puppy training gear';
+$page_keywords = 'puppy toys, puppy chew toys, puppy teething toys, puppy starter kits, puppy starter kit Nigeria, non-toxic puppy toys, puppy supplies, puppy training gear, puppy food Lagos, puppy harness, puppy collar, calming dog bed, puppy pads, puppy shampoo, puppy treats, freeze-dried training treats, stainless steel puppy bowl, enzymatic cleaner, Lagos puppy delivery, buy puppy products Nigeria, Puppiary';
 $body_class = 'home';
 $extra_head = '    <link rel="preload" href="/products/calming-dog-bed/calming-dog-bed-1.webp" as="image" fetchpriority="high">';
 $json_ld_scripts = [

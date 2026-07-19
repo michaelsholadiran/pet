@@ -15,6 +15,7 @@ $products = [
             'price_usd' => 49.99,
             'shortDescription' => 'Soft, cozy bed for anxious puppies',
             'description' => 'Ultra-soft calming bed designed to provide comfort and security for anxious puppies. Features raised edges that create a safe, den-like environment perfect for separation anxiety. Machine washable cover and orthopedic support for growing pups.',
+            'keywords' => 'puppy calming bed, calming dog bed, puppy anxiety bed, separation anxiety puppy bed, orthopedic puppy bed, cozy puppy bed Nigeria, washable puppy bed Lagos, den bed for puppies, Puppiary calming bed',
             'images' => [
                 '/products/calming-dog-bed/calming-dog-bed-1.webp',
                 '/products/calming-dog-bed/calming-dog-bed-2.webp',
@@ -37,6 +38,7 @@ $products = [
             'price_usd' => 6.60,
             'shortDescription' => 'Safe, adjustable no-pull harness for growing pups',
             'description' => 'Perfect for first walks and training! This adjustable no-pull harness grows with your puppy, featuring multiple sizing points for a secure, comfortable fit. No-pull design protects your puppy\'s neck and provides better control during training walks.',
+            'keywords' => 'puppy harness, no pull harness, adjustable puppy harness, puppy walking harness, training harness for puppies, soft puppy harness Nigeria, first walk harness Lagos, Puppiary harness',
             'images' => [
                 '/products/no-pull-harness/puppy-wearing-our-no-pull-harness.webp',
                 '/products/no-pull-harness/no-pull-harness-1.webp',
@@ -60,6 +62,7 @@ $products = [
             'price_usd' => 4.00,
             'shortDescription' => 'Puppy chew toy that dispenses treats as your pup plays',
             'description' => 'Keep teething puppies entertained with this durable treat-dispensing chew toy. Fill it with kibble or small treats and let your pup roll, chew, and lick their way to a reward. Non-toxic materials help soothe sore gums while encouraging natural foraging behavior.',
+            'keywords' => 'puppy chew toy, treat dispensing toy, puppy teething toy, interactive puppy toy, non-toxic chew toy, puppy enrichment toy Nigeria, teething relief toy Lagos, Puppiary chew toy',
             'images' => [
                 '/products/Puppy Chew Toy with Treat Dispenser/S30197b04696c4bc8b7b929aa338f9600G.jpg_960x960q75.jpg_.avif',
                 '/products/Puppy Chew Toy with Treat Dispenser/Sc6a1adcbcc9148c4b132a1a32b9c4ebeN.jpg_960x960q75.jpg_.avif',
@@ -77,6 +80,7 @@ $products = [
             'price_usd' => 3.33,
             'shortDescription' => 'Adjustable nylon collar sized for growing puppies',
             'description' => 'A lightweight, adjustable nylon collar designed for puppies. Durable buckle and D-ring for leash attachment. Comfortable fit that adjusts as your pup grows — perfect for early training and everyday walks.',
+            'keywords' => 'puppy collar, adjustable puppy collar, nylon dog collar puppy, puppy ID collar, training collar for puppies, puppy collar Nigeria, lightweight puppy collar Lagos, Puppiary collar',
             'images' => [
                 '/products/puppy colar/Medium_Nylon_Collar.webp',
             ],
@@ -92,6 +96,7 @@ $products = [
             'price_usd' => 24.00,
             'shortDescription' => 'Balanced dry food formulated for growing puppies',
             'description' => 'Nutrient-rich dry food specially formulated to support healthy growth in puppies. Packed with protein, vitamins, and minerals your pup needs for strong bones, a shiny coat, and steady energy throughout the day.',
+            'keywords' => 'puppy dry food, puppy kibble, puppy food Nigeria, balanced puppy food, growing puppy nutrition, dry dog food for puppies Lagos, puppy formula food, Puppiary dry food',
             'images' => [
                 '/products/puppy dry food/MG_6526.webp',
             ],
@@ -107,6 +112,7 @@ $products = [
             'price_usd' => 5.67,
             'shortDescription' => 'High-value freeze-dried treats for puppy training',
             'description' => 'Small, soft freeze-dried training treats that puppies love. Perfect for positive reinforcement during obedience training, crate training, and socialization. Single-ingredient, easy to break into tiny pieces.',
+            'keywords' => 'freeze dried puppy treats, puppy training treats, high value training treats, soft puppy treats, obedience training treats Nigeria, crate training treats Lagos, Puppiary freeze-dried treats',
             'images' => [
                 '/products/puppy Freeze-Dried Training Treats/MG_7377.webp',
             ],
@@ -122,6 +128,7 @@ $products = [
             'price_usd' => 9.33,
             'shortDescription' => 'Absorbent potty training pads for puppies',
             'description' => 'Super-absorbent potty training pads with leak-proof backing. Ideal for housebreaking puppies, crate training, or travel. Quick-dry top layer keeps paws dry and helps protect your floors during the training phase.',
+            'keywords' => 'puppy pads, potty training pads, puppy pee pads, housebreaking pads, absorbent puppy pads Nigeria, leak proof puppy pads Lagos, crate training pads, Puppiary puppy pad',
             'images' => [
                 '/products/puppy pad/MG_5965.webp',
             ],
@@ -137,6 +144,7 @@ $products = [
             'price_usd' => 8.67,
             'shortDescription' => 'Gentle shampoo formulated for sensitive puppy skin',
             'description' => 'Mild, tear-free shampoo designed for puppies with sensitive skin. Cleans without stripping natural oils, leaving your pup\'s coat soft and fresh. Free from harsh chemicals — safe for frequent baths during messy puppy adventures.',
+            'keywords' => 'puppy shampoo, tear free puppy wash, gentle puppy shampoo, sensitive skin puppy shampoo, puppy bath wash Nigeria, mild dog shampoo for puppies Lagos, Puppiary puppy wash',
             'images' => [
                 '/products/puppy wash shampoo/MG_6412.webp',
             ],
@@ -152,6 +160,7 @@ $products = [
             'price_usd' => 7.30,
             'shortDescription' => 'Enzyme cleaner for puppy accidents and odors',
             'description' => 'Powerful enzymatic formula breaks down urine, feces, and organic stains at the source. Eliminates odors rather than masking them — essential for potty training success. Safe to use on carpets, floors, and upholstery.',
+            'keywords' => 'puppy enzymatic cleaner, pet urine cleaner, enzyme odor remover, puppy accident cleaner, potty training cleaner Nigeria, carpet pet stain remover Lagos, Puppiary enzymatic cleaner',
             'images' => [
                 '/products/puppy-enzymatic-cleaner/MG_6399.webp',
             ],
@@ -167,6 +176,7 @@ $products = [
             'price_usd' => 8.67,
             'shortDescription' => 'Puppy double stainless steel bowl set for food and water',
             'description' => 'Rust-resistant stainless steel double bowl set sized for puppies. Non-slip base prevents spills during enthusiastic eating. Easy to clean, dishwasher safe, and built to last through teething, chewing, and daily mealtime chaos.',
+            'keywords' => 'puppy stainless steel bowl, double dog bowl, puppy food and water bowl, non slip puppy bowl, stainless steel puppy feeder Nigeria, dishwasher safe puppy bowl Lagos, Puppiary stainless bowl',
             'images' => [
                 '/products/puppy-stainless-bowl/71MRo6RGPwL._AC_SX679_.jpg',
                 '/products/puppy-stainless-bowl/Semi_Medium_Dog_Plate.webp',
@@ -188,6 +198,7 @@ $products = [
             'price_usd' => 5.33,
             'shortDescription' => 'Puppy lamb bite treats for training and rewards',
             'description' => 'Soft, flavorful lamb bite treats perfect for rewarding good behavior. Sized for small mouths and easy to chew. A great everyday snack or training reward for puppies of all breeds.',
+            'keywords' => 'puppy treats, lamb bite treats, soft puppy treats, puppy training rewards, puppy snacks Nigeria, lamb dog treats for puppies Lagos, Puppiary puppy treats',
             'images' => [
                 '/products/puppy-treats/Sigma-Dog-Bite-Lamb.jpeg',
             ],

@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/config.php';
 $page_title = 'About Us - Puppiary';
 $page_description = 'Learn about Puppiary - your trusted partner for puppy and dog care essentials. Quality, safety, and genuine pet-parent support.';
+$page_keywords = 'about Puppiary, puppy brand Nigeria, puppy care essentials, trusted puppy supplies, new puppy parents, quality puppy products Lagos, Puppiary story';
 $page_canonical = '/about';
 $current_nav = 'about';
 $json_ld_scripts = [

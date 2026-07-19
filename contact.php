@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/config.php';
 $page_title = 'Contact Us - Puppiary';
 $page_description = "Questions or feedback? Get in touch with the Puppiary team — we're here to help.";
+$page_keywords = 'contact Puppiary, puppy customer support Nigeria, Puppiary help email, puppy order help Lagos, contact puppy store Nigeria';
 $page_canonical = '/contact';
 $current_nav = 'contact';
 $json_ld_scripts = [

@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/seo_helpers.php';
 
 $page_title = 'FAQ - Puppiary';
 $page_description = 'Find answers to common questions about Puppiary shipping, ordering, returns, guarantees, and product safety for your puppy.';
+$page_keywords = 'Puppiary FAQ, puppy shipping Nigeria, Lagos delivery times, puppy product returns, money back guarantee, pay on delivery puppy products, safe puppy toys, Puppiary help';
 $page_canonical = '/faq';
 $current_nav = 'faq';
 

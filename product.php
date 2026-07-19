@@ -45,6 +45,9 @@ if ($slug !== '' || $idParam > 0) {
 $page_title = $product_ld ? ($product_ld['name'] . ' - Puppiary') : 'Product - Puppiary';
 $page_description = $product_ld ? ($product_ld['shortDescription'] ?? 'Shop quality puppy products at Puppiary.') : 'Shop quality puppy products at Puppiary.';
 $page_canonical = '/product' . ($slug ? '/' . $slug : '');
+$page_keywords = $product_ld
+    ? ($product_ld['keywords'] ?? ($product_ld['name'] . ', ' . ($product_ld['category'] ?? 'puppy supplies') . ', buy puppy products Nigeria, Puppiary'))
+    : '';
 $page_og_type = $product_ld ? 'product' : 'website';
 $page_og_image = $product_ld ? $product_ld['images'][0] : null;
 $page_og_image_alt = $product_ld ? $product_ld['name'] : null;
