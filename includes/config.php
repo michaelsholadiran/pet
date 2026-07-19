@@ -154,3 +154,30 @@ if (!function_exists('puppiary_delivery_window_short_text')) {
         return 'Delivery ' . $earliestLabel . ' – ' . $latestLabel;
     }
 }
+
+/**
+ * Lagos estimate for product/checkout, e.g. "Estimated delivery within Lagos: Jul 22–27".
+ */
+if (!function_exists('puppiary_delivery_lagos_estimate_text')) {
+    function puppiary_delivery_lagos_estimate_text(?int $minDays = null, ?int $maxDays = null): string
+    {
+        $minDays = $minDays ?? (defined('DELIVERY_DAYS_MIN') ? DELIVERY_DAYS_MIN : 3);
+        $maxDays = $maxDays ?? (defined('DELIVERY_DAYS_MAX') ? DELIVERY_DAYS_MAX : 7);
+
+        $today = new DateTimeImmutable('today');
+        $earliest = puppiary_adjust_delivery_date($today->modify('+' . $minDays . ' days'));
+        $latest = puppiary_adjust_delivery_date($today->modify('+' . $maxDays . ' days'));
+
+        if ($earliest->format('Y-m-d') === $latest->format('Y-m-d')) {
+            return 'Estimated delivery within Lagos: ' . $earliest->format('M j');
+        }
+
+        if ($earliest->format('M') === $latest->format('M')) {
+            $range = $earliest->format('M j') . '–' . $latest->format('j');
+        } else {
+            $range = $earliest->format('M j') . '–' . $latest->format('M j');
+        }
+
+        return 'Estimated delivery within Lagos: ' . $range;
+    }
+}
