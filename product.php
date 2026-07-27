@@ -92,15 +92,10 @@ $delivery_fee_display = product_display_price(['price' => DELIVERY_FEE_NGN]);
                         <p class="product-category">Category: <?php echo htmlspecialchars($p['category']); ?></p>
                         <p class="product-price"><?php echo htmlspecialchars($dp['symbol'] . $dp['formatted']); ?></p>
                         <p class="product-stock <?php echo $in_stock ? 'in-stock' : 'out-of-stock'; ?>"><?php echo $in_stock ? ((int) $p['stock'] . ' in stock') : 'Out of stock'; ?></p>
-                        <p class="product-description"><?php echo htmlspecialchars($p['description']); ?></p>
-                        <div class="product-actions">
-                            <div class="quantity-selector">
-                                <button type="button" class="qty-btn" id="qty-decrease" aria-label="Decrease quantity">−</button>
-                                <input type="number" id="quantity" value="1" min="1" max="<?php echo (int) $p['stock']; ?>" aria-label="Quantity">
-                                <button type="button" class="qty-btn" id="qty-increase" aria-label="Increase quantity">+</button>
-                            </div>
-                            <button type="button" class="btn btn-primary add-to-cart-btn" id="add-to-cart"<?php echo $in_stock ? '' : ' disabled'; ?>>Add to Cart</button>
+                        <div class="product-detail-actions">
+                            <?php require __DIR__ . '/includes/product_card_actions.php'; ?>
                         </div>
+                        <p class="product-description"><?php echo htmlspecialchars($p['description']); ?></p>
                         <div class="product-shipping-info" style="margin-top:2rem;padding-top:2rem;border-top:1px solid #eee">
                             <h2 style="font-size:1.25rem;margin-bottom:1rem;font-weight:600">Shipping Details</h2>
                             <div style="display:flex;flex-direction:column;gap:0.75rem">
@@ -161,21 +156,5 @@ document.addEventListener('DOMContentLoaded', function() {
             thumb.classList.add('active');
         });
     });
-
-    var qtyInput = document.getElementById('quantity');
-    var qtyDec = document.getElementById('qty-decrease');
-    var qtyInc = document.getElementById('qty-increase');
-    if (qtyDec && qtyInput) qtyDec.addEventListener('click', function() { var v = parseInt(qtyInput.value, 10) || 1; if (v > 1) qtyInput.value = v - 1; });
-    if (qtyInc && qtyInput) qtyInc.addEventListener('click', function() { var v = parseInt(qtyInput.value, 10) || 1; var max = product.stock || 999; if (v < max) qtyInput.value = v + 1; });
-
-    var addBtn = document.getElementById('add-to-cart');
-    if (addBtn && typeof addToCart === 'function') {
-        addBtn.addEventListener('click', function() {
-            var qty = parseInt(qtyInput.value, 10) || 1;
-            addToCart(product, qty);
-            addBtn.textContent = 'Added!';
-            setTimeout(function() { addBtn.textContent = 'Add to Cart'; }, 2000);
-        });
-    }
 });
 </script>

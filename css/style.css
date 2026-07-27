@@ -1364,6 +1364,17 @@ a.product-card {
   font-size: 16px;
 }
 
+.product-detail-actions {
+  margin-top: 0.5rem;
+  max-width: 360px;
+}
+
+.product-detail-actions .product-card-qty-btn {
+  flex: 0 0 3.75rem;
+  width: 3.75rem;
+  height: 2.75rem;
+}
+
 .product-actions {
   display: flex;
   gap: 1rem;
