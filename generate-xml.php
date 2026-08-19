@@ -1,12 +1,17 @@
 <?php
 /**
- * Google Merchant Center RSS 2.0 product feed generator.
+ * Google Merchant Center RSS 2.0 product feed + sitemap generator.
  *
  * Run from CLI:  php generate-xml.php
  * Or visit:      /generate-xml.php
  *
- * Writes: feeds/products.xml
- * Public URL: https://www.puppiary.com/feeds/products.xml
+ * Writes:
+ *   feeds/products.xml  (published products only)
+ *   sitemap.xml         (static pages + published product URLs)
+ *
+ * Public URLs:
+ *   https://www.puppiary.com/feeds/products.xml
+ *   https://www.puppiary.com/sitemap.xml
  */
 
 require_once __DIR__ . '/includes/config.php';
@@ -120,16 +125,62 @@ if (file_put_contents($feedFile, $xml) === false) {
     );
 }
 
+$sitemapPages = [
+    ['path' => '/', 'changefreq' => 'weekly', 'priority' => '1.0'],
+    ['path' => '/products', 'changefreq' => 'daily', 'priority' => '0.9'],
+    ['path' => '/about', 'changefreq' => 'yearly', 'priority' => '0.5'],
+    ['path' => '/contact', 'changefreq' => 'yearly', 'priority' => '0.5'],
+    ['path' => '/faq', 'changefreq' => 'monthly', 'priority' => '0.5'],
+    ['path' => '/privacy', 'changefreq' => 'yearly', 'priority' => '0.3'],
+    ['path' => '/terms', 'changefreq' => 'yearly', 'priority' => '0.3'],
+    ['path' => '/refund', 'changefreq' => 'yearly', 'priority' => '0.3'],
+];
+
+$sitemap = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+$sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+
+foreach ($sitemapPages as $page) {
+    $sitemap .= "  <url>\n";
+    $sitemap .= '    <loc>' . puppiary_xml_escape($baseUrl . $page['path']) . "</loc>\n";
+    $sitemap .= '    <changefreq>' . puppiary_xml_escape($page['changefreq']) . "</changefreq>\n";
+    $sitemap .= '    <priority>' . puppiary_xml_escape($page['priority']) . "</priority>\n";
+    $sitemap .= "  </url>\n";
+}
+
+foreach ($catalog as $product) {
+    $slug = (string) ($product['slug'] ?? '');
+    if ($slug === '') {
+        continue;
+    }
+    $sitemap .= "  <url>\n";
+    $sitemap .= '    <loc>' . puppiary_xml_escape($baseUrl . '/product/' . $slug) . "</loc>\n";
+    $sitemap .= "    <changefreq>weekly</changefreq>\n";
+    $sitemap .= "    <priority>0.8</priority>\n";
+    $sitemap .= "  </url>\n";
+}
+
+$sitemap .= "</urlset>\n";
+
+$sitemapFile = __DIR__ . '/sitemap.xml';
+if (file_put_contents($sitemapFile, $sitemap) === false) {
+    puppiary_feed_fail(
+        'Failed to write ' . $sitemapFile . '. Check that sitemap.xml is writable by the PHP user (e.g. www-data).'
+    );
+}
+
 $count = count($catalog);
-$message = "Generated feeds/products.xml with {$count} product(s).";
+$message = "Generated feeds/products.xml and sitemap.xml with {$count} published product(s).";
 $feedUrl = $baseUrl . '/feeds/products.xml';
+$sitemapUrl = $baseUrl . '/sitemap.xml';
 
 if (PHP_SAPI === 'cli') {
     echo $message . "\n";
-    echo 'URL: ' . $feedUrl . "\n";
+    echo 'Feed: ' . $feedUrl . "\n";
+    echo 'Sitemap: ' . $sitemapUrl . "\n";
     exit(0);
 }
 
 header('Content-Type: text/plain; charset=UTF-8');
 echo $message . "\n";
-echo 'URL: ' . $feedUrl . "\n";
+echo 'Feed: ' . $feedUrl . "\n";
+echo 'Sitemap: ' . $sitemapUrl . "\n";

@@ -69,7 +69,7 @@ $products = [
                 '/products/Puppy Chew Toy with Treat Dispenser/Sd8b4286ea4454746aeb9a24ca2ffb0a7Z.jpg_960x960q75.jpg_.avif',
             ],
             'stock' => 18,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 4,
@@ -85,7 +85,7 @@ $products = [
                 '/products/puppy colar/Medium_Nylon_Collar.webp',
             ],
             'stock' => 20,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 5,
@@ -101,7 +101,7 @@ $products = [
                 '/products/puppy dry food/MG_6526.webp',
             ],
             'stock' => 15,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 6,
@@ -117,7 +117,7 @@ $products = [
                 '/products/puppy Freeze-Dried Training Treats/MG_7377.webp',
             ],
             'stock' => 20,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 7,
@@ -133,7 +133,7 @@ $products = [
                 '/products/puppy pad/MG_5965.webp',
             ],
             'stock' => 25,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 8,
@@ -149,7 +149,7 @@ $products = [
                 '/products/puppy wash shampoo/MG_6412.webp',
             ],
             'stock' => 18,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 9,
@@ -165,7 +165,7 @@ $products = [
                 '/products/puppy-enzymatic-cleaner/MG_6399.webp',
             ],
             'stock' => 16,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 10,
@@ -187,7 +187,7 @@ $products = [
                 '/products/puppy-stainless-bowl/71NLdQMlWjL._AC_SX679_.jpg',
             ],
             'stock' => 22,
-            'published' => true,
+            'published' => false,
         ],
         [
             'id' => 11,
@@ -203,6 +203,6 @@ $products = [
                 '/products/puppy-treats/Sigma-Dog-Bite-Lamb.jpeg',
             ],
             'stock' => 20,
-            'published' => true,
+            'published' => false,
         ],
 ];

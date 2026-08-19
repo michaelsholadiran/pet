@@ -1,6 +1,7 @@
 <?php
 /**
- * Dynamic XML sitemap generated from products_data.php.
+ * Dynamic XML sitemap generated from products_data.php (published products only).
+ * Static sitemap.xml is also written by generate-xml.php from the same catalog.
  */
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/products_data.php';
