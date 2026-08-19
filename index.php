@@ -35,11 +35,12 @@ require __DIR__ . '/includes/header.php';
                     <p class="promo-banner-description">Simple, effective products designed to keep your puppy happy, healthy, and comfortable.</p>
                     <div class="promo-banner-actions">
                         <a href="/products" class="btn btn-promo-primary">Shop</a>
-                        <button type="button" class="btn btn-promo-secondary starter-kit-btn">Puppy Starter Kit</button>
+                        <?php /* <button type="button" class="btn btn-promo-secondary starter-kit-btn">Puppy Starter Kit</button> */ ?>
                     </div>
                 </div>
             </div>
         </section>
+        <?php /* Starter kit section — re-enable when more products are published
         <section class="home-starter-kit-section" aria-label="Puppy Starter Kit">
             <div class="home-starter-kit-inner">
                 <h2>Everything Your Puppy Needs. One Simple Starter Kit.</h2>
@@ -49,6 +50,7 @@ require __DIR__ . '/includes/header.php';
                 <button type="button" class="btn btn-promo-primary starter-kit-btn">Get Puppy Starter Kit</button>
             </div>
         </section>
+        */ ?>
         <section class="shop-section home-products-section" aria-label="Our Products">
             <h2>Our Products</h2>
             <?php if (count($home_products) === 0): ?>

@@ -50,7 +50,7 @@ require_once __DIR__ . '/config.php';
     $site_trust_items = [
         [
             'icon' => 'M20 8h-3V4H3c-1.1 0-2 .9-2 2v11.8h2c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5l-3-4z',
-            'label' => 'Fast delivery',
+            'label' => 'Delivery in 3–7 days',
         ],
         [
             'icon' => 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z',
