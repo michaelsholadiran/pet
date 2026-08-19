@@ -106,7 +106,7 @@ $checkout_country = 'Nigeria';
                     </div>
                     <div class="summary-total"><strong>Total: <span id="total-currency">₦</span><span id="total-price">0.00</span></strong></div>
                     <div class="checkout-social-proof">
-                        <div class="social-proof-item"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>🚚 <?php echo htmlspecialchars(puppiary_delivery_lagos_estimate_text()); ?></span></div>
+                        <div class="social-proof-item"><span>🚚 Delivery in 3–7 days</span></div>
                     </div>
                     <div class="payment-security">
                         <p class="security-label">Secured by:</p>
