@@ -4242,6 +4242,47 @@ textarea:focus {
   height: 32px;
 }
 
+/* Floating Talk to a Vet button */
+.vet-float {
+  position: fixed;
+  bottom: 104px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 16px 0 12px;
+  background-color: var(--primary-orange);
+  color: #fff;
+  border: 2px solid #c56d05;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  z-index: 1000;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  box-shadow: var(--shadow-medium);
+}
+
+.vet-float:hover {
+  background-color: #c56d05;
+  border-color: #a85c04;
+  transform: scale(1.05);
+  color: #fff;
+}
+
+.vet-float:active {
+  transform: scale(0.97);
+}
+
+.vet-float svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 768px) {
   .whatsapp-float {
     width: 56px;
@@ -4253,5 +4294,13 @@ textarea:focus {
   .whatsapp-float svg {
     width: 28px;
     height: 28px;
+  }
+
+  .vet-float {
+    bottom: 158px;
+    right: 20px;
+    height: 44px;
+    padding: 0 14px 0 10px;
+    font-size: 0.85rem;
   }
 }
